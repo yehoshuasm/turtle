@@ -34,12 +34,12 @@
             this.emailLabel = new System.Windows.Forms.Label();
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.receiverInformationNextButton = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.zipCodeLabel = new System.Windows.Forms.Label();
+            this.countryLabel = new System.Windows.Forms.Label();
+            this.stateLabel = new System.Windows.Forms.Label();
+            this.municipalityLabel = new System.Windows.Forms.Label();
+            this.suburbLabel = new System.Windows.Forms.Label();
+            this.internalNumberLabel = new System.Windows.Forms.Label();
             this.zipCodeTextBox = new System.Windows.Forms.TextBox();
             this.countryTextBox = new System.Windows.Forms.TextBox();
             this.stateTextBox = new System.Windows.Forms.TextBox();
@@ -47,14 +47,14 @@
             this.suburbTextBox = new System.Windows.Forms.TextBox();
             this.InternalNumberTextBox = new System.Windows.Forms.TextBox();
             this.ExternalNumberTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.externalNumberLabel = new System.Windows.Forms.Label();
             this.streetTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.streetLabel = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.rfcTextBox = new System.Windows.Forms.TextBox();
             this.rfcLabel = new System.Windows.Forms.Label();
-            this.ReceiverInformationLabel = new System.Windows.Forms.Label();
+            this.receiverInformationLabel = new System.Windows.Forms.Label();
             this.requiredInformationPanel = new System.Windows.Forms.Panel();
             this.paymentFormComboBox = new System.Windows.Forms.ComboBox();
             this.paymentMethodComboBox = new System.Windows.Forms.ComboBox();
@@ -99,12 +99,12 @@
             this.receiverInformationPanel.Controls.Add(this.emailLabel);
             this.receiverInformationPanel.Controls.Add(this.emailTextBox);
             this.receiverInformationPanel.Controls.Add(this.receiverInformationNextButton);
-            this.receiverInformationPanel.Controls.Add(this.label7);
-            this.receiverInformationPanel.Controls.Add(this.label8);
-            this.receiverInformationPanel.Controls.Add(this.label3);
-            this.receiverInformationPanel.Controls.Add(this.label4);
-            this.receiverInformationPanel.Controls.Add(this.label5);
-            this.receiverInformationPanel.Controls.Add(this.label6);
+            this.receiverInformationPanel.Controls.Add(this.zipCodeLabel);
+            this.receiverInformationPanel.Controls.Add(this.countryLabel);
+            this.receiverInformationPanel.Controls.Add(this.stateLabel);
+            this.receiverInformationPanel.Controls.Add(this.municipalityLabel);
+            this.receiverInformationPanel.Controls.Add(this.suburbLabel);
+            this.receiverInformationPanel.Controls.Add(this.internalNumberLabel);
             this.receiverInformationPanel.Controls.Add(this.zipCodeTextBox);
             this.receiverInformationPanel.Controls.Add(this.countryTextBox);
             this.receiverInformationPanel.Controls.Add(this.stateTextBox);
@@ -112,14 +112,14 @@
             this.receiverInformationPanel.Controls.Add(this.suburbTextBox);
             this.receiverInformationPanel.Controls.Add(this.InternalNumberTextBox);
             this.receiverInformationPanel.Controls.Add(this.ExternalNumberTextBox);
-            this.receiverInformationPanel.Controls.Add(this.label1);
+            this.receiverInformationPanel.Controls.Add(this.externalNumberLabel);
             this.receiverInformationPanel.Controls.Add(this.streetTextBox);
-            this.receiverInformationPanel.Controls.Add(this.label2);
+            this.receiverInformationPanel.Controls.Add(this.streetLabel);
             this.receiverInformationPanel.Controls.Add(this.nameTextBox);
             this.receiverInformationPanel.Controls.Add(this.nameLabel);
             this.receiverInformationPanel.Controls.Add(this.rfcTextBox);
             this.receiverInformationPanel.Controls.Add(this.rfcLabel);
-            this.receiverInformationPanel.Controls.Add(this.ReceiverInformationLabel);
+            this.receiverInformationPanel.Controls.Add(this.receiverInformationLabel);
             this.receiverInformationPanel.Location = new System.Drawing.Point(0, 0);
             this.receiverInformationPanel.Name = "receiverInformationPanel";
             this.receiverInformationPanel.Size = new System.Drawing.Size(250, 352);
@@ -148,53 +148,53 @@
             this.receiverInformationNextButton.Text = "Siguiente";
             this.receiverInformationNextButton.Click += new System.EventHandler(this.receiverInformationNextButton_Click);
             // 
-            // label7
+            // zipCodeLabel
             // 
-            this.label7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.label7.Location = new System.Drawing.Point(4, 288);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(115, 20);
-            this.label7.Text = "Código Postal";
+            this.zipCodeLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.zipCodeLabel.Location = new System.Drawing.Point(4, 288);
+            this.zipCodeLabel.Name = "zipCodeLabel";
+            this.zipCodeLabel.Size = new System.Drawing.Size(115, 20);
+            this.zipCodeLabel.Text = "Código Postal";
             // 
-            // label8
+            // countryLabel
             // 
-            this.label8.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.label8.Location = new System.Drawing.Point(3, 263);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(115, 20);
-            this.label8.Text = "Country";
+            this.countryLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.countryLabel.Location = new System.Drawing.Point(3, 263);
+            this.countryLabel.Name = "countryLabel";
+            this.countryLabel.Size = new System.Drawing.Size(115, 20);
+            this.countryLabel.Text = "Country";
             // 
-            // label3
+            // stateLabel
             // 
-            this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.label3.Location = new System.Drawing.Point(6, 238);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 20);
-            this.label3.Text = "Estado";
+            this.stateLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.stateLabel.Location = new System.Drawing.Point(6, 238);
+            this.stateLabel.Name = "stateLabel";
+            this.stateLabel.Size = new System.Drawing.Size(115, 20);
+            this.stateLabel.Text = "Estado";
             // 
-            // label4
+            // municipalityLabel
             // 
-            this.label4.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.label4.Location = new System.Drawing.Point(5, 213);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(115, 20);
-            this.label4.Text = "Municipio";
+            this.municipalityLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.municipalityLabel.Location = new System.Drawing.Point(5, 213);
+            this.municipalityLabel.Name = "municipalityLabel";
+            this.municipalityLabel.Size = new System.Drawing.Size(115, 20);
+            this.municipalityLabel.Text = "Municipio";
             // 
-            // label5
+            // suburbLabel
             // 
-            this.label5.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.label5.Location = new System.Drawing.Point(5, 188);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(115, 20);
-            this.label5.Text = "Colonia";
+            this.suburbLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.suburbLabel.Location = new System.Drawing.Point(5, 188);
+            this.suburbLabel.Name = "suburbLabel";
+            this.suburbLabel.Size = new System.Drawing.Size(115, 20);
+            this.suburbLabel.Text = "Colonia";
             // 
-            // label6
+            // internalNumberLabel
             // 
-            this.label6.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.label6.Location = new System.Drawing.Point(5, 163);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(115, 20);
-            this.label6.Text = "No. Interior";
+            this.internalNumberLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.internalNumberLabel.Location = new System.Drawing.Point(5, 163);
+            this.internalNumberLabel.Name = "internalNumberLabel";
+            this.internalNumberLabel.Size = new System.Drawing.Size(115, 20);
+            this.internalNumberLabel.Text = "No. Interior";
             // 
             // zipCodeTextBox
             // 
@@ -245,13 +245,13 @@
             this.ExternalNumberTextBox.Size = new System.Drawing.Size(100, 23);
             this.ExternalNumberTextBox.TabIndex = 11;
             // 
-            // label1
+            // externalNumberLabel
             // 
-            this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.label1.Location = new System.Drawing.Point(4, 138);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 20);
-            this.label1.Text = "No. Exterior";
+            this.externalNumberLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.externalNumberLabel.Location = new System.Drawing.Point(4, 138);
+            this.externalNumberLabel.Name = "externalNumberLabel";
+            this.externalNumberLabel.Size = new System.Drawing.Size(115, 20);
+            this.externalNumberLabel.Text = "No. Exterior";
             // 
             // streetTextBox
             // 
@@ -260,13 +260,13 @@
             this.streetTextBox.Size = new System.Drawing.Size(100, 23);
             this.streetTextBox.TabIndex = 10;
             // 
-            // label2
+            // streetLabel
             // 
-            this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.label2.Location = new System.Drawing.Point(3, 113);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 20);
-            this.label2.Text = "Calle";
+            this.streetLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.streetLabel.Location = new System.Drawing.Point(3, 113);
+            this.streetLabel.Name = "streetLabel";
+            this.streetLabel.Size = new System.Drawing.Size(115, 20);
+            this.streetLabel.Text = "Calle";
             // 
             // nameTextBox
             // 
@@ -298,13 +298,13 @@
             this.rfcLabel.Size = new System.Drawing.Size(115, 20);
             this.rfcLabel.Text = "RFC";
             // 
-            // ReceiverInformationLabel
+            // receiverInformationLabel
             // 
-            this.ReceiverInformationLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.ReceiverInformationLabel.Location = new System.Drawing.Point(5, 5);
-            this.ReceiverInformationLabel.Name = "ReceiverInformationLabel";
-            this.ReceiverInformationLabel.Size = new System.Drawing.Size(220, 20);
-            this.ReceiverInformationLabel.Text = "Información del Receptor";
+            this.receiverInformationLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.receiverInformationLabel.Location = new System.Drawing.Point(5, 5);
+            this.receiverInformationLabel.Name = "receiverInformationLabel";
+            this.receiverInformationLabel.Size = new System.Drawing.Size(220, 20);
+            this.receiverInformationLabel.Text = "Información del Receptor";
             // 
             // requiredInformationPanel
             // 
@@ -619,24 +619,24 @@
 
         private System.Windows.Forms.Panel receiverInformationPanel;
         private System.Windows.Forms.Label rfcLabel;
-        private System.Windows.Forms.Label ReceiverInformationLabel;
+        private System.Windows.Forms.Label receiverInformationLabel;
         private System.Windows.Forms.TextBox rfcTextBox;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.TextBox ExternalNumberTextBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label externalNumberLabel;
         private System.Windows.Forms.TextBox streetTextBox;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label streetLabel;
         private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.TextBox municipalityTextBox;
         private System.Windows.Forms.TextBox suburbTextBox;
         private System.Windows.Forms.TextBox InternalNumberTextBox;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label zipCodeLabel;
+        private System.Windows.Forms.Label countryLabel;
+        private System.Windows.Forms.Label stateLabel;
+        private System.Windows.Forms.Label municipalityLabel;
+        private System.Windows.Forms.Label suburbLabel;
+        private System.Windows.Forms.Label internalNumberLabel;
         private System.Windows.Forms.TextBox zipCodeTextBox;
         private System.Windows.Forms.TextBox countryTextBox;
         private System.Windows.Forms.Button receiverInformationNextButton;
