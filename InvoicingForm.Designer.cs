@@ -496,7 +496,7 @@
             this.optionalInformationNextButton.Size = new System.Drawing.Size(72, 20);
             this.optionalInformationNextButton.TabIndex = 1;
             this.optionalInformationNextButton.Text = "Siguiente";
-            this.optionalInformationNextButton.Click += new System.EventHandler(this.optionalInformationNextButton_Click);
+            
             // 
             // notesLabel
             // 

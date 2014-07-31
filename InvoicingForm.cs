@@ -28,9 +28,8 @@ namespace turtle
             optionalInformationPanel.Show();
         }
 
-        private void optionalInformationNextButton_Click(object sender, EventArgs e)
-        {
+        
 
-        }
+       
     }
 }
