@@ -28,8 +28,21 @@ namespace turtle
             optionalInformationPanel.Show();
         }
 
-        
+        private void requiredInformationBackButton_Click(object sender, EventArgs e)
+        {
+            requiredInformationPanel.Hide();
+            receiverInformationPanel.Show();
+        }
 
-       
+        private void optionalInformationBackButton_Click(object sender, EventArgs e)
+        {
+            optionalInformationPanel.Hide();
+            requiredInformationPanel.Show();
+        }
+
+        private void receiverInformatioCancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

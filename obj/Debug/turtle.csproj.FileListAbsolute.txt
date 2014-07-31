@@ -24,3 +24,4 @@ C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle-1\bin\Debug\turtle.
 C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle-1\bin\Debug\turtle.pdb
 C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle-1\obj\Debug\turtle.exe
 C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle-1\obj\Debug\turtle.pdb
+C:\Users\Yehoshua Santiago\Workspace\turtle\turtle\obj\Debug\turtle.MenuForm.resources
