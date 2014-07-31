@@ -24,8 +24,7 @@ namespace turtle
             
             if (Model.Login.userFinder(userTextBox.Text, passwordTextBox.Text))
             {
-                new InvoicingForm().Show();
-              
+                new MenuForm().Show();
             }
             else
             {
