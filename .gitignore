@@ -150,3 +150,8 @@ $RECYCLE.BIN/
 
 # Mac crap
 .DS_Store
+bin/Debug/turtle.exe
+bin/Debug/turtle.exe
+bin/Debug/turtle.pdb
+obj/Debug/turtle.exe
+obj/Debug/turtle.pdb

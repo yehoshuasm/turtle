@@ -35,7 +35,7 @@
             // 
             // invoicingButton
             // 
-            this.invoicingButton.Location = new System.Drawing.Point(5, 5);
+            this.invoicingButton.Location = new System.Drawing.Point(5, 10);
             this.invoicingButton.Name = "invoicingButton";
             this.invoicingButton.Size = new System.Drawing.Size(110, 40);
             this.invoicingButton.TabIndex = 0;
