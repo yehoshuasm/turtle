@@ -14,6 +14,7 @@ namespace turtle
         public MenuForm()
         {
             InitializeComponent();
+                       
         }
 
         private void invoicingButton_Click(object sender, EventArgs e)

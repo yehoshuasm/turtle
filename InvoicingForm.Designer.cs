@@ -31,6 +31,7 @@
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.receiverInformationPanel = new System.Windows.Forms.Panel();
+            this.receiverInformatioCancelButton = new System.Windows.Forms.Button();
             this.emailLabel = new System.Windows.Forms.Label();
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.receiverInformationNextButton = new System.Windows.Forms.Button();
@@ -56,6 +57,7 @@
             this.rfcLabel = new System.Windows.Forms.Label();
             this.receiverInformationLabel = new System.Windows.Forms.Label();
             this.requiredInformationPanel = new System.Windows.Forms.Panel();
+            this.requiredInformationBackButton = new System.Windows.Forms.Button();
             this.paymentFormComboBox = new System.Windows.Forms.ComboBox();
             this.paymentMethodComboBox = new System.Windows.Forms.ComboBox();
             this.placeOfIssueComboBox = new System.Windows.Forms.ComboBox();
@@ -73,6 +75,7 @@
             this.receiptTypeLabel = new System.Windows.Forms.Label();
             this.requiredInformationLabel = new System.Windows.Forms.Label();
             this.optionalInformationPanel = new System.Windows.Forms.Panel();
+            this.optionalInformationBackButton = new System.Windows.Forms.Button();
             this.accountNumberLabel = new System.Windows.Forms.Label();
             this.accountNumberTextBox = new System.Windows.Forms.TextBox();
             this.optionalInformationNextButton = new System.Windows.Forms.Button();
@@ -89,9 +92,6 @@
             this.serialNumberTextBox = new System.Windows.Forms.TextBox();
             this.serialNumberLabel = new System.Windows.Forms.Label();
             this.optionalInformationLabel = new System.Windows.Forms.Label();
-            this.optionalInformationBackButton = new System.Windows.Forms.Button();
-            this.receiverInformatioCancelButton = new System.Windows.Forms.Button();
-            this.requiredInformationBackButton = new System.Windows.Forms.Button();
             this.receiverInformationPanel.SuspendLayout();
             this.requiredInformationPanel.SuspendLayout();
             this.optionalInformationPanel.SuspendLayout();
@@ -127,6 +127,15 @@
             this.receiverInformationPanel.Location = new System.Drawing.Point(0, 0);
             this.receiverInformationPanel.Name = "receiverInformationPanel";
             this.receiverInformationPanel.Size = new System.Drawing.Size(250, 352);
+            // 
+            // receiverInformatioCancelButton
+            // 
+            this.receiverInformatioCancelButton.Location = new System.Drawing.Point(74, 315);
+            this.receiverInformatioCancelButton.Name = "receiverInformatioCancelButton";
+            this.receiverInformatioCancelButton.Size = new System.Drawing.Size(72, 20);
+            this.receiverInformatioCancelButton.TabIndex = 44;
+            this.receiverInformatioCancelButton.Text = "Cancelar";
+            this.receiverInformatioCancelButton.Click += new System.EventHandler(this.receiverInformatioCancelButton_Click);
             // 
             // emailLabel
             // 
@@ -334,6 +343,15 @@
             this.requiredInformationPanel.Size = new System.Drawing.Size(250, 245);
             this.requiredInformationPanel.Visible = false;
             // 
+            // requiredInformationBackButton
+            // 
+            this.requiredInformationBackButton.Location = new System.Drawing.Point(75, 215);
+            this.requiredInformationBackButton.Name = "requiredInformationBackButton";
+            this.requiredInformationBackButton.Size = new System.Drawing.Size(72, 20);
+            this.requiredInformationBackButton.TabIndex = 41;
+            this.requiredInformationBackButton.Text = "Regresar";
+            this.requiredInformationBackButton.Click += new System.EventHandler(this.requiredInformationBackButton_Click);
+            // 
             // paymentFormComboBox
             // 
             this.paymentFormComboBox.Location = new System.Drawing.Point(125, 135);
@@ -480,6 +498,15 @@
             this.optionalInformationPanel.Size = new System.Drawing.Size(250, 245);
             this.optionalInformationPanel.Visible = false;
             // 
+            // optionalInformationBackButton
+            // 
+            this.optionalInformationBackButton.Location = new System.Drawing.Point(74, 215);
+            this.optionalInformationBackButton.Name = "optionalInformationBackButton";
+            this.optionalInformationBackButton.Size = new System.Drawing.Size(72, 20);
+            this.optionalInformationBackButton.TabIndex = 40;
+            this.optionalInformationBackButton.Text = "Regresar";
+            this.optionalInformationBackButton.Click += new System.EventHandler(this.optionalInformationBackButton_Click);
+            // 
             // accountNumberLabel
             // 
             this.accountNumberLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
@@ -502,6 +529,7 @@
             this.optionalInformationNextButton.Size = new System.Drawing.Size(72, 20);
             this.optionalInformationNextButton.TabIndex = 1;
             this.optionalInformationNextButton.Text = "Siguiente";
+            this.optionalInformationNextButton.Click += new System.EventHandler(this.optionalInformationNextButton_Click);
             // 
             // notesLabel
             // 
@@ -600,33 +628,6 @@
             this.optionalInformationLabel.Name = "optionalInformationLabel";
             this.optionalInformationLabel.Size = new System.Drawing.Size(220, 20);
             this.optionalInformationLabel.Text = "Información Opcional";
-            // 
-            // optionalInformationBackButton
-            // 
-            this.optionalInformationBackButton.Location = new System.Drawing.Point(74, 215);
-            this.optionalInformationBackButton.Name = "optionalInformationBackButton";
-            this.optionalInformationBackButton.Size = new System.Drawing.Size(72, 20);
-            this.optionalInformationBackButton.TabIndex = 40;
-            this.optionalInformationBackButton.Text = "Regresar";
-            this.optionalInformationBackButton.Click += new System.EventHandler(this.optionalInformationBackButton_Click);
-            // 
-            // receiverInformatioCancelButton
-            // 
-            this.receiverInformatioCancelButton.Location = new System.Drawing.Point(74, 315);
-            this.receiverInformatioCancelButton.Name = "receiverInformatioCancelButton";
-            this.receiverInformatioCancelButton.Size = new System.Drawing.Size(72, 20);
-            this.receiverInformatioCancelButton.TabIndex = 44;
-            this.receiverInformatioCancelButton.Text = "Cancelar";
-            this.receiverInformatioCancelButton.Click += new System.EventHandler(this.receiverInformatioCancelButton_Click);
-            // 
-            // requiredInformationBackButton
-            // 
-            this.requiredInformationBackButton.Location = new System.Drawing.Point(75, 215);
-            this.requiredInformationBackButton.Name = "requiredInformationBackButton";
-            this.requiredInformationBackButton.Size = new System.Drawing.Size(72, 20);
-            this.requiredInformationBackButton.TabIndex = 41;
-            this.requiredInformationBackButton.Text = "Regresar";
-            this.requiredInformationBackButton.Click += new System.EventHandler(this.requiredInformationBackButton_Click);
             // 
             // InvoicingForm
             // 
