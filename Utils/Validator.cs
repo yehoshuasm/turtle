@@ -6,11 +6,11 @@ using System.Text.RegularExpressions;
 
 namespace turtle.Utils
 {
-    class Validate
+    class Validator
     {
         public static Boolean isString(String value)
         {
-            Regex pattern = new Regex(@"[a-zA-Z]+");
+            Regex pattern = new Regex(@"^[a-zA-Z]+$");
             if (pattern.IsMatch(value))
             {
                 return true;
@@ -20,7 +20,7 @@ namespace turtle.Utils
 
         public static Boolean isNumeric(String value)
         {
-            Regex pattern = new Regex(@"[0-9]+");
+            Regex pattern = new Regex(@"^[0-9]+$");
              if (pattern.IsMatch(value))
              {
                  return true;
@@ -31,7 +31,7 @@ namespace turtle.Utils
         public static Boolean isVarChar(String value)
         {
 
-            Regex pattern = new Regex(@"[a-zA-Z0-9]+");
+            Regex pattern = new Regex(@"^[a-zA-Z0-9]+$");
              if (pattern.IsMatch(value))
              {
                  return true;
@@ -51,7 +51,7 @@ namespace turtle.Utils
 
         public static Boolean isFloat(String value)
         {
-            Regex pattern = new Regex(@"[0-9]+.[0-9]+");
+            Regex pattern = new Regex(@"^[0-9]+(\.[0-9]{1,2})?$");
             if (pattern.IsMatch(value))
             {
                 return true;

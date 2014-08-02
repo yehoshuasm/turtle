@@ -35,9 +35,9 @@
             // 
             // invoicingButton
             // 
-            this.invoicingButton.Location = new System.Drawing.Point(5, 10);
+            this.invoicingButton.Location = new System.Drawing.Point(3, 3);
             this.invoicingButton.Name = "invoicingButton";
-            this.invoicingButton.Size = new System.Drawing.Size(110, 40);
+            this.invoicingButton.Size = new System.Drawing.Size(247, 27);
             this.invoicingButton.TabIndex = 0;
             this.invoicingButton.Text = "Generar Factura";
             this.invoicingButton.Click += new System.EventHandler(this.invoicingButton_Click);
