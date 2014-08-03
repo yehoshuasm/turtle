@@ -1,64 +1,82 @@
 ﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace turtle.Utils
 {
-    class Validator
+
+    public class Validator
     {
-        public static Boolean isString(String value)
+
+        #region StringValidations
+        
+        /// <summary>
+        /// Revisa si una cadena contiene sólo caracteres alfabéticos
+        /// </summary>
+        /// <param name="value">Cadena a validar</param>
+        /// <returns>Verdadero si la cadena contiene solo caracteres alfabéticos</returns>
+        public static bool IsAlphabetic(string value)
         {
-            Regex pattern = new Regex(@"^[a-zA-Z]+$");
-            if (pattern.IsMatch(value))
-            {
-                return true;
-            }
-            return false;
+            return Regex.IsMatch(value, @"^[a-zA-Z]+$");
         }
 
-        public static Boolean isNumeric(String value)
+        /// <summary>
+        /// Revisa si una cadena contiene sólo caracteres alfanuméricos
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static bool IsAlphanumeric(string value)
         {
-            Regex pattern = new Regex(@"^[0-9]+$");
-             if (pattern.IsMatch(value))
-             {
-                 return true;
-             }
-            return false;
+            return Regex.IsMatch(value, @"^[a-zA-Z0-9]+$");
         }
 
-        public static Boolean isVarChar(String value)
+        /// <summary>
+        /// Revisa si una cadena es un RFC válido
+        /// </summary>
+        /// <param name="value">Cadena a validar</param>
+        /// <returns>Verdadero si la cadena es un RFC</returns>
+        public static bool IsRfc(string value)
         {
-
-            Regex pattern = new Regex(@"^[a-zA-Z0-9]+$");
-             if (pattern.IsMatch(value))
-             {
-                 return true;
-             }
-            return false;
+            string rfc = @"[A-Z,Ñ,&]{3,4}[0-9]{2}[0-1][0-9][0-3][0-9][A-Z,0-9]?[A-Z,0-9]?[0-9,A-Z]?";
+            return Regex.IsMatch(value, rfc);
         }
 
-        public static Boolean isEmailAddress(String value)
+        /// <summary>
+        /// Revisa si una cadena es un correo electrónico
+        /// </summary>
+        /// <param name="value">Cadena a validar</param>
+        /// <returns>Verdadero si la cadena es un correo electrónico</returns>
+        public static bool IsEmail(String value)
         {
-            Regex pattern = new Regex(@"^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$");
-            if (pattern.IsMatch(value))
-            {
-                return true;
-            }
-            return false;
+            string email = @"^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))" +
+                    @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$";
+            return Regex.IsMatch(value, email);
+        }
+        
+        #endregion
+
+        #region NumericValidations
+        /// <summary>
+        /// Revisa si una cadena es un número entero
+        /// </summary>
+        /// <param name="value">Cadena a validar</param>
+        /// <returns>Verdadero si la cadena es un número entero</returns>
+        public static bool IsInteger(string value)
+        {
+            return Regex.IsMatch(value, @"^[0-9]+$");
         }
 
-        public static Boolean isFloat(String value)
+        /// <summary>
+        /// Revisa si una cadena es un número decimal
+        /// </summary>
+        /// <param name="value">Cadena a validar</param>
+        /// <returns>Verdadero si la cadena es un número decimal</returns>
+        public static bool IsDecimal(string value)
         {
-            Regex pattern = new Regex(@"^[0-9]+(\.[0-9]{1,2})?$");
-            if (pattern.IsMatch(value))
-            {
-                return true;
-            }
-            return false;
+            return Regex.IsMatch(value, @"^[0-9]+(\.[0-9]{1,2})?$");
         }
 
-       
+        #endregion
+
     }
+
 }

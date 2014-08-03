@@ -6,7 +6,7 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.MainMenu mainMenu1;
+        private System.Windows.Forms.MainMenu invoicingMenu;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -29,7 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mainMenu1 = new System.Windows.Forms.MainMenu();
+            this.invoicingMenu = new System.Windows.Forms.MainMenu();
             this.receiverInformationPanel = new System.Windows.Forms.Panel();
             this.receiverInformatioCancelButton = new System.Windows.Forms.Button();
             this.emailLabel = new System.Windows.Forms.Label();
@@ -46,8 +46,8 @@
             this.stateTextBox = new System.Windows.Forms.TextBox();
             this.municipalityTextBox = new System.Windows.Forms.TextBox();
             this.suburbTextBox = new System.Windows.Forms.TextBox();
-            this.InternalNumberTextBox = new System.Windows.Forms.TextBox();
-            this.ExternalNumberTextBox = new System.Windows.Forms.TextBox();
+            this.internalNumberTextBox = new System.Windows.Forms.TextBox();
+            this.externalNumberTextBox = new System.Windows.Forms.TextBox();
             this.externalNumberLabel = new System.Windows.Forms.Label();
             this.streetTextBox = new System.Windows.Forms.TextBox();
             this.streetLabel = new System.Windows.Forms.Label();
@@ -114,8 +114,8 @@
             this.receiverInformationPanel.Controls.Add(this.stateTextBox);
             this.receiverInformationPanel.Controls.Add(this.municipalityTextBox);
             this.receiverInformationPanel.Controls.Add(this.suburbTextBox);
-            this.receiverInformationPanel.Controls.Add(this.InternalNumberTextBox);
-            this.receiverInformationPanel.Controls.Add(this.ExternalNumberTextBox);
+            this.receiverInformationPanel.Controls.Add(this.internalNumberTextBox);
+            this.receiverInformationPanel.Controls.Add(this.externalNumberTextBox);
             this.receiverInformationPanel.Controls.Add(this.externalNumberLabel);
             this.receiverInformationPanel.Controls.Add(this.streetTextBox);
             this.receiverInformationPanel.Controls.Add(this.streetLabel);
@@ -244,19 +244,19 @@
             this.suburbTextBox.Size = new System.Drawing.Size(100, 23);
             this.suburbTextBox.TabIndex = 15;
             // 
-            // InternalNumberTextBox
+            // internalNumberTextBox
             // 
-            this.InternalNumberTextBox.Location = new System.Drawing.Point(125, 160);
-            this.InternalNumberTextBox.Name = "InternalNumberTextBox";
-            this.InternalNumberTextBox.Size = new System.Drawing.Size(100, 23);
-            this.InternalNumberTextBox.TabIndex = 14;
+            this.internalNumberTextBox.Location = new System.Drawing.Point(125, 160);
+            this.internalNumberTextBox.Name = "internalNumberTextBox";
+            this.internalNumberTextBox.Size = new System.Drawing.Size(100, 23);
+            this.internalNumberTextBox.TabIndex = 14;
             // 
-            // ExternalNumberTextBox
+            // externalNumberTextBox
             // 
-            this.ExternalNumberTextBox.Location = new System.Drawing.Point(125, 135);
-            this.ExternalNumberTextBox.Name = "ExternalNumberTextBox";
-            this.ExternalNumberTextBox.Size = new System.Drawing.Size(100, 23);
-            this.ExternalNumberTextBox.TabIndex = 11;
+            this.externalNumberTextBox.Location = new System.Drawing.Point(125, 135);
+            this.externalNumberTextBox.Name = "externalNumberTextBox";
+            this.externalNumberTextBox.Size = new System.Drawing.Size(100, 23);
+            this.externalNumberTextBox.TabIndex = 11;
             // 
             // externalNumberLabel
             // 
@@ -638,7 +638,7 @@
             this.Controls.Add(this.optionalInformationPanel);
             this.Controls.Add(this.requiredInformationPanel);
             this.Controls.Add(this.receiverInformationPanel);
-            this.Menu = this.mainMenu1;
+            this.Menu = this.invoicingMenu;
             this.Name = "InvoicingForm";
             this.Text = "Facturación";
             this.receiverInformationPanel.ResumeLayout(false);
@@ -656,14 +656,14 @@
         private System.Windows.Forms.TextBox rfcTextBox;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.TextBox ExternalNumberTextBox;
+        private System.Windows.Forms.TextBox externalNumberTextBox;
         private System.Windows.Forms.Label externalNumberLabel;
         private System.Windows.Forms.TextBox streetTextBox;
         private System.Windows.Forms.Label streetLabel;
         private System.Windows.Forms.TextBox stateTextBox;
         private System.Windows.Forms.TextBox municipalityTextBox;
         private System.Windows.Forms.TextBox suburbTextBox;
-        private System.Windows.Forms.TextBox InternalNumberTextBox;
+        private System.Windows.Forms.TextBox internalNumberTextBox;
         private System.Windows.Forms.Label zipCodeLabel;
         private System.Windows.Forms.Label countryLabel;
         private System.Windows.Forms.Label stateLabel;

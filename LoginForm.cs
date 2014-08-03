@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-
-
+using turtle.Utils;
 
 namespace turtle
 {
@@ -20,25 +13,29 @@ namespace turtle
         }
 
         private void loginButton_Click(object sender, EventArgs e)
-        {   
-            Boolean validateUser=Utils.Validator.isVarChar(userTextBox.Text);
-            Boolean validatePass=Utils.Validator.isVarChar(passwordTextBox.Text);
-            if ((!validateUser && !validatePass) || (validateUser && !validatePass) || (!validateUser && validatePass))
+        {
+            if (ValidateUserAndPassword(userTextBox.Text, passwordTextBox.Text))
             {
-                MessageBox.Show("Ingrese caracteres validos de usuario y contraseña", "Error de validacion");
-                return;
-            }
-            
-            if (Model.Login.userFinder(userTextBox.Text, passwordTextBox.Text))
-            {
-                new MenuForm().Show();
-                
+                Login(userTextBox.Text, passwordTextBox.Text);
             }
             else
             {
-                MessageBox.Show("Verifique nombre de usuario o contraseña","Error en Autenticacion");
-
+                MessageBox.Show("El nombre de usuario y/o contraseña contienen caracteres no válidos", "Error de Validación");
             }
+        }
+
+        private bool ValidateUserAndPassword(string user, string password)
+        {
+            return Validator.IsAlphanumeric(user) && Validator.IsAlphanumeric(password);
+        }
+
+        private void Login(string user, string password)
+        {
+            if (Model.Login.Authenticate(user, password)) {
+                new MenuForm().Show();
+                return;
+            }
+            MessageBox.Show("Nombre de usuario y/o contraseña incorrectos", "Error de Autenticación");
         }
     }
 }
