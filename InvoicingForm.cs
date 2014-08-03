@@ -37,7 +37,7 @@ namespace turtle
         {
             if (ValidateOptionalInformation())
             {
-                //Do some thing
+                //Do something
             }
         }
 
@@ -151,8 +151,21 @@ namespace turtle
         {
             foreach (var control in controls)
             {
-                control.BackColor = Color.Red;
+                control.BackColor = Color.FromArgb(252, 143, 143);
             }
         }
+
+        private void SetValidColor(Control textBox)
+        {
+            textBox.BackColor = Color.White;
+        }
+
+        private void TextBox_GotFocus(object sender, EventArgs e)
+        {
+            SetValidColor(((TextBox)sender));
+        }
+
+        
+
     }
 }

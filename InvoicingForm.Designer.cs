@@ -151,6 +151,7 @@
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(100, 23);
             this.emailTextBox.TabIndex = 32;
+            this.emailTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // receiverInformationNextButton
             // 
@@ -215,6 +216,7 @@
             this.zipCodeTextBox.Name = "zipCodeTextBox";
             this.zipCodeTextBox.Size = new System.Drawing.Size(100, 23);
             this.zipCodeTextBox.TabIndex = 19;
+            this.zipCodeTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // countryTextBox
             // 
@@ -222,6 +224,7 @@
             this.countryTextBox.Name = "countryTextBox";
             this.countryTextBox.Size = new System.Drawing.Size(100, 23);
             this.countryTextBox.TabIndex = 18;
+            this.countryTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // stateTextBox
             // 
@@ -229,6 +232,7 @@
             this.stateTextBox.Name = "stateTextBox";
             this.stateTextBox.Size = new System.Drawing.Size(100, 23);
             this.stateTextBox.TabIndex = 17;
+            this.stateTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // municipalityTextBox
             // 
@@ -236,6 +240,7 @@
             this.municipalityTextBox.Name = "municipalityTextBox";
             this.municipalityTextBox.Size = new System.Drawing.Size(100, 23);
             this.municipalityTextBox.TabIndex = 16;
+            this.municipalityTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // suburbTextBox
             // 
@@ -243,6 +248,7 @@
             this.suburbTextBox.Name = "suburbTextBox";
             this.suburbTextBox.Size = new System.Drawing.Size(100, 23);
             this.suburbTextBox.TabIndex = 15;
+            this.suburbTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // internalNumberTextBox
             // 
@@ -250,6 +256,7 @@
             this.internalNumberTextBox.Name = "internalNumberTextBox";
             this.internalNumberTextBox.Size = new System.Drawing.Size(100, 23);
             this.internalNumberTextBox.TabIndex = 14;
+            this.internalNumberTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // externalNumberTextBox
             // 
@@ -257,6 +264,7 @@
             this.externalNumberTextBox.Name = "externalNumberTextBox";
             this.externalNumberTextBox.Size = new System.Drawing.Size(100, 23);
             this.externalNumberTextBox.TabIndex = 11;
+            this.externalNumberTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // externalNumberLabel
             // 
@@ -272,6 +280,7 @@
             this.streetTextBox.Name = "streetTextBox";
             this.streetTextBox.Size = new System.Drawing.Size(100, 23);
             this.streetTextBox.TabIndex = 10;
+            this.streetTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // streetLabel
             // 
@@ -287,6 +296,7 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(100, 23);
             this.nameTextBox.TabIndex = 4;
+            this.nameTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // nameLabel
             // 
@@ -302,6 +312,7 @@
             this.rfcTextBox.Name = "rfcTextBox";
             this.rfcTextBox.Size = new System.Drawing.Size(100, 23);
             this.rfcTextBox.TabIndex = 2;
+            this.rfcTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // rfcLabel
             // 
@@ -419,6 +430,7 @@
             this.totalTextBox.Name = "totalTextBox";
             this.totalTextBox.Size = new System.Drawing.Size(100, 23);
             this.totalTextBox.TabIndex = 16;
+            this.totalTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // subTotalTextBox
             // 
@@ -426,6 +438,7 @@
             this.subTotalTextBox.Name = "subTotalTextBox";
             this.subTotalTextBox.Size = new System.Drawing.Size(100, 23);
             this.subTotalTextBox.TabIndex = 15;
+            this.subTotalTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // paymentMethodLabel
             // 
@@ -449,6 +462,7 @@
             this.ticketNumberTextBox.Name = "ticketNumberTextBox";
             this.ticketNumberTextBox.Size = new System.Drawing.Size(100, 23);
             this.ticketNumberTextBox.TabIndex = 4;
+            this.ticketNumberTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // ticketNumberLabel
             // 
@@ -521,6 +535,7 @@
             this.accountNumberTextBox.Name = "accountNumberTextBox";
             this.accountNumberTextBox.Size = new System.Drawing.Size(100, 23);
             this.accountNumberTextBox.TabIndex = 32;
+            this.accountNumberTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // optionalInformationNextButton
             // 
@@ -553,6 +568,7 @@
             this.notesTextBox.Name = "notesTextBox";
             this.notesTextBox.Size = new System.Drawing.Size(100, 23);
             this.notesTextBox.TabIndex = 15;
+            this.notesTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // taxRegimeTextBox
             // 
@@ -560,6 +576,7 @@
             this.taxRegimeTextBox.Name = "taxRegimeTextBox";
             this.taxRegimeTextBox.Size = new System.Drawing.Size(100, 23);
             this.taxRegimeTextBox.TabIndex = 14;
+            this.taxRegimeTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // exchangeRateTextBox
             // 
@@ -567,6 +584,7 @@
             this.exchangeRateTextBox.Name = "exchangeRateTextBox";
             this.exchangeRateTextBox.Size = new System.Drawing.Size(100, 23);
             this.exchangeRateTextBox.TabIndex = 11;
+            this.exchangeRateTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // exchangeRateLabel
             // 
@@ -582,6 +600,7 @@
             this.currencyTextBox.Name = "currencyTextBox";
             this.currencyTextBox.Size = new System.Drawing.Size(100, 23);
             this.currencyTextBox.TabIndex = 10;
+            this.currencyTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // currencyLabel
             // 
@@ -597,6 +616,7 @@
             this.folioTextBox.Name = "folioTextBox";
             this.folioTextBox.Size = new System.Drawing.Size(100, 23);
             this.folioTextBox.TabIndex = 4;
+            this.folioTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // folioLabel
             // 
@@ -612,6 +632,7 @@
             this.serialNumberTextBox.Name = "serialNumberTextBox";
             this.serialNumberTextBox.Size = new System.Drawing.Size(100, 23);
             this.serialNumberTextBox.TabIndex = 2;
+            this.serialNumberTextBox.GotFocus += new System.EventHandler(this.TextBox_GotFocus);
             // 
             // serialNumberLabel
             // 
@@ -635,9 +656,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(253, 355);
-            this.Controls.Add(this.optionalInformationPanel);
             this.Controls.Add(this.requiredInformationPanel);
             this.Controls.Add(this.receiverInformationPanel);
+            this.Controls.Add(this.optionalInformationPanel);
             this.Menu = this.invoicingMenu;
             this.Name = "InvoicingForm";
             this.Text = "Facturación";
