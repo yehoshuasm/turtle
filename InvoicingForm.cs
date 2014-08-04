@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using turtle.Utils;
+using System.Linq;
+using System.Drawing;
 
 namespace turtle
 {
@@ -62,7 +62,7 @@ namespace turtle
         {
             var notValidElements = elements.Where(e => !e.Value);
             SetNotValidColor(notValidElements.Select(c => c.Key).ToList());
-            return elements.Count == 0; // Si no hay elementos no válidos regresa verdadero
+            return !(elements.Count > 0); // Si hay elementos que no son válidos regresa falso
         }
 
         private bool ValidateReceiverInformation()
