@@ -30,3 +30,8 @@ Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
+*.exe
+*.exe
+*.pdb
+*.exe
+*.pdb

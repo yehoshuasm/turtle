@@ -62,7 +62,7 @@ namespace turtle
         {
             var notValidElements = elements.Where(e => !e.Value);
             SetNotValidColor(notValidElements.Select(c => c.Key).ToList());
-            return !(elements.Count > 0); // Si hay elementos que no son válidos regresa falso
+            return elements.Count == 0; // Si no hay elementos no válidos regresa verdadero
         }
 
         private bool ValidateReceiverInformation()
