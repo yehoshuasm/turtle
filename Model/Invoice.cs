@@ -23,7 +23,7 @@ namespace turtle.Model
         // Receiver Information
         public Client Client { get; set; }
         public List<string> Emails { get; set; }
-        public int Sampling;
-        public int TotalSampling;
+        public int Sampling { get; set; }
+        public int TotalSampling { get; set; }
     }
 }
