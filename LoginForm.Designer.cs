@@ -40,6 +40,7 @@
             // userTextBox
             // 
             this.userTextBox.Location = new System.Drawing.Point(80, 50);
+            this.userTextBox.MaxLength = 20;
             this.userTextBox.Name = "userTextBox";
             this.userTextBox.Size = new System.Drawing.Size(100, 23);
             this.userTextBox.TabIndex = 0;
@@ -63,6 +64,7 @@
             // passwordTextBox
             // 
             this.passwordTextBox.Location = new System.Drawing.Point(80, 110);
+            this.passwordTextBox.MaxLength = 10;
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(100, 23);
@@ -83,7 +85,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(253, 195);
+            this.ClientSize = new System.Drawing.Size(238, 275);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.passwordTextBox);

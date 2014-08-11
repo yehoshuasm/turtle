@@ -31,6 +31,8 @@
         {
             this.invoicingMenu = new System.Windows.Forms.MainMenu();
             this.receiverInformationPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.addEmailButton = new System.Windows.Forms.Button();
             this.receiverInformatioCancelButton = new System.Windows.Forms.Button();
             this.emailLabel = new System.Windows.Forms.Label();
             this.emailTextBox = new System.Windows.Forms.TextBox();
@@ -99,6 +101,8 @@
             // 
             // receiverInformationPanel
             // 
+            this.receiverInformationPanel.Controls.Add(this.label1);
+            this.receiverInformationPanel.Controls.Add(this.addEmailButton);
             this.receiverInformationPanel.Controls.Add(this.receiverInformatioCancelButton);
             this.receiverInformationPanel.Controls.Add(this.emailLabel);
             this.receiverInformationPanel.Controls.Add(this.emailTextBox);
@@ -126,11 +130,27 @@
             this.receiverInformationPanel.Controls.Add(this.receiverInformationLabel);
             this.receiverInformationPanel.Location = new System.Drawing.Point(0, 0);
             this.receiverInformationPanel.Name = "receiverInformationPanel";
-            this.receiverInformationPanel.Size = new System.Drawing.Size(250, 352);
+            this.receiverInformationPanel.Size = new System.Drawing.Size(221, 352);
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.label1.Location = new System.Drawing.Point(230, 85);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 23);
+            // 
+            // addEmailButton
+            // 
+            this.addEmailButton.Location = new System.Drawing.Point(77, 85);
+            this.addEmailButton.Name = "addEmailButton";
+            this.addEmailButton.Size = new System.Drawing.Size(22, 23);
+            this.addEmailButton.TabIndex = 57;
+            this.addEmailButton.Text = "+";
+            this.addEmailButton.Click += new System.EventHandler(this.addEmailButton_Click);
             // 
             // receiverInformatioCancelButton
             // 
-            this.receiverInformatioCancelButton.Location = new System.Drawing.Point(74, 315);
+            this.receiverInformatioCancelButton.Location = new System.Drawing.Point(45, 319);
             this.receiverInformatioCancelButton.Name = "receiverInformatioCancelButton";
             this.receiverInformatioCancelButton.Size = new System.Drawing.Size(72, 20);
             this.receiverInformatioCancelButton.TabIndex = 44;
@@ -142,19 +162,20 @@
             this.emailLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
             this.emailLabel.Location = new System.Drawing.Point(4, 88);
             this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(115, 20);
+            this.emailLabel.Size = new System.Drawing.Size(46, 20);
             this.emailLabel.Text = "E-mail";
             // 
             // emailTextBox
             // 
-            this.emailTextBox.Location = new System.Drawing.Point(125, 85);
+            this.emailTextBox.Location = new System.Drawing.Point(110, 85);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(100, 23);
             this.emailTextBox.TabIndex = 32;
+            this.emailTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // receiverInformationNextButton
             // 
-            this.receiverInformationNextButton.Location = new System.Drawing.Point(152, 315);
+            this.receiverInformationNextButton.Location = new System.Drawing.Point(124, 320);
             this.receiverInformationNextButton.Name = "receiverInformationNextButton";
             this.receiverInformationNextButton.Size = new System.Drawing.Size(72, 20);
             this.receiverInformationNextButton.TabIndex = 1;
@@ -166,7 +187,7 @@
             this.zipCodeLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
             this.zipCodeLabel.Location = new System.Drawing.Point(4, 288);
             this.zipCodeLabel.Name = "zipCodeLabel";
-            this.zipCodeLabel.Size = new System.Drawing.Size(115, 20);
+            this.zipCodeLabel.Size = new System.Drawing.Size(100, 20);
             this.zipCodeLabel.Text = "Código Postal";
             // 
             // countryLabel
@@ -174,7 +195,7 @@
             this.countryLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
             this.countryLabel.Location = new System.Drawing.Point(3, 263);
             this.countryLabel.Name = "countryLabel";
-            this.countryLabel.Size = new System.Drawing.Size(115, 20);
+            this.countryLabel.Size = new System.Drawing.Size(101, 20);
             this.countryLabel.Text = "País";
             // 
             // stateLabel
@@ -182,7 +203,7 @@
             this.stateLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
             this.stateLabel.Location = new System.Drawing.Point(6, 238);
             this.stateLabel.Name = "stateLabel";
-            this.stateLabel.Size = new System.Drawing.Size(115, 20);
+            this.stateLabel.Size = new System.Drawing.Size(98, 20);
             this.stateLabel.Text = "Estado";
             // 
             // municipalityLabel
@@ -190,7 +211,7 @@
             this.municipalityLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
             this.municipalityLabel.Location = new System.Drawing.Point(5, 213);
             this.municipalityLabel.Name = "municipalityLabel";
-            this.municipalityLabel.Size = new System.Drawing.Size(115, 20);
+            this.municipalityLabel.Size = new System.Drawing.Size(99, 20);
             this.municipalityLabel.Text = "Municipio";
             // 
             // suburbLabel
@@ -198,7 +219,7 @@
             this.suburbLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
             this.suburbLabel.Location = new System.Drawing.Point(5, 188);
             this.suburbLabel.Name = "suburbLabel";
-            this.suburbLabel.Size = new System.Drawing.Size(115, 20);
+            this.suburbLabel.Size = new System.Drawing.Size(99, 20);
             this.suburbLabel.Text = "Colonia";
             // 
             // internalNumberLabel
@@ -206,57 +227,71 @@
             this.internalNumberLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
             this.internalNumberLabel.Location = new System.Drawing.Point(5, 163);
             this.internalNumberLabel.Name = "internalNumberLabel";
-            this.internalNumberLabel.Size = new System.Drawing.Size(115, 20);
+            this.internalNumberLabel.Size = new System.Drawing.Size(99, 20);
             this.internalNumberLabel.Text = "No. Interior";
             // 
             // zipCodeTextBox
             // 
-            this.zipCodeTextBox.Location = new System.Drawing.Point(125, 285);
+            this.zipCodeTextBox.Location = new System.Drawing.Point(110, 291);
+            this.zipCodeTextBox.MaxLength = 5;
             this.zipCodeTextBox.Name = "zipCodeTextBox";
             this.zipCodeTextBox.Size = new System.Drawing.Size(100, 23);
             this.zipCodeTextBox.TabIndex = 19;
+            this.zipCodeTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // countryTextBox
             // 
-            this.countryTextBox.Location = new System.Drawing.Point(125, 260);
+            this.countryTextBox.Location = new System.Drawing.Point(110, 264);
+            this.countryTextBox.MaxLength = 20;
             this.countryTextBox.Name = "countryTextBox";
             this.countryTextBox.Size = new System.Drawing.Size(100, 23);
             this.countryTextBox.TabIndex = 18;
+            this.countryTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // stateTextBox
             // 
-            this.stateTextBox.Location = new System.Drawing.Point(125, 235);
+            this.stateTextBox.Location = new System.Drawing.Point(110, 235);
+            this.stateTextBox.MaxLength = 30;
             this.stateTextBox.Name = "stateTextBox";
             this.stateTextBox.Size = new System.Drawing.Size(100, 23);
             this.stateTextBox.TabIndex = 17;
+            this.stateTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // municipalityTextBox
             // 
-            this.municipalityTextBox.Location = new System.Drawing.Point(125, 210);
+            this.municipalityTextBox.Location = new System.Drawing.Point(110, 210);
+            this.municipalityTextBox.MaxLength = 30;
             this.municipalityTextBox.Name = "municipalityTextBox";
             this.municipalityTextBox.Size = new System.Drawing.Size(100, 23);
             this.municipalityTextBox.TabIndex = 16;
+            this.municipalityTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // suburbTextBox
             // 
-            this.suburbTextBox.Location = new System.Drawing.Point(125, 185);
+            this.suburbTextBox.Location = new System.Drawing.Point(110, 185);
+            this.suburbTextBox.MaxLength = 30;
             this.suburbTextBox.Name = "suburbTextBox";
             this.suburbTextBox.Size = new System.Drawing.Size(100, 23);
             this.suburbTextBox.TabIndex = 15;
+            this.suburbTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // internalNumberTextBox
             // 
-            this.internalNumberTextBox.Location = new System.Drawing.Point(125, 160);
+            this.internalNumberTextBox.Location = new System.Drawing.Point(110, 160);
+            this.internalNumberTextBox.MaxLength = 10;
             this.internalNumberTextBox.Name = "internalNumberTextBox";
             this.internalNumberTextBox.Size = new System.Drawing.Size(100, 23);
             this.internalNumberTextBox.TabIndex = 14;
+            this.internalNumberTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // externalNumberTextBox
             // 
-            this.externalNumberTextBox.Location = new System.Drawing.Point(125, 135);
+            this.externalNumberTextBox.Location = new System.Drawing.Point(110, 135);
+            this.externalNumberTextBox.MaxLength = 10;
             this.externalNumberTextBox.Name = "externalNumberTextBox";
             this.externalNumberTextBox.Size = new System.Drawing.Size(100, 23);
             this.externalNumberTextBox.TabIndex = 11;
+            this.externalNumberTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // externalNumberLabel
             // 
@@ -268,10 +303,12 @@
             // 
             // streetTextBox
             // 
-            this.streetTextBox.Location = new System.Drawing.Point(125, 110);
+            this.streetTextBox.Location = new System.Drawing.Point(110, 110);
+            this.streetTextBox.MaxLength = 30;
             this.streetTextBox.Name = "streetTextBox";
             this.streetTextBox.Size = new System.Drawing.Size(100, 23);
             this.streetTextBox.TabIndex = 10;
+            this.streetTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // streetLabel
             // 
@@ -283,10 +320,13 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(125, 60);
+            this.nameTextBox.Location = new System.Drawing.Point(110, 61);
+            this.nameTextBox.MaxLength = 30;
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(100, 23);
             this.nameTextBox.TabIndex = 4;
+            this.nameTextBox.Text = "Puede ser Opcional";
+            this.nameTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // nameLabel
             // 
@@ -298,10 +338,13 @@
             // 
             // rfcTextBox
             // 
-            this.rfcTextBox.Location = new System.Drawing.Point(125, 35);
+            this.rfcTextBox.Location = new System.Drawing.Point(110, 35);
+            this.rfcTextBox.MaxLength = 13;
             this.rfcTextBox.Name = "rfcTextBox";
             this.rfcTextBox.Size = new System.Drawing.Size(100, 23);
             this.rfcTextBox.TabIndex = 2;
+            this.rfcTextBox.Text = "min 12 max 13";
+            this.rfcTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // rfcLabel
             // 
@@ -340,12 +383,12 @@
             this.requiredInformationPanel.Controls.Add(this.requiredInformationLabel);
             this.requiredInformationPanel.Location = new System.Drawing.Point(0, 0);
             this.requiredInformationPanel.Name = "requiredInformationPanel";
-            this.requiredInformationPanel.Size = new System.Drawing.Size(250, 245);
+            this.requiredInformationPanel.Size = new System.Drawing.Size(234, 245);
             this.requiredInformationPanel.Visible = false;
             // 
             // requiredInformationBackButton
             // 
-            this.requiredInformationBackButton.Location = new System.Drawing.Point(75, 215);
+            this.requiredInformationBackButton.Location = new System.Drawing.Point(49, 215);
             this.requiredInformationBackButton.Name = "requiredInformationBackButton";
             this.requiredInformationBackButton.Size = new System.Drawing.Size(72, 20);
             this.requiredInformationBackButton.TabIndex = 41;
@@ -368,7 +411,7 @@
             // 
             // placeOfIssueComboBox
             // 
-            this.placeOfIssueComboBox.Location = new System.Drawing.Point(124, 85);
+            this.placeOfIssueComboBox.Location = new System.Drawing.Point(125, 85);
             this.placeOfIssueComboBox.Name = "placeOfIssueComboBox";
             this.placeOfIssueComboBox.Size = new System.Drawing.Size(100, 23);
             this.placeOfIssueComboBox.TabIndex = 26;
@@ -382,7 +425,7 @@
             // 
             // requiredInformationNextButton
             // 
-            this.requiredInformationNextButton.Location = new System.Drawing.Point(153, 215);
+            this.requiredInformationNextButton.Location = new System.Drawing.Point(127, 215);
             this.requiredInformationNextButton.Name = "requiredInformationNextButton";
             this.requiredInformationNextButton.Size = new System.Drawing.Size(72, 20);
             this.requiredInformationNextButton.TabIndex = 1;
@@ -415,17 +458,21 @@
             // 
             // totalTextBox
             // 
-            this.totalTextBox.Location = new System.Drawing.Point(125, 185);
+            this.totalTextBox.Location = new System.Drawing.Point(124, 185);
+            this.totalTextBox.MaxLength = 10;
             this.totalTextBox.Name = "totalTextBox";
             this.totalTextBox.Size = new System.Drawing.Size(100, 23);
             this.totalTextBox.TabIndex = 16;
+            this.totalTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // subTotalTextBox
             // 
             this.subTotalTextBox.Location = new System.Drawing.Point(125, 160);
+            this.subTotalTextBox.MaxLength = 10;
             this.subTotalTextBox.Name = "subTotalTextBox";
             this.subTotalTextBox.Size = new System.Drawing.Size(100, 23);
             this.subTotalTextBox.TabIndex = 15;
+            this.subTotalTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // paymentMethodLabel
             // 
@@ -446,9 +493,11 @@
             // ticketNumberTextBox
             // 
             this.ticketNumberTextBox.Location = new System.Drawing.Point(125, 60);
+            this.ticketNumberTextBox.MaxLength = 20;
             this.ticketNumberTextBox.Name = "ticketNumberTextBox";
             this.ticketNumberTextBox.Size = new System.Drawing.Size(100, 23);
             this.ticketNumberTextBox.TabIndex = 4;
+            this.ticketNumberTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // ticketNumberLabel
             // 
@@ -495,12 +544,12 @@
             this.optionalInformationPanel.Controls.Add(this.optionalInformationLabel);
             this.optionalInformationPanel.Location = new System.Drawing.Point(0, 0);
             this.optionalInformationPanel.Name = "optionalInformationPanel";
-            this.optionalInformationPanel.Size = new System.Drawing.Size(250, 245);
+            this.optionalInformationPanel.Size = new System.Drawing.Size(224, 352);
             this.optionalInformationPanel.Visible = false;
             // 
             // optionalInformationBackButton
             // 
-            this.optionalInformationBackButton.Location = new System.Drawing.Point(74, 215);
+            this.optionalInformationBackButton.Location = new System.Drawing.Point(27, 311);
             this.optionalInformationBackButton.Name = "optionalInformationBackButton";
             this.optionalInformationBackButton.Size = new System.Drawing.Size(72, 20);
             this.optionalInformationBackButton.TabIndex = 40;
@@ -512,19 +561,22 @@
             this.accountNumberLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
             this.accountNumberLabel.Location = new System.Drawing.Point(4, 88);
             this.accountNumberLabel.Name = "accountNumberLabel";
-            this.accountNumberLabel.Size = new System.Drawing.Size(115, 20);
-            this.accountNumberLabel.Text = "Número de Cuenta";
+            this.accountNumberLabel.Size = new System.Drawing.Size(89, 20);
+            this.accountNumberLabel.Text = "N° de Cuenta";
             // 
             // accountNumberTextBox
             // 
-            this.accountNumberTextBox.Location = new System.Drawing.Point(125, 85);
+            this.accountNumberTextBox.Location = new System.Drawing.Point(99, 85);
+            this.accountNumberTextBox.MaxLength = 4;
             this.accountNumberTextBox.Name = "accountNumberTextBox";
             this.accountNumberTextBox.Size = new System.Drawing.Size(100, 23);
             this.accountNumberTextBox.TabIndex = 32;
+            this.accountNumberTextBox.Text = "4 caracteres minimo";
+            this.accountNumberTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // optionalInformationNextButton
             // 
-            this.optionalInformationNextButton.Location = new System.Drawing.Point(152, 215);
+            this.optionalInformationNextButton.Location = new System.Drawing.Point(110, 311);
             this.optionalInformationNextButton.Name = "optionalInformationNextButton";
             this.optionalInformationNextButton.Size = new System.Drawing.Size(72, 20);
             this.optionalInformationNextButton.TabIndex = 1;
@@ -536,7 +588,7 @@
             this.notesLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
             this.notesLabel.Location = new System.Drawing.Point(5, 188);
             this.notesLabel.Name = "notesLabel";
-            this.notesLabel.Size = new System.Drawing.Size(115, 20);
+            this.notesLabel.Size = new System.Drawing.Size(94, 20);
             this.notesLabel.Text = "Comentarios";
             // 
             // taxRegimeLabel
@@ -544,29 +596,36 @@
             this.taxRegimeLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
             this.taxRegimeLabel.Location = new System.Drawing.Point(5, 163);
             this.taxRegimeLabel.Name = "taxRegimeLabel";
-            this.taxRegimeLabel.Size = new System.Drawing.Size(115, 20);
+            this.taxRegimeLabel.Size = new System.Drawing.Size(94, 20);
             this.taxRegimeLabel.Text = "RégimenFiscal";
             // 
             // notesTextBox
             // 
-            this.notesTextBox.Location = new System.Drawing.Point(125, 185);
+            this.notesTextBox.Location = new System.Drawing.Point(99, 185);
+            this.notesTextBox.MaxLength = 200;
+            this.notesTextBox.Multiline = true;
             this.notesTextBox.Name = "notesTextBox";
-            this.notesTextBox.Size = new System.Drawing.Size(100, 23);
+            this.notesTextBox.Size = new System.Drawing.Size(100, 120);
             this.notesTextBox.TabIndex = 15;
+            this.notesTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // taxRegimeTextBox
             // 
-            this.taxRegimeTextBox.Location = new System.Drawing.Point(125, 160);
+            this.taxRegimeTextBox.Location = new System.Drawing.Point(99, 160);
+            this.taxRegimeTextBox.MaxLength = 30;
             this.taxRegimeTextBox.Name = "taxRegimeTextBox";
             this.taxRegimeTextBox.Size = new System.Drawing.Size(100, 23);
             this.taxRegimeTextBox.TabIndex = 14;
+            this.taxRegimeTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // exchangeRateTextBox
             // 
-            this.exchangeRateTextBox.Location = new System.Drawing.Point(125, 135);
+            this.exchangeRateTextBox.Location = new System.Drawing.Point(99, 135);
+            this.exchangeRateTextBox.MaxLength = 20;
             this.exchangeRateTextBox.Name = "exchangeRateTextBox";
             this.exchangeRateTextBox.Size = new System.Drawing.Size(100, 23);
             this.exchangeRateTextBox.TabIndex = 11;
+            this.exchangeRateTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // exchangeRateLabel
             // 
@@ -578,10 +637,12 @@
             // 
             // currencyTextBox
             // 
-            this.currencyTextBox.Location = new System.Drawing.Point(125, 110);
+            this.currencyTextBox.Location = new System.Drawing.Point(99, 110);
+            this.currencyTextBox.MaxLength = 20;
             this.currencyTextBox.Name = "currencyTextBox";
             this.currencyTextBox.Size = new System.Drawing.Size(100, 23);
             this.currencyTextBox.TabIndex = 10;
+            this.currencyTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // currencyLabel
             // 
@@ -593,10 +654,12 @@
             // 
             // folioTextBox
             // 
-            this.folioTextBox.Location = new System.Drawing.Point(125, 60);
+            this.folioTextBox.Location = new System.Drawing.Point(99, 61);
+            this.folioTextBox.MaxLength = 20;
             this.folioTextBox.Name = "folioTextBox";
             this.folioTextBox.Size = new System.Drawing.Size(100, 23);
             this.folioTextBox.TabIndex = 4;
+            this.folioTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // folioLabel
             // 
@@ -608,10 +671,12 @@
             // 
             // serialNumberTextBox
             // 
-            this.serialNumberTextBox.Location = new System.Drawing.Point(125, 35);
+            this.serialNumberTextBox.Location = new System.Drawing.Point(99, 35);
+            this.serialNumberTextBox.MaxLength = 25;
             this.serialNumberTextBox.Name = "serialNumberTextBox";
             this.serialNumberTextBox.Size = new System.Drawing.Size(100, 23);
             this.serialNumberTextBox.TabIndex = 2;
+            this.serialNumberTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // serialNumberLabel
             // 
@@ -634,10 +699,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(253, 355);
+            this.ClientSize = new System.Drawing.Size(238, 275);
+            this.Controls.Add(this.receiverInformationPanel);
             this.Controls.Add(this.optionalInformationPanel);
             this.Controls.Add(this.requiredInformationPanel);
-            this.Controls.Add(this.receiverInformationPanel);
             this.Menu = this.invoicingMenu;
             this.Name = "InvoicingForm";
             this.Text = "Facturación";
@@ -712,5 +777,7 @@
         private System.Windows.Forms.Button optionalInformationBackButton;
         private System.Windows.Forms.Button receiverInformatioCancelButton;
         private System.Windows.Forms.Button requiredInformationBackButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button addEmailButton;
     }
 }
