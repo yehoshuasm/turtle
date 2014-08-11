@@ -320,7 +320,7 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(110, 61);
+            this.nameTextBox.Location = new System.Drawing.Point(110, 60);
             this.nameTextBox.MaxLength = 30;
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(100, 23);

@@ -4,7 +4,6 @@ using turtle.Utils;
 
 namespace turtle
 {
-    
     public partial class LoginForm : Form
     {
         public LoginForm()
@@ -26,7 +25,7 @@ namespace turtle
 
         private bool ValidateUserAndPassword(string user, string password)
         {
-            return Validator.IsAlphanumeric(user) && Validator.IsAlphanumeric(password);
+            return Validator.IsAlphanumeric(user, false) && Validator.IsAlphanumeric(password, false);
         }
 
         private void Login(string user, string password)

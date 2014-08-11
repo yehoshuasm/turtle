@@ -16,6 +16,8 @@
 
 bin/Debug/
 obj/Debug/
+*.exe
+*.pdb
 
 #############
 ## Windows detritus
@@ -30,8 +32,3 @@ Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
-*.exe
-*.exe
-*.pdb
-*.exe
-*.pdb

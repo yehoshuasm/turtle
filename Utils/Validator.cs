@@ -3,9 +3,19 @@ using System.Text.RegularExpressions;
 
 namespace turtle.Utils
 {
-
     public class Validator
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value">Cadena a validar</param>
+        /// <param name="pattern"></param>
+        /// <param name="emptyAllowed">Cadena vacía permitida</param>
+        /// <returns></returns>
+        private static bool IsMatch(string value, string pattern, bool emptyAllowed)
+        {
+            return emptyAllowed && value == "" ? true : Regex.IsMatch(value, pattern);
+        }
 
         #region StringValidations
         
@@ -13,31 +23,34 @@ namespace turtle.Utils
         /// Revisa si una cadena contiene sólo caracteres alfabéticos
         /// </summary>
         /// <param name="value">Cadena a validar</param>
+        /// <param name="emptyAllowed">Cadena vacía permitida</param>
         /// <returns>Verdadero si la cadena contiene solo caracteres alfabéticos</returns>
-        public static bool IsAlphabetic(string value)
+        public static bool IsAlphabetic(string value, bool emptyAllowed)
         {
-            return Regex.IsMatch(value, @"^[a-zA-Z]+$");
+            return IsMatch(value, @"^[a-zA-Z ]+$", emptyAllowed);
         }
 
         /// <summary>
         /// Revisa si una cadena contiene sólo caracteres alfanuméricos
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">Cadena a validar</param>
+        /// <param name="emptyAllowed">Cadena vacía permitida</param>
         /// <returns></returns>
-        public static bool IsAlphanumeric(string value)
+        public static bool IsAlphanumeric(string value, bool emptyAllowed)
         {
-            return Regex.IsMatch(value, @"^[a-zA-Z0-9]+$");
+            return IsMatch(value, @"^[a-zA-Z0-9 ]+$", emptyAllowed);
         }
 
         /// <summary>
         /// Revisa si una cadena es un RFC válido
         /// </summary>
         /// <param name="value">Cadena a validar</param>
+        /// <param name="emptyAllowed">Cadena vacía permitida</param>
         /// <returns>Verdadero si la cadena es un RFC</returns>
-        public static bool IsRfc(string value)
+        public static bool IsRfc(string value, bool emptyAllowed)
         {
             string rfc = @"[A-Z,Ñ,&]{3,4}[0-9]{2}[0-1][0-9][0-3][0-9][A-Z,0-9]?[A-Z,0-9]?[0-9,A-Z]?";
-            return Regex.IsMatch(value, rfc);
+            return IsMatch(value, rfc, emptyAllowed);
         }
 
         /// <summary>
@@ -69,28 +82,29 @@ namespace turtle.Utils
         #endregion
 
         #region NumericValidations
+
         /// <summary>
         /// Revisa si una cadena es un número entero
         /// </summary>
         /// <param name="value">Cadena a validar</param>
+        /// <param name="emptyAllowed">Cadena vacía permitida</param>
         /// <returns>Verdadero si la cadena es un número entero</returns>
-        public static bool IsInteger(string value)
+        public static bool IsInteger(string value, bool emptyAllowed)
         {
-            return Regex.IsMatch(value, @"^[0-9]+$");
+            return IsMatch(value, @"^[0-9]+$", emptyAllowed);
         }
 
         /// <summary>
         /// Revisa si una cadena es un número decimal
         /// </summary>
         /// <param name="value">Cadena a validar</param>
+        /// <param name="emptyAllowed">Cadena vacía permitida</param>
         /// <returns>Verdadero si la cadena es un número decimal</returns>
-        public static bool IsDecimal(string value)
+        public static bool IsDecimal(string value, bool emptyAllowed)
         {
-            return Regex.IsMatch(value, @"^[0-9]+(\.[0-9]{1,2})?$");
+            return IsMatch(value, @"^[0-9]+(\.[0-9]{1,2})?$", emptyAllowed);
         }
 
         #endregion
-
     }
-
 }

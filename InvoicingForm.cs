@@ -70,17 +70,17 @@ namespace turtle
         {   
             bool emailEvaluated=Validator.IsEmail(emailTextBox.Text);
             var elements = new Dictionary<Control, bool>();
-            elements.Add(rfcTextBox, Validator.IsRfc(rfcTextBox.Text));
-            elements.Add(nameTextBox, Validator.IsAlphanumeric(nameTextBox.Text));
+            elements.Add(rfcTextBox, Validator.IsRfc(rfcTextBox.Text, false));
+            elements.Add(nameTextBox, Validator.IsAlphanumeric(nameTextBox.Text, true));
             elements.Add(emailTextBox,emailEvaluated);
-            elements.Add(streetTextBox, Validator.IsAlphabetic(streetTextBox.Text));
-            elements.Add(externalNumberTextBox, Validator.IsInteger(externalNumberTextBox.Text));
-            elements.Add(internalNumberTextBox, Validator.IsInteger(internalNumberTextBox.Text));
-            elements.Add(suburbTextBox, Validator.IsAlphanumeric(suburbTextBox.Text));
-            elements.Add(municipalityTextBox, Validator.IsAlphabetic(municipalityTextBox.Text));
-            elements.Add(stateTextBox, Validator.IsAlphabetic(stateTextBox.Text));
-            elements.Add(countryTextBox, Validator.IsAlphabetic(countryTextBox.Text));
-            elements.Add(zipCodeTextBox, Validator.IsInteger(zipCodeTextBox.Text));
+            elements.Add(streetTextBox, Validator.IsAlphabetic(streetTextBox.Text, false));
+            elements.Add(externalNumberTextBox, Validator.IsInteger(externalNumberTextBox.Text, false));
+            elements.Add(internalNumberTextBox, Validator.IsInteger(internalNumberTextBox.Text, true));
+            elements.Add(suburbTextBox, Validator.IsAlphanumeric(suburbTextBox.Text, false));
+            elements.Add(municipalityTextBox, Validator.IsAlphabetic(municipalityTextBox.Text, false));
+            elements.Add(stateTextBox, Validator.IsAlphabetic(stateTextBox.Text, false));
+            elements.Add(countryTextBox, Validator.IsAlphabetic(countryTextBox.Text, false));
+            elements.Add(zipCodeTextBox, Validator.IsInteger(zipCodeTextBox.Text, false));
 
             if (emailEvaluated)
             {
@@ -98,71 +98,28 @@ namespace turtle
                 emailTextBox.Text = emailAdded;
             }
             return Validate(elements);
-            //    String messageReceiverInformation = "RFC:" + rfcTextBox.Text + "\n" +
-            //        "Nombre:" + nameTextBox.Text + "\n" +
-            //        "Calle:" + streetTextBox.Text + "\n" +
-            //        "N° Ext:" + externalNumberTextBox.Text + "\n" +
-            //        "N° Int:" + internalNumberTextBox.Text + "\n" +
-            //        "Colonia:" + suburbTextBox.Text + "\n" +
-            //        "Municipio:" + municipalityTextBox.Text + "\n" +
-            //        "Estado:" + stateTextBox.Text + "\n" +
-            //        "País:" + countryTextBox.Text + "\n" +
-            //        "C.P:" + zipCodeTextBox.Text + "\n";
-            //    String captionReceioverInformation = "Corfirmar los Datos";
-            //    DialogResult resultConfirmReceiverInformation = MessageBox.Show(messageReceiverInformation, captionReceioverInformation, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            //    if (resultConfirmReceiverInformation == DialogResult.Yes)
-            //    {
-            //        return true;
-            //    }
-            //}
         }
 
         private bool ValidateRequiredInformation()
         {
             var elements = new Dictionary<Control, bool>();
-            elements.Add(ticketNumberTextBox, Validator.IsInteger(ticketNumberTextBox.Text));
-            elements.Add(subTotalTextBox, Validator.IsDecimal(subTotalTextBox.Text));
-            elements.Add(totalTextBox, Validator.IsDecimal(totalTextBox.Text));
+            elements.Add(ticketNumberTextBox, Validator.IsInteger(ticketNumberTextBox.Text, false));
+            elements.Add(subTotalTextBox, Validator.IsDecimal(subTotalTextBox.Text, false));
+            elements.Add(totalTextBox, Validator.IsDecimal(totalTextBox.Text, false));
             return Validate(elements);
-            //        String messageRequiredInformation = "Tipo de Comprobante:" + receipTypeComboBox.Text + "\n" +
-            //            "N° Ticket:" + ticketNumberTextBox.Text + "\n" +
-            //            "Expedición:" + placeOfIssueComboBox.Text + "\n" +
-            //            "Método de Pago:" + paymentMethodComboBox.Text + "\n" +
-            //            "Forma de Pago:" + paymentFormComboBox.Text + "\n" +
-            //            "SubTotal:" + subTotalTextBox.Text + "\n" +
-            //            "Total:" + totalTextBox.Text;
-            //             String captionRequiredInformation = "Corfirmar los Datos";
-            //        DialogResult resultConfirmRequiredInformation = MessageBox.Show(messageRequiredInformation, captionRequiredInformation, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            //        if (resultConfirmRequiredInformation == DialogResult.Yes)
-            //        {
-            //            return true;
-            //        }
         }
 
         private bool ValidateOptionalInformation()
         {
             var elements = new Dictionary<Control, bool>();
-            elements.Add(serialNumberTextBox, Validator.IsAlphanumeric(serialNumberTextBox.Text));
-            elements.Add(folioTextBox, Validator.IsInteger(folioTextBox.Text));
-            elements.Add(accountNumberTextBox, Validator.IsInteger(accountNumberTextBox.Text));
-            elements.Add(currencyTextBox, Validator.IsAlphabetic(currencyTextBox.Text));
-            elements.Add(exchangeRateTextBox, Validator.IsDecimal(exchangeRateTextBox.Text));
-            elements.Add(taxRegimeTextBox, Validator.IsAlphanumeric(taxRegimeTextBox.Text));
-            elements.Add(notesTextBox, Validator.IsAlphanumeric(notesTextBox.Text));
+            elements.Add(serialNumberTextBox, Validator.IsAlphanumeric(serialNumberTextBox.Text, true));
+            elements.Add(folioTextBox, Validator.IsInteger(folioTextBox.Text, true));
+            elements.Add(accountNumberTextBox, Validator.IsInteger(accountNumberTextBox.Text, true));
+            elements.Add(currencyTextBox, Validator.IsAlphabetic(currencyTextBox.Text, true));
+            elements.Add(exchangeRateTextBox, Validator.IsDecimal(exchangeRateTextBox.Text, true));
+            elements.Add(taxRegimeTextBox, Validator.IsAlphanumeric(taxRegimeTextBox.Text, true));
+            elements.Add(notesTextBox, Validator.IsAlphanumeric(notesTextBox.Text, true));
             return Validate(elements);
-            //        String messageOptionalInformation = "N° Serie:" + serialNumberTextBox.Text + "\n" +
-            //            "Folio:" + folioTextBox.Text + "\n" +
-            //            "N° Cuenta:" + accountNumberTextBox.Text + "\n" +
-            //            "Moneda:" + currencyTextBox.Text + "\n" +
-            //            "Tipo de Cambio:" + exchangeRateTextBox.Text + "\n" +
-            //            "Regimen Fiscal:" + taxRegimeTextBox.Text + "\n" +
-            //            "Comentarios:" + notesTextBox.Text;
-            //        String captionOptionalInformation = "Corfirmar los Datos";
-            //        DialogResult resultConfirmOptionalInformation = MessageBox.Show(messageOptionalInformation, captionOptionalInformation, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            //        if (resultConfirmOptionalInformation == DialogResult.Yes)
-            //        {
-            //            return true;
-            //        }
         }
 
         private void SetNotValidColor(List<Control> controls)
