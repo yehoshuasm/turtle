@@ -9,8 +9,6 @@
 *.suo
 *.user
 *.sln.docstates
-turtle.csproj
-turtle.csproj.user
 
 ################
 ## Build results
@@ -18,8 +16,6 @@ turtle.csproj.user
 
 bin/Debug/
 obj/Debug/
-*.exe
-*.pdb
 
 #############
 ## Windows detritus
