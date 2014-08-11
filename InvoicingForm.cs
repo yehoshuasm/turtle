@@ -9,6 +9,7 @@ namespace turtle
 {
     public partial class InvoicingForm : Form
     {
+        String emailAdded;
         public InvoicingForm()
         {
             InitializeComponent();
@@ -66,11 +67,12 @@ namespace turtle
         }
 
         private bool ValidateReceiverInformation()
-        {
+        {   
+            bool emailEvaluated=Validator.IsEmail(emailTextBox.Text);
             var elements = new Dictionary<Control, bool>();
             elements.Add(rfcTextBox, Validator.IsRfc(rfcTextBox.Text));
             elements.Add(nameTextBox, Validator.IsAlphanumeric(nameTextBox.Text));
-            elements.Add(emailTextBox, Validator.IsEmail(emailTextBox.Text));
+            elements.Add(emailTextBox,emailEvaluated);
             elements.Add(streetTextBox, Validator.IsAlphabetic(streetTextBox.Text));
             elements.Add(externalNumberTextBox, Validator.IsInteger(externalNumberTextBox.Text));
             elements.Add(internalNumberTextBox, Validator.IsInteger(internalNumberTextBox.Text));
@@ -79,6 +81,22 @@ namespace turtle
             elements.Add(stateTextBox, Validator.IsAlphabetic(stateTextBox.Text));
             elements.Add(countryTextBox, Validator.IsAlphabetic(countryTextBox.Text));
             elements.Add(zipCodeTextBox, Validator.IsInteger(zipCodeTextBox.Text));
+
+            if (emailEvaluated)
+            {
+                if (!emailAdded.Equals(""))
+                {
+                    emailTextBox.Text = emailAdded + "," + emailTextBox.Text;
+                }
+                else
+                {
+                    emailTextBox.Text = emailAdded;
+                }
+            }
+            else
+            {
+                emailTextBox.Text = emailAdded;
+            }
             return Validate(elements);
             //    String messageReceiverInformation = "RFC:" + rfcTextBox.Text + "\n" +
             //        "Nombre:" + nameTextBox.Text + "\n" +
@@ -151,8 +169,22 @@ namespace turtle
         {
             foreach (var control in controls)
             {
-                control.BackColor = Color.Red;
+                control.BackColor = Color.FromArgb(252,144,144);
             }
         }
+
+        private void addEmailButton_Click(object sender, EventArgs e)
+        {
+            emailAdded = emailTextBox.Text;
+            emailTextBox.Text = "";
+
+        }
+
+        private void GotFocus_SetValidColor(object sender, EventArgs e)
+        {
+            ((TextBox)sender).BackColor = Color.White;
+        }
+
+        
     }
 }

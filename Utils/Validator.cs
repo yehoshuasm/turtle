@@ -49,6 +49,20 @@ namespace turtle.Utils
         {
             string email = @"^(?("")("".+?""@)|(([0-9a-zA-Z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-zA-Z])@))" +
                     @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,6}))$";
+
+            if (Convert.ToInt32(Utils.CounterEmails.countEmails(value))>1)
+            {
+                String [] emails=value.Split(',');
+                for (int i = 0; i < emails.Length; i++)
+                {
+                    if(!Regex.IsMatch(emails[i],email))
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+                       
             return Regex.IsMatch(value, email);
         }
         
