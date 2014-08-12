@@ -325,7 +325,6 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(100, 23);
             this.nameTextBox.TabIndex = 4;
-            this.nameTextBox.Text = "Puede ser Opcional";
             this.nameTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // nameLabel
@@ -343,7 +342,6 @@
             this.rfcTextBox.Name = "rfcTextBox";
             this.rfcTextBox.Size = new System.Drawing.Size(100, 23);
             this.rfcTextBox.TabIndex = 2;
-            this.rfcTextBox.Text = "min 12 max 13";
             this.rfcTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // rfcLabel

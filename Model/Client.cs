@@ -1,7 +1,7 @@
 ﻿namespace turtle.Model
 {
     /// <summary>
-    /// 
+    /// Modelo para Cliente
     /// </summary>
     class Client
     {

@@ -1,34 +1,42 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
-using turtle.Utils;
-using System.Linq;
 using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+using turtle.Model;
+using turtle.Utils;
 
 namespace turtle
 {
     public partial class InvoicingForm : Form
     {
+        private Invoice Invoice;
         String emailAdded;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public InvoicingForm()
         {
             InitializeComponent();
+            Invoice = new Invoice();
         }
 
         private void receiverInformationNextButton_Click(object sender, EventArgs e)
         {
             if (ValidateReceiverInformation())
             {
+                SetReceiverInformation();
                 receiverInformationPanel.Hide();
                 requiredInformationPanel.Show();
             }
-                        
         }
 
         private void requiredInformationNextButton_Click(object sender, EventArgs e)
         {
             if (ValidateRequiredInformation())
             {
+                SetRequiredInformation();
                 requiredInformationPanel.Hide();
                 optionalInformationPanel.Show();
             }
@@ -38,7 +46,7 @@ namespace turtle
         {
             if (ValidateOptionalInformation())
             {
-                //Do some thing
+                SetOptionalInformation();
             }
         }
 
@@ -59,6 +67,13 @@ namespace turtle
             this.Close();
         }
 
+        #region Validations
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="elements"></param>
+        /// <returns></returns>
         private bool Validate(Dictionary<Control, bool> elements)
         {
             var notValidElements = elements.Where(e => !e.Value);
@@ -66,6 +81,10 @@ namespace turtle
             return elements.Count == 0; // Si no hay elementos no válidos regresa verdadero
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateReceiverInformation()
         {   
             bool emailEvaluated=Validator.IsEmail(emailTextBox.Text);
@@ -100,6 +119,10 @@ namespace turtle
             return Validate(elements);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateRequiredInformation()
         {
             var elements = new Dictionary<Control, bool>();
@@ -109,6 +132,10 @@ namespace turtle
             return Validate(elements);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateOptionalInformation()
         {
             var elements = new Dictionary<Control, bool>();
@@ -120,6 +147,59 @@ namespace turtle
             elements.Add(taxRegimeTextBox, Validator.IsAlphanumeric(taxRegimeTextBox.Text, true));
             elements.Add(notesTextBox, Validator.IsAlphanumeric(notesTextBox.Text, true));
             return Validate(elements);
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Asinga información del receptor de la factura
+        /// </summary>
+        private void SetReceiverInformation()
+        {
+            Invoice.Client = new Client
+            {
+                Rfc = rfcTextBox.Text,
+                Name = nameTextBox.Text,
+                //Email
+                Address = new Address
+                {
+                    Street = streetTextBox.Text,
+                    ExternalNumber = Convert.ToInt32(externalNumberTextBox.Text),
+                    InternalNumber = Convert.ToInt32(internalNumberTextBox.Text),
+                    Suburb = suburbTextBox.Text,
+                    Municipality = municipalityTextBox.Text,
+                    State = stateTextBox.Text,
+                    Country = countryTextBox.Text,
+                    ZipCode = Convert.ToInt32(zipCodeTextBox.Text)
+                },
+            };
+        }
+
+        /// <summary>
+        /// Asigna información requerida de la factura
+        /// </summary>
+        private void SetRequiredInformation()
+        {
+            Invoice.ReceipType = receipTypeComboBox.SelectedText;
+            Invoice.TicketNumber = Convert.ToInt32(ticketNumberTextBox.Text);
+            Invoice.PlaceOfIssue = placeOfIssueComboBox.SelectedText;
+            Invoice.PaymentMethod = paymentMethodComboBox.SelectedText;
+            Invoice.PaymentForm = paymentFormComboBox.SelectedText;
+            Invoice.SubTotal = Convert.ToDecimal(subTotalTextBox.SelectedText);
+            Invoice.Total = Convert.ToDecimal(totalTextBox.Text);
+        }
+
+        /// <summary>
+        /// Asigna información opcional de la factura
+        /// </summary>
+        private void SetOptionalInformation()
+        {
+            Invoice.SerialNumber = serialNumberTextBox.Text;
+            Invoice.Folio = Convert.ToInt32(folioTextBox.Text);
+            Invoice.AccountNumber = accountNumberTextBox.Text;
+            Invoice.Currency = currencyTextBox.Text;
+            Invoice.ExchangeRate = Convert.ToDecimal(exchangeRateTextBox.Text);
+            Invoice.Notes = notesTextBox.Text;
         }
 
         private void SetNotValidColor(List<Control> controls)
@@ -141,7 +221,5 @@ namespace turtle
         {
             ((TextBox)sender).BackColor = Color.White;
         }
-
-        
     }
 }

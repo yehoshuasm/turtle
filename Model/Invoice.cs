@@ -2,6 +2,9 @@
 
 namespace turtle.Model
 {
+    /// <summary>
+    /// Modelo para Factura
+    /// </summary>
     class Invoice
     {
         // Required Information
