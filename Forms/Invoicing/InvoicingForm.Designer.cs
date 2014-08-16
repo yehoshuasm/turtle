@@ -130,7 +130,7 @@
             this.receiverInformationPanel.Controls.Add(this.receiverInformationLabel);
             this.receiverInformationPanel.Location = new System.Drawing.Point(0, 0);
             this.receiverInformationPanel.Name = "receiverInformationPanel";
-            this.receiverInformationPanel.Size = new System.Drawing.Size(221, 352);
+            this.receiverInformationPanel.Size = new System.Drawing.Size(225, 345);
             // 
             // label1
             // 
@@ -150,7 +150,7 @@
             // 
             // receiverInformatioCancelButton
             // 
-            this.receiverInformatioCancelButton.Location = new System.Drawing.Point(45, 319);
+            this.receiverInformatioCancelButton.Location = new System.Drawing.Point(40, 315);
             this.receiverInformatioCancelButton.Name = "receiverInformatioCancelButton";
             this.receiverInformatioCancelButton.Size = new System.Drawing.Size(72, 20);
             this.receiverInformatioCancelButton.TabIndex = 44;
@@ -160,14 +160,14 @@
             // emailLabel
             // 
             this.emailLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.emailLabel.Location = new System.Drawing.Point(4, 88);
+            this.emailLabel.Location = new System.Drawing.Point(1, 88);
             this.emailLabel.Name = "emailLabel";
             this.emailLabel.Size = new System.Drawing.Size(46, 20);
             this.emailLabel.Text = "E-mail";
             // 
             // emailTextBox
             // 
-            this.emailTextBox.Location = new System.Drawing.Point(110, 85);
+            this.emailTextBox.Location = new System.Drawing.Point(118, 85);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(100, 23);
             this.emailTextBox.TabIndex = 32;
@@ -175,7 +175,7 @@
             // 
             // receiverInformationNextButton
             // 
-            this.receiverInformationNextButton.Location = new System.Drawing.Point(124, 320);
+            this.receiverInformationNextButton.Location = new System.Drawing.Point(118, 315);
             this.receiverInformationNextButton.Name = "receiverInformationNextButton";
             this.receiverInformationNextButton.Size = new System.Drawing.Size(72, 20);
             this.receiverInformationNextButton.TabIndex = 1;
@@ -185,54 +185,54 @@
             // zipCodeLabel
             // 
             this.zipCodeLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.zipCodeLabel.Location = new System.Drawing.Point(4, 288);
+            this.zipCodeLabel.Location = new System.Drawing.Point(1, 288);
             this.zipCodeLabel.Name = "zipCodeLabel";
-            this.zipCodeLabel.Size = new System.Drawing.Size(100, 20);
+            this.zipCodeLabel.Size = new System.Drawing.Size(115, 20);
             this.zipCodeLabel.Text = "Código Postal";
             // 
             // countryLabel
             // 
             this.countryLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.countryLabel.Location = new System.Drawing.Point(3, 263);
+            this.countryLabel.Location = new System.Drawing.Point(1, 263);
             this.countryLabel.Name = "countryLabel";
-            this.countryLabel.Size = new System.Drawing.Size(101, 20);
+            this.countryLabel.Size = new System.Drawing.Size(115, 20);
             this.countryLabel.Text = "País";
             // 
             // stateLabel
             // 
             this.stateLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.stateLabel.Location = new System.Drawing.Point(6, 238);
+            this.stateLabel.Location = new System.Drawing.Point(1, 238);
             this.stateLabel.Name = "stateLabel";
-            this.stateLabel.Size = new System.Drawing.Size(98, 20);
+            this.stateLabel.Size = new System.Drawing.Size(115, 20);
             this.stateLabel.Text = "Estado";
             // 
             // municipalityLabel
             // 
             this.municipalityLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.municipalityLabel.Location = new System.Drawing.Point(5, 213);
+            this.municipalityLabel.Location = new System.Drawing.Point(1, 213);
             this.municipalityLabel.Name = "municipalityLabel";
-            this.municipalityLabel.Size = new System.Drawing.Size(99, 20);
+            this.municipalityLabel.Size = new System.Drawing.Size(115, 20);
             this.municipalityLabel.Text = "Municipio";
             // 
             // suburbLabel
             // 
             this.suburbLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.suburbLabel.Location = new System.Drawing.Point(5, 188);
+            this.suburbLabel.Location = new System.Drawing.Point(1, 188);
             this.suburbLabel.Name = "suburbLabel";
-            this.suburbLabel.Size = new System.Drawing.Size(99, 20);
+            this.suburbLabel.Size = new System.Drawing.Size(115, 20);
             this.suburbLabel.Text = "Colonia";
             // 
             // internalNumberLabel
             // 
             this.internalNumberLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.internalNumberLabel.Location = new System.Drawing.Point(5, 163);
+            this.internalNumberLabel.Location = new System.Drawing.Point(1, 163);
             this.internalNumberLabel.Name = "internalNumberLabel";
-            this.internalNumberLabel.Size = new System.Drawing.Size(99, 20);
+            this.internalNumberLabel.Size = new System.Drawing.Size(115, 20);
             this.internalNumberLabel.Text = "No. Interior";
             // 
             // zipCodeTextBox
             // 
-            this.zipCodeTextBox.Location = new System.Drawing.Point(110, 291);
+            this.zipCodeTextBox.Location = new System.Drawing.Point(118, 285);
             this.zipCodeTextBox.MaxLength = 5;
             this.zipCodeTextBox.Name = "zipCodeTextBox";
             this.zipCodeTextBox.Size = new System.Drawing.Size(100, 23);
@@ -241,7 +241,7 @@
             // 
             // countryTextBox
             // 
-            this.countryTextBox.Location = new System.Drawing.Point(110, 264);
+            this.countryTextBox.Location = new System.Drawing.Point(118, 260);
             this.countryTextBox.MaxLength = 20;
             this.countryTextBox.Name = "countryTextBox";
             this.countryTextBox.Size = new System.Drawing.Size(100, 23);
@@ -250,7 +250,7 @@
             // 
             // stateTextBox
             // 
-            this.stateTextBox.Location = new System.Drawing.Point(110, 235);
+            this.stateTextBox.Location = new System.Drawing.Point(118, 235);
             this.stateTextBox.MaxLength = 30;
             this.stateTextBox.Name = "stateTextBox";
             this.stateTextBox.Size = new System.Drawing.Size(100, 23);
@@ -259,7 +259,7 @@
             // 
             // municipalityTextBox
             // 
-            this.municipalityTextBox.Location = new System.Drawing.Point(110, 210);
+            this.municipalityTextBox.Location = new System.Drawing.Point(118, 210);
             this.municipalityTextBox.MaxLength = 30;
             this.municipalityTextBox.Name = "municipalityTextBox";
             this.municipalityTextBox.Size = new System.Drawing.Size(100, 23);
@@ -268,7 +268,7 @@
             // 
             // suburbTextBox
             // 
-            this.suburbTextBox.Location = new System.Drawing.Point(110, 185);
+            this.suburbTextBox.Location = new System.Drawing.Point(118, 185);
             this.suburbTextBox.MaxLength = 30;
             this.suburbTextBox.Name = "suburbTextBox";
             this.suburbTextBox.Size = new System.Drawing.Size(100, 23);
@@ -277,7 +277,7 @@
             // 
             // internalNumberTextBox
             // 
-            this.internalNumberTextBox.Location = new System.Drawing.Point(110, 160);
+            this.internalNumberTextBox.Location = new System.Drawing.Point(118, 160);
             this.internalNumberTextBox.MaxLength = 10;
             this.internalNumberTextBox.Name = "internalNumberTextBox";
             this.internalNumberTextBox.Size = new System.Drawing.Size(100, 23);
@@ -286,7 +286,7 @@
             // 
             // externalNumberTextBox
             // 
-            this.externalNumberTextBox.Location = new System.Drawing.Point(110, 135);
+            this.externalNumberTextBox.Location = new System.Drawing.Point(118, 135);
             this.externalNumberTextBox.MaxLength = 10;
             this.externalNumberTextBox.Name = "externalNumberTextBox";
             this.externalNumberTextBox.Size = new System.Drawing.Size(100, 23);
@@ -296,14 +296,14 @@
             // externalNumberLabel
             // 
             this.externalNumberLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.externalNumberLabel.Location = new System.Drawing.Point(4, 138);
+            this.externalNumberLabel.Location = new System.Drawing.Point(1, 138);
             this.externalNumberLabel.Name = "externalNumberLabel";
             this.externalNumberLabel.Size = new System.Drawing.Size(115, 20);
             this.externalNumberLabel.Text = "No. Exterior";
             // 
             // streetTextBox
             // 
-            this.streetTextBox.Location = new System.Drawing.Point(110, 110);
+            this.streetTextBox.Location = new System.Drawing.Point(118, 110);
             this.streetTextBox.MaxLength = 30;
             this.streetTextBox.Name = "streetTextBox";
             this.streetTextBox.Size = new System.Drawing.Size(100, 23);
@@ -313,14 +313,14 @@
             // streetLabel
             // 
             this.streetLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.streetLabel.Location = new System.Drawing.Point(3, 113);
+            this.streetLabel.Location = new System.Drawing.Point(1, 113);
             this.streetLabel.Name = "streetLabel";
             this.streetLabel.Size = new System.Drawing.Size(115, 20);
             this.streetLabel.Text = "Calle";
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(110, 60);
+            this.nameTextBox.Location = new System.Drawing.Point(118, 60);
             this.nameTextBox.MaxLength = 30;
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(100, 23);
@@ -330,14 +330,14 @@
             // nameLabel
             // 
             this.nameLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.nameLabel.Location = new System.Drawing.Point(3, 63);
+            this.nameLabel.Location = new System.Drawing.Point(1, 63);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(115, 20);
             this.nameLabel.Text = "Nombre Completo";
             // 
             // rfcTextBox
             // 
-            this.rfcTextBox.Location = new System.Drawing.Point(110, 35);
+            this.rfcTextBox.Location = new System.Drawing.Point(118, 35);
             this.rfcTextBox.MaxLength = 13;
             this.rfcTextBox.Name = "rfcTextBox";
             this.rfcTextBox.Size = new System.Drawing.Size(100, 23);
@@ -347,7 +347,7 @@
             // rfcLabel
             // 
             this.rfcLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.rfcLabel.Location = new System.Drawing.Point(3, 38);
+            this.rfcLabel.Location = new System.Drawing.Point(1, 38);
             this.rfcLabel.Name = "rfcLabel";
             this.rfcLabel.Size = new System.Drawing.Size(115, 20);
             this.rfcLabel.Text = "RFC";
@@ -381,12 +381,12 @@
             this.requiredInformationPanel.Controls.Add(this.requiredInformationLabel);
             this.requiredInformationPanel.Location = new System.Drawing.Point(0, 0);
             this.requiredInformationPanel.Name = "requiredInformationPanel";
-            this.requiredInformationPanel.Size = new System.Drawing.Size(234, 245);
+            this.requiredInformationPanel.Size = new System.Drawing.Size(225, 245);
             this.requiredInformationPanel.Visible = false;
             // 
             // requiredInformationBackButton
             // 
-            this.requiredInformationBackButton.Location = new System.Drawing.Point(49, 215);
+            this.requiredInformationBackButton.Location = new System.Drawing.Point(40, 215);
             this.requiredInformationBackButton.Name = "requiredInformationBackButton";
             this.requiredInformationBackButton.Size = new System.Drawing.Size(72, 20);
             this.requiredInformationBackButton.TabIndex = 41;
@@ -395,35 +395,35 @@
             // 
             // paymentFormComboBox
             // 
-            this.paymentFormComboBox.Location = new System.Drawing.Point(125, 135);
+            this.paymentFormComboBox.Location = new System.Drawing.Point(118, 135);
             this.paymentFormComboBox.Name = "paymentFormComboBox";
             this.paymentFormComboBox.Size = new System.Drawing.Size(100, 23);
             this.paymentFormComboBox.TabIndex = 26;
             // 
             // paymentMethodComboBox
             // 
-            this.paymentMethodComboBox.Location = new System.Drawing.Point(124, 110);
+            this.paymentMethodComboBox.Location = new System.Drawing.Point(118, 110);
             this.paymentMethodComboBox.Name = "paymentMethodComboBox";
             this.paymentMethodComboBox.Size = new System.Drawing.Size(100, 23);
             this.paymentMethodComboBox.TabIndex = 27;
             // 
             // placeOfIssueComboBox
             // 
-            this.placeOfIssueComboBox.Location = new System.Drawing.Point(125, 85);
+            this.placeOfIssueComboBox.Location = new System.Drawing.Point(118, 85);
             this.placeOfIssueComboBox.Name = "placeOfIssueComboBox";
             this.placeOfIssueComboBox.Size = new System.Drawing.Size(100, 23);
             this.placeOfIssueComboBox.TabIndex = 26;
             // 
             // receipTypeComboBox
             // 
-            this.receipTypeComboBox.Location = new System.Drawing.Point(124, 35);
+            this.receipTypeComboBox.Location = new System.Drawing.Point(118, 35);
             this.receipTypeComboBox.Name = "receipTypeComboBox";
             this.receipTypeComboBox.Size = new System.Drawing.Size(100, 23);
             this.receipTypeComboBox.TabIndex = 25;
             // 
             // requiredInformationNextButton
             // 
-            this.requiredInformationNextButton.Location = new System.Drawing.Point(127, 215);
+            this.requiredInformationNextButton.Location = new System.Drawing.Point(118, 215);
             this.requiredInformationNextButton.Name = "requiredInformationNextButton";
             this.requiredInformationNextButton.Size = new System.Drawing.Size(72, 20);
             this.requiredInformationNextButton.TabIndex = 1;
@@ -433,7 +433,7 @@
             // totalLabel
             // 
             this.totalLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.totalLabel.Location = new System.Drawing.Point(5, 188);
+            this.totalLabel.Location = new System.Drawing.Point(3, 188);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(115, 20);
             this.totalLabel.Text = "Total";
@@ -441,7 +441,7 @@
             // subTotalLabel
             // 
             this.subTotalLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.subTotalLabel.Location = new System.Drawing.Point(5, 163);
+            this.subTotalLabel.Location = new System.Drawing.Point(3, 163);
             this.subTotalLabel.Name = "subTotalLabel";
             this.subTotalLabel.Size = new System.Drawing.Size(115, 20);
             this.subTotalLabel.Text = "Sub Total";
@@ -449,14 +449,14 @@
             // paymentFormLabel
             // 
             this.paymentFormLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.paymentFormLabel.Location = new System.Drawing.Point(5, 138);
+            this.paymentFormLabel.Location = new System.Drawing.Point(3, 138);
             this.paymentFormLabel.Name = "paymentFormLabel";
             this.paymentFormLabel.Size = new System.Drawing.Size(115, 20);
             this.paymentFormLabel.Text = "Forma de Pago";
             // 
             // totalTextBox
             // 
-            this.totalTextBox.Location = new System.Drawing.Point(124, 185);
+            this.totalTextBox.Location = new System.Drawing.Point(118, 185);
             this.totalTextBox.MaxLength = 10;
             this.totalTextBox.Name = "totalTextBox";
             this.totalTextBox.Size = new System.Drawing.Size(100, 23);
@@ -465,7 +465,7 @@
             // 
             // subTotalTextBox
             // 
-            this.subTotalTextBox.Location = new System.Drawing.Point(125, 160);
+            this.subTotalTextBox.Location = new System.Drawing.Point(118, 160);
             this.subTotalTextBox.MaxLength = 10;
             this.subTotalTextBox.Name = "subTotalTextBox";
             this.subTotalTextBox.Size = new System.Drawing.Size(100, 23);
@@ -475,7 +475,7 @@
             // paymentMethodLabel
             // 
             this.paymentMethodLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.paymentMethodLabel.Location = new System.Drawing.Point(4, 113);
+            this.paymentMethodLabel.Location = new System.Drawing.Point(2, 113);
             this.paymentMethodLabel.Name = "paymentMethodLabel";
             this.paymentMethodLabel.Size = new System.Drawing.Size(115, 20);
             this.paymentMethodLabel.Text = "Método de Pago";
@@ -483,14 +483,14 @@
             // placeOfIssueLabel
             // 
             this.placeOfIssueLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.placeOfIssueLabel.Location = new System.Drawing.Point(3, 88);
+            this.placeOfIssueLabel.Location = new System.Drawing.Point(1, 88);
             this.placeOfIssueLabel.Name = "placeOfIssueLabel";
             this.placeOfIssueLabel.Size = new System.Drawing.Size(115, 20);
             this.placeOfIssueLabel.Text = "Lugar de Expedición";
             // 
             // ticketNumberTextBox
             // 
-            this.ticketNumberTextBox.Location = new System.Drawing.Point(125, 60);
+            this.ticketNumberTextBox.Location = new System.Drawing.Point(118, 60);
             this.ticketNumberTextBox.MaxLength = 20;
             this.ticketNumberTextBox.Name = "ticketNumberTextBox";
             this.ticketNumberTextBox.Size = new System.Drawing.Size(100, 23);
@@ -500,7 +500,7 @@
             // ticketNumberLabel
             // 
             this.ticketNumberLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.ticketNumberLabel.Location = new System.Drawing.Point(3, 63);
+            this.ticketNumberLabel.Location = new System.Drawing.Point(1, 63);
             this.ticketNumberLabel.Name = "ticketNumberLabel";
             this.ticketNumberLabel.Size = new System.Drawing.Size(115, 20);
             this.ticketNumberLabel.Text = "No. Ticket";
@@ -508,7 +508,7 @@
             // receiptTypeLabel
             // 
             this.receiptTypeLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.receiptTypeLabel.Location = new System.Drawing.Point(3, 38);
+            this.receiptTypeLabel.Location = new System.Drawing.Point(1, 38);
             this.receiptTypeLabel.Name = "receiptTypeLabel";
             this.receiptTypeLabel.Size = new System.Drawing.Size(115, 20);
             this.receiptTypeLabel.Text = "Comprobante tipo";
@@ -542,12 +542,12 @@
             this.optionalInformationPanel.Controls.Add(this.optionalInformationLabel);
             this.optionalInformationPanel.Location = new System.Drawing.Point(0, 0);
             this.optionalInformationPanel.Name = "optionalInformationPanel";
-            this.optionalInformationPanel.Size = new System.Drawing.Size(224, 352);
+            this.optionalInformationPanel.Size = new System.Drawing.Size(225, 340);
             this.optionalInformationPanel.Visible = false;
             // 
             // optionalInformationBackButton
             // 
-            this.optionalInformationBackButton.Location = new System.Drawing.Point(27, 311);
+            this.optionalInformationBackButton.Location = new System.Drawing.Point(40, 310);
             this.optionalInformationBackButton.Name = "optionalInformationBackButton";
             this.optionalInformationBackButton.Size = new System.Drawing.Size(72, 20);
             this.optionalInformationBackButton.TabIndex = 40;
@@ -564,17 +564,16 @@
             // 
             // accountNumberTextBox
             // 
-            this.accountNumberTextBox.Location = new System.Drawing.Point(99, 85);
+            this.accountNumberTextBox.Location = new System.Drawing.Point(118, 85);
             this.accountNumberTextBox.MaxLength = 4;
             this.accountNumberTextBox.Name = "accountNumberTextBox";
             this.accountNumberTextBox.Size = new System.Drawing.Size(100, 23);
             this.accountNumberTextBox.TabIndex = 32;
-            this.accountNumberTextBox.Text = "4 caracteres minimo";
             this.accountNumberTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // optionalInformationNextButton
             // 
-            this.optionalInformationNextButton.Location = new System.Drawing.Point(110, 311);
+            this.optionalInformationNextButton.Location = new System.Drawing.Point(118, 310);
             this.optionalInformationNextButton.Name = "optionalInformationNextButton";
             this.optionalInformationNextButton.Size = new System.Drawing.Size(72, 20);
             this.optionalInformationNextButton.TabIndex = 1;
@@ -599,17 +598,17 @@
             // 
             // notesTextBox
             // 
-            this.notesTextBox.Location = new System.Drawing.Point(99, 185);
+            this.notesTextBox.Location = new System.Drawing.Point(5, 210);
             this.notesTextBox.MaxLength = 200;
             this.notesTextBox.Multiline = true;
             this.notesTextBox.Name = "notesTextBox";
-            this.notesTextBox.Size = new System.Drawing.Size(100, 120);
+            this.notesTextBox.Size = new System.Drawing.Size(213, 93);
             this.notesTextBox.TabIndex = 15;
             this.notesTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // taxRegimeTextBox
             // 
-            this.taxRegimeTextBox.Location = new System.Drawing.Point(99, 160);
+            this.taxRegimeTextBox.Location = new System.Drawing.Point(118, 160);
             this.taxRegimeTextBox.MaxLength = 30;
             this.taxRegimeTextBox.Name = "taxRegimeTextBox";
             this.taxRegimeTextBox.Size = new System.Drawing.Size(100, 23);
@@ -618,7 +617,7 @@
             // 
             // exchangeRateTextBox
             // 
-            this.exchangeRateTextBox.Location = new System.Drawing.Point(99, 135);
+            this.exchangeRateTextBox.Location = new System.Drawing.Point(118, 135);
             this.exchangeRateTextBox.MaxLength = 20;
             this.exchangeRateTextBox.Name = "exchangeRateTextBox";
             this.exchangeRateTextBox.Size = new System.Drawing.Size(100, 23);
@@ -635,7 +634,7 @@
             // 
             // currencyTextBox
             // 
-            this.currencyTextBox.Location = new System.Drawing.Point(99, 110);
+            this.currencyTextBox.Location = new System.Drawing.Point(118, 110);
             this.currencyTextBox.MaxLength = 20;
             this.currencyTextBox.Name = "currencyTextBox";
             this.currencyTextBox.Size = new System.Drawing.Size(100, 23);
@@ -652,7 +651,7 @@
             // 
             // folioTextBox
             // 
-            this.folioTextBox.Location = new System.Drawing.Point(99, 61);
+            this.folioTextBox.Location = new System.Drawing.Point(118, 61);
             this.folioTextBox.MaxLength = 20;
             this.folioTextBox.Name = "folioTextBox";
             this.folioTextBox.Size = new System.Drawing.Size(100, 23);
@@ -669,7 +668,7 @@
             // 
             // serialNumberTextBox
             // 
-            this.serialNumberTextBox.Location = new System.Drawing.Point(99, 35);
+            this.serialNumberTextBox.Location = new System.Drawing.Point(118, 35);
             this.serialNumberTextBox.MaxLength = 25;
             this.serialNumberTextBox.Name = "serialNumberTextBox";
             this.serialNumberTextBox.Size = new System.Drawing.Size(100, 23);
@@ -697,7 +696,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(238, 275);
+            this.ClientSize = new System.Drawing.Size(227, 346);
             this.Controls.Add(this.receiverInformationPanel);
             this.Controls.Add(this.optionalInformationPanel);
             this.Controls.Add(this.requiredInformationPanel);

@@ -28,5 +28,7 @@ namespace turtle.Model
         public List<string> Emails { get; set; }
         public int Sampling { get; set; }
         public int TotalSampling { get; set; }
+        // Concepts
+        public List<Concept> Concepts { get; set; }
     }
 }

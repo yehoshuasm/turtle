@@ -57,41 +57,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InvoicingForm.cs">
+    <Compile Include="Forms\Invoicing\InvoicingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InvoicingForm.Designer.cs">
+    <Compile Include="Forms\Invoicing\InvoicingForm.Designer.cs">
       <DependentUpon>InvoicingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Forms\Invoicing\ConceptsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Forms\Invoicing\ConceptsForm.Designer.cs">
+      <DependentUpon>ConceptsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuForm.cs">
+    <Compile Include="Forms\MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuForm.Designer.cs">
+    <Compile Include="Forms\MenuForm.Designer.cs">
       <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Client.cs" />
+    <Compile Include="Model\Concept.cs" />
     <Compile Include="Model\Login.cs" />
     <Compile Include="Model\Invoice.cs" />
     <Compile Include="Utils\CounterEmails.cs" />
     <Compile Include="Utils\Validator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="InvoicingForm.resx">
+    <EmbeddedResource Include="Forms\Invoicing\InvoicingForm.resx">
       <DependentUpon>InvoicingForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Forms\Invoicing\ConceptsForm.resx">
+      <DependentUpon>ConceptsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuForm.resx">
+    <EmbeddedResource Include="Forms\MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>

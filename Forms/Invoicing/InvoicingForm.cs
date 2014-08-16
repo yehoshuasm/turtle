@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using turtle.Model;
 using turtle.Utils;
+using turtle.Forms.Invoicing;
 
 namespace turtle
 {
@@ -47,6 +48,7 @@ namespace turtle
             if (ValidateOptionalInformation())
             {
                 SetOptionalInformation();
+                new ConceptsForm().Show();
             }
         }
 
@@ -72,34 +74,22 @@ namespace turtle
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="elements"></param>
-        /// <returns></returns>
-        private bool Validate(Dictionary<Control, bool> elements)
-        {
-            var notValidElements = elements.Where(e => !e.Value);
-            SetNotValidColor(notValidElements.Select(c => c.Key).ToList());
-            return elements.Count == 0; // Si no hay elementos no válidos regresa verdadero
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         /// <returns></returns>
         private bool ValidateReceiverInformation()
         {   
             bool emailEvaluated=Validator.IsEmail(emailTextBox.Text);
-            var elements = new Dictionary<Control, bool>();
-            elements.Add(rfcTextBox, Validator.IsRfc(rfcTextBox.Text, false));
-            elements.Add(nameTextBox, Validator.IsAlphanumeric(nameTextBox.Text, true));
-            elements.Add(emailTextBox,emailEvaluated);
-            elements.Add(streetTextBox, Validator.IsAlphabetic(streetTextBox.Text, false));
-            elements.Add(externalNumberTextBox, Validator.IsInteger(externalNumberTextBox.Text, false));
-            elements.Add(internalNumberTextBox, Validator.IsInteger(internalNumberTextBox.Text, true));
-            elements.Add(suburbTextBox, Validator.IsAlphanumeric(suburbTextBox.Text, false));
-            elements.Add(municipalityTextBox, Validator.IsAlphabetic(municipalityTextBox.Text, false));
-            elements.Add(stateTextBox, Validator.IsAlphabetic(stateTextBox.Text, false));
-            elements.Add(countryTextBox, Validator.IsAlphabetic(countryTextBox.Text, false));
-            elements.Add(zipCodeTextBox, Validator.IsInteger(zipCodeTextBox.Text, false));
+            var controlsValidations = new Dictionary<Control, bool>();
+            controlsValidations.Add(rfcTextBox, Validator.IsRfc(rfcTextBox.Text, false));
+            controlsValidations.Add(nameTextBox, Validator.IsAlphanumeric(nameTextBox.Text, true));
+            controlsValidations.Add(emailTextBox,emailEvaluated);
+            controlsValidations.Add(streetTextBox, Validator.IsAlphabetic(streetTextBox.Text, false));
+            controlsValidations.Add(externalNumberTextBox, Validator.IsInteger(externalNumberTextBox.Text, false));
+            controlsValidations.Add(internalNumberTextBox, Validator.IsInteger(internalNumberTextBox.Text, true));
+            controlsValidations.Add(suburbTextBox, Validator.IsAlphanumeric(suburbTextBox.Text, false));
+            controlsValidations.Add(municipalityTextBox, Validator.IsAlphabetic(municipalityTextBox.Text, false));
+            controlsValidations.Add(stateTextBox, Validator.IsAlphabetic(stateTextBox.Text, false));
+            controlsValidations.Add(countryTextBox, Validator.IsAlphabetic(countryTextBox.Text, false));
+            controlsValidations.Add(zipCodeTextBox, Validator.IsInteger(zipCodeTextBox.Text, false));
 
             if (emailEvaluated)
             {
@@ -116,7 +106,7 @@ namespace turtle
             {
                 emailTextBox.Text = emailAdded;
             }
-            return Validate(elements);
+            return Validator.Validate(controlsValidations);
         }
 
         /// <summary>
@@ -125,11 +115,11 @@ namespace turtle
         /// <returns></returns>
         private bool ValidateRequiredInformation()
         {
-            var elements = new Dictionary<Control, bool>();
-            elements.Add(ticketNumberTextBox, Validator.IsInteger(ticketNumberTextBox.Text, false));
-            elements.Add(subTotalTextBox, Validator.IsDecimal(subTotalTextBox.Text, false));
-            elements.Add(totalTextBox, Validator.IsDecimal(totalTextBox.Text, false));
-            return Validate(elements);
+            var controlsValidations = new Dictionary<Control, bool>();
+            controlsValidations.Add(ticketNumberTextBox, Validator.IsInteger(ticketNumberTextBox.Text, false));
+            controlsValidations.Add(subTotalTextBox, Validator.IsDecimal(subTotalTextBox.Text, false));
+            controlsValidations.Add(totalTextBox, Validator.IsDecimal(totalTextBox.Text, false));
+            return Validator.Validate(controlsValidations);
         }
 
         /// <summary>
@@ -138,15 +128,15 @@ namespace turtle
         /// <returns></returns>
         private bool ValidateOptionalInformation()
         {
-            var elements = new Dictionary<Control, bool>();
-            elements.Add(serialNumberTextBox, Validator.IsAlphanumeric(serialNumberTextBox.Text, true));
-            elements.Add(folioTextBox, Validator.IsInteger(folioTextBox.Text, true));
-            elements.Add(accountNumberTextBox, Validator.IsInteger(accountNumberTextBox.Text, true));
-            elements.Add(currencyTextBox, Validator.IsAlphabetic(currencyTextBox.Text, true));
-            elements.Add(exchangeRateTextBox, Validator.IsDecimal(exchangeRateTextBox.Text, true));
-            elements.Add(taxRegimeTextBox, Validator.IsAlphanumeric(taxRegimeTextBox.Text, true));
-            elements.Add(notesTextBox, Validator.IsAlphanumeric(notesTextBox.Text, true));
-            return Validate(elements);
+            var controlsValidations = new Dictionary<Control, bool>();
+            controlsValidations.Add(serialNumberTextBox, Validator.IsAlphanumeric(serialNumberTextBox.Text, true));
+            controlsValidations.Add(folioTextBox, Validator.IsInteger(folioTextBox.Text, true));
+            controlsValidations.Add(accountNumberTextBox, Validator.IsInteger(accountNumberTextBox.Text, true));
+            controlsValidations.Add(currencyTextBox, Validator.IsAlphabetic(currencyTextBox.Text, true));
+            controlsValidations.Add(exchangeRateTextBox, Validator.IsDecimal(exchangeRateTextBox.Text, true));
+            controlsValidations.Add(taxRegimeTextBox, Validator.IsAlphanumeric(taxRegimeTextBox.Text, true));
+            controlsValidations.Add(notesTextBox, Validator.IsAlphanumeric(notesTextBox.Text, true));
+            return Validator.Validate(controlsValidations);
         }
 
         #endregion
@@ -200,14 +190,6 @@ namespace turtle
             Invoice.Currency = currencyTextBox.Text;
             Invoice.ExchangeRate = Convert.ToDecimal(exchangeRateTextBox.Text);
             Invoice.Notes = notesTextBox.Text;
-        }
-
-        private void SetNotValidColor(List<Control> controls)
-        {
-            foreach (var control in controls)
-            {
-                control.BackColor = Color.FromArgb(252,144,144);
-            }
         }
 
         private void addEmailButton_Click(object sender, EventArgs e)

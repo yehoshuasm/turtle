@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 
 namespace turtle.Utils
 {
@@ -106,5 +110,20 @@ namespace turtle.Utils
         }
 
         #endregion
+
+        public static bool Validate(Dictionary<Control, bool> controlsValidations)
+        {
+            var notValidControls = controlsValidations.Where(v => !v.Value);
+            SetNotValidColor(notValidControls.Select(v => v.Key).ToList());
+            return controlsValidations.Count == 0; // Si no hay elementos no válidos regresa verdadero
+        }
+
+        private static void SetNotValidColor(List<Control> controls)
+        {
+            foreach (var control in controls)
+            {
+                control.BackColor = Color.FromArgb(252, 144, 144);
+            }
+        }
     }
 }
