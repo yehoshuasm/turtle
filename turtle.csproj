@@ -49,6 +49,7 @@
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -115,6 +116,51 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Web References\mx.com.emitefacturacion.emitecfdi\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://emitecfdi.emitefacturacion.com.mx/ws.php%3fwsdl">
+      <UrlBehavior>Static</UrlBehavior>
+      <RelPath>Web References\mx.com.emitefacturacion.emitecfdi\</RelPath>
+      <UpdateFromURL>http://emitecfdi.emitefacturacion.com.mx/ws.php%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\mx.com.emitefacturacion.emitecfdi\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\mx.com.emitefacturacion.emitecfdi\Respuesta.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\mx.com.emitefacturacion.emitecfdi\RespuestaCFDIPDF.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\mx.com.emitefacturacion.emitecfdi\RespuestaPDF.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\mx.com.emitefacturacion.emitecfdi\RespuestaRoble.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\mx.com.emitefacturacion.emitecfdi\RespuestaVolvo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\mx.com.emitefacturacion.emitecfdi\ws.wsdl" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
   <ProjectExtensions>

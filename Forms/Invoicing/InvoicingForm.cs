@@ -6,12 +6,13 @@ using System.Windows.Forms;
 using turtle.Model;
 using turtle.Utils;
 using turtle.Forms.Invoicing;
+using turtle.mx.com.emitefacturacion.emitecfdi;
 
 namespace turtle
 {
     public partial class InvoicingForm : Form
     {
-        private Invoice Invoice;
+        Invoice Invoice;
         String emailAdded;
 
         /// <summary>
@@ -20,7 +21,10 @@ namespace turtle
         public InvoicingForm()
         {
             InitializeComponent();
-            Invoice = new Invoice();
+            Invoice = new Invoice
+            {
+                Concepts = new List<Concept>()
+            };
         }
 
         private void receiverInformationNextButton_Click(object sender, EventArgs e)
@@ -48,7 +52,9 @@ namespace turtle
             if (ValidateOptionalInformation())
             {
                 SetOptionalInformation();
-                new ConceptsForm().Show();
+                new ConceptsForm(Invoice.Concepts).Show();
+                optionalInformationPanel.Hide();
+                generatePanel.Show();
             }
         }
 
@@ -202,6 +208,30 @@ namespace turtle
         private void GotFocus_SetValidColor(object sender, EventArgs e)
         {
             ((TextBox)sender).BackColor = Color.White;
+        }
+
+        private string GenerateInvoice()
+        {
+            string invoice = @" <factura tipoComprobante='ingreso' serie='ZR' folio='19463' subtotal='" + Invoice.SubTotal + @"' 
+                            total='" + Invoice.Total + @"' formaDePago='Pago en una sola exhibicion' correoCliente='yehoshua.jsm@gmail.com'
+                            noTicket='" + Invoice.TicketNumber + @"' lugarExpedicion='Mexico' metodoPago='No Identificado' numeroCuentaPago='111' 
+                            moneda='MXN' tipoCambio='1.0' comentario='Baila como Juana la cubana'>
+                            <emisor><RegimenFiscal Regimen='Regimen General de Ley Personas Morales'/></emisor>
+                           <receptor rfc='INE0804164Z7' nombre='INSTITUTO NACIONAL DE ESTADISTICA Y GEOGRAFIA' calle='AV. HEROE DE NACOZARI SUR'
+                            noExterior='2301' noInterior='2' colonia='Col. JARDINES DEL PARQUE' municipio='AGUASCALIENTES' estado='AGUASCALIENTES' 
+                            cp='20276' pais='Mexico'/>
+                            <conceptos>
+                                <concepto cantidad='1' unidad='Pieza' descripcion='Articulo de muestrario' precioUnitario='220.6900' iva='35.3104' tasaIva='16'/>
+                            </conceptos>
+                            </factura>";
+            return invoice;
+        }
+
+        private void generateButton_Click(object sender, EventArgs e)
+        {
+            var cfdi = new CFDIEmite();
+            cfdi.generarCFDI(GenerateInvoice(),
+                "AAA010101AAA", "Casa_Tono13");
         }
     }
 }

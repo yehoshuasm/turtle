@@ -1,6 +1,6 @@
 ﻿namespace turtle.Model
 {
-    class Concept
+    public class Concept
     {
         public int Quantity { get; set; }
         public string Unit { get; set; }

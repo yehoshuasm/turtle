@@ -94,9 +94,12 @@
             this.serialNumberTextBox = new System.Windows.Forms.TextBox();
             this.serialNumberLabel = new System.Windows.Forms.Label();
             this.optionalInformationLabel = new System.Windows.Forms.Label();
+            this.generatePanel = new System.Windows.Forms.Panel();
+            this.generateButton = new System.Windows.Forms.Button();
             this.receiverInformationPanel.SuspendLayout();
             this.requiredInformationPanel.SuspendLayout();
             this.optionalInformationPanel.SuspendLayout();
+            this.generatePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // receiverInformationPanel
@@ -691,12 +694,30 @@
             this.optionalInformationLabel.Size = new System.Drawing.Size(220, 20);
             this.optionalInformationLabel.Text = "Información Opcional";
             // 
+            // generatePanel
+            // 
+            this.generatePanel.Controls.Add(this.generateButton);
+            this.generatePanel.Location = new System.Drawing.Point(0, 0);
+            this.generatePanel.Name = "generatePanel";
+            this.generatePanel.Size = new System.Drawing.Size(225, 169);
+            this.generatePanel.Visible = false;
+            // 
+            // generateButton
+            // 
+            this.generateButton.Location = new System.Drawing.Point(82, 37);
+            this.generateButton.Name = "generateButton";
+            this.generateButton.Size = new System.Drawing.Size(72, 20);
+            this.generateButton.TabIndex = 0;
+            this.generateButton.Text = "Generar";
+            this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
+            // 
             // InvoicingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(227, 346);
+            this.ClientSize = new System.Drawing.Size(231, 346);
+            this.Controls.Add(this.generatePanel);
             this.Controls.Add(this.receiverInformationPanel);
             this.Controls.Add(this.optionalInformationPanel);
             this.Controls.Add(this.requiredInformationPanel);
@@ -706,6 +727,7 @@
             this.receiverInformationPanel.ResumeLayout(false);
             this.requiredInformationPanel.ResumeLayout(false);
             this.optionalInformationPanel.ResumeLayout(false);
+            this.generatePanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -776,5 +798,7 @@
         private System.Windows.Forms.Button requiredInformationBackButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button addEmailButton;
+        private System.Windows.Forms.Panel generatePanel;
+        private System.Windows.Forms.Button generateButton;
     }
 }

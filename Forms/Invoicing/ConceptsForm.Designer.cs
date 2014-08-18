@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.conceptPanel = new System.Windows.Forms.Panel();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.unitComboBox = new System.Windows.Forms.ComboBox();
             this.descriptionLabel = new System.Windows.Forms.Label();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
-            this.addbutton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             this.ivaRateLabel = new System.Windows.Forms.Label();
             this.ivaRateTextBox = new System.Windows.Forms.TextBox();
             this.ivaTextBox = new System.Windows.Forms.TextBox();
@@ -43,34 +46,62 @@
             this.quantityLabel = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.conceptsPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.conceptsDataGrid = new System.Windows.Forms.DataGrid();
+            this.addConceptButton = new System.Windows.Forms.Button();
             this.conceptsLabel = new System.Windows.Forms.Label();
-            this.unitComboBox = new System.Windows.Forms.ComboBox();
-            this.panel1.SuspendLayout();
+            this.closeButton = new System.Windows.Forms.Button();
+            this.conceptPanel.SuspendLayout();
             this.conceptsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // conceptPanel
             // 
-            this.panel1.Controls.Add(this.unitComboBox);
-            this.panel1.Controls.Add(this.descriptionLabel);
-            this.panel1.Controls.Add(this.descriptionTextBox);
-            this.panel1.Controls.Add(this.addbutton);
-            this.panel1.Controls.Add(this.ivaRateLabel);
-            this.panel1.Controls.Add(this.ivaRateTextBox);
-            this.panel1.Controls.Add(this.ivaTextBox);
-            this.panel1.Controls.Add(this.ivaLabel);
-            this.panel1.Controls.Add(this.priceTextBox);
-            this.panel1.Controls.Add(this.priceLabel);
-            this.panel1.Controls.Add(this.unitLabel);
-            this.panel1.Controls.Add(this.quantityTextBox);
-            this.panel1.Controls.Add(this.quantityLabel);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Location = new System.Drawing.Point(387, 43);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(225, 220);
+            this.conceptPanel.Controls.Add(this.cancelButton);
+            this.conceptPanel.Controls.Add(this.deleteButton);
+            this.conceptPanel.Controls.Add(this.unitComboBox);
+            this.conceptPanel.Controls.Add(this.descriptionLabel);
+            this.conceptPanel.Controls.Add(this.descriptionTextBox);
+            this.conceptPanel.Controls.Add(this.addButton);
+            this.conceptPanel.Controls.Add(this.ivaRateLabel);
+            this.conceptPanel.Controls.Add(this.ivaRateTextBox);
+            this.conceptPanel.Controls.Add(this.ivaTextBox);
+            this.conceptPanel.Controls.Add(this.ivaLabel);
+            this.conceptPanel.Controls.Add(this.priceTextBox);
+            this.conceptPanel.Controls.Add(this.priceLabel);
+            this.conceptPanel.Controls.Add(this.unitLabel);
+            this.conceptPanel.Controls.Add(this.quantityTextBox);
+            this.conceptPanel.Controls.Add(this.quantityLabel);
+            this.conceptPanel.Controls.Add(this.label14);
+            this.conceptPanel.Location = new System.Drawing.Point(0, 0);
+            this.conceptPanel.Name = "conceptPanel";
+            this.conceptPanel.Size = new System.Drawing.Size(225, 220);
+            this.conceptPanel.Visible = false;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(118, 189);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(72, 20);
+            this.cancelButton.TabIndex = 48;
+            this.cancelButton.Text = "Cancelar";
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(118, 189);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(72, 20);
+            this.deleteButton.TabIndex = 47;
+            this.deleteButton.Text = "Eliminar";
+            this.deleteButton.Visible = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // unitComboBox
+            // 
+            this.unitComboBox.Location = new System.Drawing.Point(118, 60);
+            this.unitComboBox.Name = "unitComboBox";
+            this.unitComboBox.Size = new System.Drawing.Size(100, 23);
+            this.unitComboBox.TabIndex = 39;
             // 
             // descriptionLabel
             // 
@@ -87,14 +118,14 @@
             this.descriptionTextBox.Size = new System.Drawing.Size(100, 23);
             this.descriptionTextBox.TabIndex = 32;
             // 
-            // addbutton
+            // addButton
             // 
-            this.addbutton.Location = new System.Drawing.Point(80, 189);
-            this.addbutton.Name = "addbutton";
-            this.addbutton.Size = new System.Drawing.Size(72, 20);
-            this.addbutton.TabIndex = 1;
-            this.addbutton.Text = "Añadir";
-            this.addbutton.Click += new System.EventHandler(this.button3_Click);
+            this.addButton.Location = new System.Drawing.Point(40, 189);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(72, 20);
+            this.addButton.TabIndex = 1;
+            this.addButton.Text = "Añadir";
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // ivaRateLabel
             // 
@@ -178,37 +209,29 @@
             // 
             // conceptsPanel
             // 
-            this.conceptsPanel.Controls.Add(this.button1);
-            this.conceptsPanel.Controls.Add(this.textBox12);
-            this.conceptsPanel.Controls.Add(this.label7);
+            this.conceptsPanel.Controls.Add(this.conceptsDataGrid);
+            this.conceptsPanel.Controls.Add(this.addConceptButton);
             this.conceptsPanel.Controls.Add(this.conceptsLabel);
             this.conceptsPanel.Location = new System.Drawing.Point(0, 0);
             this.conceptsPanel.Name = "conceptsPanel";
-            this.conceptsPanel.Size = new System.Drawing.Size(225, 452);
+            this.conceptsPanel.Size = new System.Drawing.Size(225, 308);
             // 
-            // button1
+            // conceptsDataGrid
             // 
-            this.button1.Location = new System.Drawing.Point(62, 112);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 20);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Añadir";
+            this.conceptsDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.conceptsDataGrid.Location = new System.Drawing.Point(0, 63);
+            this.conceptsDataGrid.Name = "conceptsDataGrid";
+            this.conceptsDataGrid.Size = new System.Drawing.Size(225, 200);
+            this.conceptsDataGrid.TabIndex = 3;
             // 
-            // textBox12
+            // addConceptButton
             // 
-            this.textBox12.Location = new System.Drawing.Point(118, 35);
-            this.textBox12.MaxLength = 13;
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 23);
-            this.textBox12.TabIndex = 2;
-            // 
-            // label7
-            // 
-            this.label7.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.label7.Location = new System.Drawing.Point(1, 38);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(115, 20);
-            this.label7.Text = "Cantidad";
+            this.addConceptButton.Location = new System.Drawing.Point(53, 38);
+            this.addConceptButton.Name = "addConceptButton";
+            this.addConceptButton.Size = new System.Drawing.Size(110, 20);
+            this.addConceptButton.TabIndex = 1;
+            this.addConceptButton.Text = "Añadir concepto";
+            this.addConceptButton.Click += new System.EventHandler(this.addConceptButton_Click);
             // 
             // conceptsLabel
             // 
@@ -218,24 +241,27 @@
             this.conceptsLabel.Size = new System.Drawing.Size(220, 20);
             this.conceptsLabel.Text = "Conceptos";
             // 
-            // unitComboBox
+            // closeButton
             // 
-            this.unitComboBox.Location = new System.Drawing.Point(118, 60);
-            this.unitComboBox.Name = "unitComboBox";
-            this.unitComboBox.Size = new System.Drawing.Size(100, 23);
-            this.unitComboBox.TabIndex = 39;
+            this.closeButton.Location = new System.Drawing.Point(53, 269);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(110, 20);
+            this.closeButton.TabIndex = 2;
+            this.closeButton.Text = "Listo";
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // ConceptsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(638, 455);
+            this.ClientSize = new System.Drawing.Size(229, 311);
+            this.Controls.Add(this.closeButton);
             this.Controls.Add(this.conceptsPanel);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.conceptPanel);
             this.Name = "ConceptsForm";
             this.Text = "Concepts";
-            this.panel1.ResumeLayout(false);
+            this.conceptPanel.ResumeLayout(false);
             this.conceptsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -243,10 +269,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel conceptPanel;
         private System.Windows.Forms.Label descriptionLabel;
         private System.Windows.Forms.TextBox descriptionTextBox;
-        private System.Windows.Forms.Button addbutton;
+        private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Label ivaRateLabel;
         private System.Windows.Forms.TextBox ivaRateTextBox;
         private System.Windows.Forms.TextBox ivaTextBox;
@@ -258,10 +284,12 @@
         private System.Windows.Forms.Label quantityLabel;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel conceptsPanel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button addConceptButton;
         private System.Windows.Forms.Label conceptsLabel;
         private System.Windows.Forms.ComboBox unitComboBox;
+        private System.Windows.Forms.DataGrid conceptsDataGrid;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button closeButton;
     }
 }

@@ -3,7 +3,7 @@
     /// <summary>
     /// Modelo para Dirección
     /// </summary>
-    class Address
+    public class Address
     {
         public string Street { get; set; }
         public int ExternalNumber { get; set; }

@@ -5,7 +5,7 @@ namespace turtle.Model
     /// <summary>
     /// Modelo para Factura
     /// </summary>
-    class Invoice
+    public class Invoice
     {
         // Required Information
         public string ReceipType { get; set; }

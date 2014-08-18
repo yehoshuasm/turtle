@@ -113,9 +113,9 @@ namespace turtle.Utils
 
         public static bool Validate(Dictionary<Control, bool> controlsValidations)
         {
-            var notValidControls = controlsValidations.Where(v => !v.Value);
+            var notValidControls = controlsValidations.Where(v => !v.Value).ToList();
             SetNotValidColor(notValidControls.Select(v => v.Key).ToList());
-            return controlsValidations.Count == 0; // Si no hay elementos no válidos regresa verdadero
+            return notValidControls.Count == 0; // Si no hay elementos no válidos regresa verdadero
         }
 
         private static void SetNotValidColor(List<Control> controls)

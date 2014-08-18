@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://emitecfdi.emitefacturacion.com.mx/ws.php" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://emitecfdi.emitefacturacion.com.mx/ws.php">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xsd:complexType name="Respuesta">
+        <xsd:all>
+          <xsd:element name="mensaje" type="xsd:string" />
+          <xsd:element name="comprobante" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="RespuestaPDF">
+        <xsd:all>
+          <xsd:element name="mensaje" type="xsd:string" />
+          <xsd:element name="pdf" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="RespuestaVolvo">
+        <xsd:all>
+          <xsd:element name="mensaje" type="xsd:string" />
+          <xsd:element name="uuid" type="xsd:string" />
+          <xsd:element name="folio" type="xsd:string" />
+          <xsd:element name="dominio" type="xsd:string" />
+          <xsd:element name="ordenVenta" type="xsd:string" />
+          <xsd:element name="fechaEmision" type="xsd:string" />
+          <xsd:element name="fecha" type="xsd:string" />
+          <xsd:element name="hora" type="xsd:string" />
+          <xsd:element name="pdf" type="xsd:string" />
+          <xsd:element name="comprobante" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="RespuestaRoble">
+        <xsd:all>
+          <xsd:element name="mensaje" type="xsd:string" />
+          <xsd:element name="qr" type="xsd:string" />
+          <xsd:element name="pdf" type="xsd:string" />
+          <xsd:element name="comprobante" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="RespuestaCFDIPDF">
+        <xsd:all>
+          <xsd:element name="mensaje" type="xsd:string" />
+          <xsd:element name="pdf" type="xsd:string" />
+          <xsd:element name="comprobante" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="generarCFDIRequest">
+    <wsdl:part name="comprobante" type="xsd:string" />
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="generarCFDIResponse">
+    <wsdl:part name="respuesta" type="tns:Respuesta" />
+  </wsdl:message>
+  <wsdl:message name="generarCFDIPDFRequest">
+    <wsdl:part name="comprobante" type="xsd:string" />
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="generarCFDIPDFResponse">
+    <wsdl:part name="respuesta" type="tns:RespuestaCFDIPDF" />
+  </wsdl:message>
+  <wsdl:message name="generarCFDIVolvoRequest">
+    <wsdl:part name="comprobante" type="xsd:string" />
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="generarCFDIVolvoResponse">
+    <wsdl:part name="respuesta" type="tns:RespuestaVolvo" />
+  </wsdl:message>
+  <wsdl:message name="generarCFDIRobleRequest">
+    <wsdl:part name="comprobante" type="xsd:string" />
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="generarCFDIRobleResponse">
+    <wsdl:part name="respuesta" type="tns:RespuestaRoble" />
+  </wsdl:message>
+  <wsdl:message name="generarCFDICTRequest">
+    <wsdl:part name="comprobante" type="xsd:string" />
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="transaccion" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="generarCFDICTResponse">
+    <wsdl:part name="respuesta" type="tns:RespuestaCFDIPDF" />
+  </wsdl:message>
+  <wsdl:message name="generarUTF8Request">
+    <wsdl:part name="comprobante" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="generarUTF8Response">
+    <wsdl:part name="respuesta" type="tns:Respuesta" />
+  </wsdl:message>
+  <wsdl:message name="consultaSaldoRequest">
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="consultaSaldoResponse">
+    <wsdl:part name="respuestaSaldo" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cancelarComprobantesRequest">
+    <wsdl:part name="uuid" type="xsd:string" />
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cancelarComprobantesResponse">
+    <wsdl:part name="respuesta" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="generarAddendaRequest">
+    <wsdl:part name="comprobante" type="xsd:string" />
+    <wsdl:part name="addenda" type="xsd:string" />
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="generarAddendaResponse">
+    <wsdl:part name="respuesta" type="tns:RespuestaVolvo" />
+  </wsdl:message>
+  <wsdl:message name="generarPDFRequest">
+    <wsdl:part name="comprobante" type="xsd:string" />
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="generarPDFResponse">
+    <wsdl:part name="respuesta" type="tns:RespuestaPDF" />
+  </wsdl:message>
+  <wsdl:message name="generarDeTXTaCFDIRequest">
+    <wsdl:part name="comprobante" type="xsd:string" />
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="generarDeTXTaCFDIResponse">
+    <wsdl:part name="respuesta" type="tns:RespuestaCFDIPDF" />
+  </wsdl:message>
+  <wsdl:message name="generarCFDaCFDIPDFRequest">
+    <wsdl:part name="comprobante" type="xsd:string" />
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="generarCFDaCFDIPDFResponse">
+    <wsdl:part name="respuesta" type="tns:RespuestaCFDIPDF" />
+  </wsdl:message>
+  <wsdl:portType name="CFDIEmitePortType">
+    <wsdl:operation name="generarCFDI">
+      <wsdl:input message="tns:generarCFDIRequest" />
+      <wsdl:output message="tns:generarCFDIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="generarCFDIPDF">
+      <wsdl:input message="tns:generarCFDIPDFRequest" />
+      <wsdl:output message="tns:generarCFDIPDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="generarCFDIVolvo">
+      <wsdl:input message="tns:generarCFDIVolvoRequest" />
+      <wsdl:output message="tns:generarCFDIVolvoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="generarCFDIRoble">
+      <wsdl:input message="tns:generarCFDIRobleRequest" />
+      <wsdl:output message="tns:generarCFDIRobleResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="generarCFDICT">
+      <wsdl:input message="tns:generarCFDICTRequest" />
+      <wsdl:output message="tns:generarCFDICTResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="generarUTF8">
+      <wsdl:input message="tns:generarUTF8Request" />
+      <wsdl:output message="tns:generarUTF8Response" />
+    </wsdl:operation>
+    <wsdl:operation name="consultaSaldo">
+      <wsdl:input message="tns:consultaSaldoRequest" />
+      <wsdl:output message="tns:consultaSaldoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelarComprobantes">
+      <wsdl:input message="tns:cancelarComprobantesRequest" />
+      <wsdl:output message="tns:cancelarComprobantesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="generarAddenda">
+      <wsdl:input message="tns:generarAddendaRequest" />
+      <wsdl:output message="tns:generarAddendaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="generarPDF">
+      <wsdl:input message="tns:generarPDFRequest" />
+      <wsdl:output message="tns:generarPDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="generarDeTXTaCFDI">
+      <wsdl:input message="tns:generarDeTXTaCFDIRequest" />
+      <wsdl:output message="tns:generarDeTXTaCFDIResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="generarCFDaCFDIPDF">
+      <wsdl:input message="tns:generarCFDaCFDIPDFRequest" />
+      <wsdl:output message="tns:generarCFDaCFDIPDFResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CFDIEmiteBinding" type="tns:CFDIEmitePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="generarCFDI">
+      <soap:operation soapAction="http://emitecfdi.emitefacturacion.com.mx/ws.php/generarCFDI" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarCFDIPDF">
+      <soap:operation soapAction="http://emitecfdi.emitefacturacion.com.mx/ws.php/generarCFDIPDF" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarCFDIVolvo">
+      <soap:operation soapAction="http://emitecfdi.emitefacturacion.com.mx/ws.php/generarCFDIVolvo" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarCFDIRoble">
+      <soap:operation soapAction="http://emitecfdi.emitefacturacion.com.mx/ws.php/generarCFDIRoble" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarCFDICT">
+      <soap:operation soapAction="http://emitecfdi.emitefacturacion.com.mx/ws.php/generarCFDICT" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarUTF8">
+      <soap:operation soapAction="http://emitecfdi.emitefacturacion.com.mx/ws.php/generarUTF8" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaSaldo">
+      <soap:operation soapAction="http://emitecfdi.emitefacturacion.com.mx/ws.php/consultaSaldo" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelarComprobantes">
+      <soap:operation soapAction="http://emitecfdi.emitefacturacion.com.mx/ws.php/cancelarComprobantes" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarAddenda">
+      <soap:operation soapAction="http://emitecfdi.emitefacturacion.com.mx/ws.php/generarAddenda" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarPDF">
+      <soap:operation soapAction="http://emitecfdi.emitefacturacion.com.mx/ws.php/generarPDF" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarDeTXTaCFDI">
+      <soap:operation soapAction="http://emitecfdi.emitefacturacion.com.mx/ws.php/generarDeTXTaCFDI" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarCFDaCFDIPDF">
+      <soap:operation soapAction="http://emitecfdi.emitefacturacion.com.mx/ws.php/generarCFDaCFDIPDF" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://emitecfdi.emitefacturacion.com.mx/ws.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CFDIEmite">
+    <wsdl:port name="CFDIEmitePort" binding="tns:CFDIEmiteBinding">
+      <soap:address location="http://emitecfdi.emitefacturacion.com.mx/ws.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
