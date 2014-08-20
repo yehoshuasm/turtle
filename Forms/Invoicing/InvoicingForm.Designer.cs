@@ -717,10 +717,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(231, 346);
+            this.Controls.Add(this.requiredInformationPanel);
             this.Controls.Add(this.generatePanel);
             this.Controls.Add(this.receiverInformationPanel);
             this.Controls.Add(this.optionalInformationPanel);
-            this.Controls.Add(this.requiredInformationPanel);
             this.Menu = this.invoicingMenu;
             this.Name = "InvoicingForm";
             this.Text = "Facturación";
