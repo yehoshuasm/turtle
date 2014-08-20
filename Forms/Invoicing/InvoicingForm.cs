@@ -152,11 +152,11 @@ namespace turtle
         /// </summary>
         private void SetReceiverInformation()
         {
-            int internalNumber=0;
+            /*int internalNumber=0;
             if (internalNumberTextBox.Text != null && !internalNumberTextBox.Text.Equals(""))
             {
                 internalNumber = Convert.ToInt32(internalNumberTextBox.Text);
-            }
+            }*/
             Invoice.Client = new Client
             {
                 Rfc = rfcTextBox.Text,
@@ -165,14 +165,14 @@ namespace turtle
                 Address = new Address
                 {
                     Street = streetTextBox.Text,
-                    ExternalNumber = Convert.ToInt32(externalNumberTextBox.Text),
-                    
-                    InternalNumber = internalNumber,
+                    ExternalNumber = (externalNumberTextBox.Text!=""?Convert.ToInt32(externalNumberTextBox.Text):0),
+
+                    InternalNumber = (internalNumberTextBox.Text != "" ? Convert.ToInt32(internalNumberTextBox.Text) : 0),
                     Suburb = suburbTextBox.Text,
                     Municipality = municipalityTextBox.Text,
                     State = stateTextBox.Text,
                     Country = countryTextBox.Text,
-                    ZipCode = Convert.ToInt32(zipCodeTextBox.Text)
+                    ZipCode = (zipCodeTextBox.Text!=""?Convert.ToInt32(zipCodeTextBox.Text):0)
                 }
             };
         }
@@ -183,12 +183,12 @@ namespace turtle
         private void SetRequiredInformation()
         {
             Invoice.ReceipType = receipTypeComboBox.SelectedText;
-           // Invoice.TicketNumber = Convert.ToInt32(ticketNumberTextBox.Text);
+            Invoice.TicketNumber = (ticketNumberTextBox.Text!=""?Convert.ToInt32(ticketNumberTextBox.Text):0);
             Invoice.PlaceOfIssue = placeOfIssueComboBox.SelectedText;
             Invoice.PaymentMethod = paymentMethodComboBox.SelectedText;
             Invoice.PaymentForm = paymentFormComboBox.SelectedText;
-            //Invoice.SubTotal = Convert.ToDecimal(subTotalTextBox.SelectedText);
-            //Invoice.Total = Convert.ToDecimal(totalTextBox.Text);
+            Invoice.SubTotal = (subTotalTextBox.Text!=""?Convert.ToDecimal(subTotalTextBox.Text):0);
+            Invoice.Total = (totalTextBox.Text!=""?Convert.ToDecimal(totalTextBox.Text):0);
         }
 
         /// <summary>
@@ -197,10 +197,10 @@ namespace turtle
         private void SetOptionalInformation()
         {
             Invoice.SerialNumber = serialNumberTextBox.Text;
-            //Invoice.Folio = Convert.ToInt32(folioTextBox.Text);
+            Invoice.Folio = (folioTextBox.Text!=""?Convert.ToInt32(folioTextBox.Text):0);
             Invoice.AccountNumber = accountNumberTextBox.Text;
             Invoice.Currency = currencyTextBox.Text;
-            //Invoice.ExchangeRate = Convert.ToDecimal(exchangeRateTextBox.Text);
+            Invoice.ExchangeRate = (exchangeRateTextBox.Text!=""?Convert.ToDecimal(exchangeRateTextBox.Text):0);
             Invoice.Notes = notesTextBox.Text;
         }
 
