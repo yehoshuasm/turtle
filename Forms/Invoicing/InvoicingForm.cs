@@ -152,11 +152,7 @@ namespace turtle
         /// </summary>
         private void SetReceiverInformation()
         {
-            /*int internalNumber=0;
-            if (internalNumberTextBox.Text != null && !internalNumberTextBox.Text.Equals(""))
-            {
-                internalNumber = Convert.ToInt32(internalNumberTextBox.Text);
-            }*/
+            
             Invoice.Client = new Client
             {
                 Rfc = rfcTextBox.Text,
