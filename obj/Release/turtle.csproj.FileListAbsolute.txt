@@ -1,0 +1,11 @@
+C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle\bin\Release\turtle.exe
+C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle\bin\Release\turtle.pdb
+C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle\obj\Release\turtle.InvoicingForm.resources
+C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle\obj\Release\turtle.Forms.Invoicing.ConceptsForm.resources
+C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle\obj\Release\turtle.LoginForm.resources
+C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle\obj\Release\turtle.MenuForm.resources
+C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle\obj\Release\turtle.Properties.Resources.resources
+C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle\obj\Release\turtle.csproj.GenerateResource.Cache
+C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle\obj\Release\turtle.exe
+C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle\obj\Release\turtle.pdb

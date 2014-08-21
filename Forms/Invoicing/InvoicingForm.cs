@@ -99,7 +99,7 @@ namespace turtle
 
             if (emailEvaluated)
             {
-                if (!emailAdded.Equals(""))
+                if (emailAdded!=null&&!emailAdded.Equals(""))
                 {
                     emailTextBox.Text = emailAdded + "," + emailTextBox.Text;
                 }
@@ -152,6 +152,7 @@ namespace turtle
         /// </summary>
         private void SetReceiverInformation()
         {
+            
             Invoice.Client = new Client
             {
                 Rfc = rfcTextBox.Text,
@@ -160,14 +161,15 @@ namespace turtle
                 Address = new Address
                 {
                     Street = streetTextBox.Text,
-                    ExternalNumber = Convert.ToInt32(externalNumberTextBox.Text),
-                    InternalNumber = Convert.ToInt32(internalNumberTextBox.Text),
+                    ExternalNumber = (externalNumberTextBox.Text!=""?Convert.ToInt32(externalNumberTextBox.Text):0),
+
+                    InternalNumber = (internalNumberTextBox.Text != "" ? Convert.ToInt32(internalNumberTextBox.Text) : 0),
                     Suburb = suburbTextBox.Text,
                     Municipality = municipalityTextBox.Text,
                     State = stateTextBox.Text,
                     Country = countryTextBox.Text,
-                    ZipCode = Convert.ToInt32(zipCodeTextBox.Text)
-                },
+                    ZipCode = (zipCodeTextBox.Text!=""?Convert.ToInt32(zipCodeTextBox.Text):0)
+                }
             };
         }
 
@@ -177,12 +179,12 @@ namespace turtle
         private void SetRequiredInformation()
         {
             Invoice.ReceipType = receipTypeComboBox.SelectedText;
-            Invoice.TicketNumber = Convert.ToInt32(ticketNumberTextBox.Text);
+            Invoice.TicketNumber = (ticketNumberTextBox.Text!=""?Convert.ToInt32(ticketNumberTextBox.Text):0);
             Invoice.PlaceOfIssue = placeOfIssueComboBox.SelectedText;
             Invoice.PaymentMethod = paymentMethodComboBox.SelectedText;
             Invoice.PaymentForm = paymentFormComboBox.SelectedText;
-            Invoice.SubTotal = Convert.ToDecimal(subTotalTextBox.SelectedText);
-            Invoice.Total = Convert.ToDecimal(totalTextBox.Text);
+            Invoice.SubTotal = (subTotalTextBox.Text!=""?Convert.ToDecimal(subTotalTextBox.Text):0);
+            Invoice.Total = (totalTextBox.Text!=""?Convert.ToDecimal(totalTextBox.Text):0);
         }
 
         /// <summary>
@@ -191,10 +193,10 @@ namespace turtle
         private void SetOptionalInformation()
         {
             Invoice.SerialNumber = serialNumberTextBox.Text;
-            Invoice.Folio = Convert.ToInt32(folioTextBox.Text);
+            Invoice.Folio = (folioTextBox.Text!=""?Convert.ToInt32(folioTextBox.Text):0);
             Invoice.AccountNumber = accountNumberTextBox.Text;
             Invoice.Currency = currencyTextBox.Text;
-            Invoice.ExchangeRate = Convert.ToDecimal(exchangeRateTextBox.Text);
+            Invoice.ExchangeRate = (exchangeRateTextBox.Text!=""?Convert.ToDecimal(exchangeRateTextBox.Text):0);
             Invoice.Notes = notesTextBox.Text;
         }
 
@@ -212,9 +214,9 @@ namespace turtle
 
         private string GenerateInvoice()
         {
-            string invoice = @" <factura tipoComprobante='ingreso' serie='ZR' folio='19463' subtotal='" + Invoice.SubTotal + @"' 
-                            total='" + Invoice.Total + @"' formaDePago='Pago en una sola exhibicion' correoCliente='yehoshua.jsm@gmail.com'
-                            noTicket='" + Invoice.TicketNumber + @"' lugarExpedicion='Mexico' metodoPago='No Identificado' numeroCuentaPago='111' 
+            string invoice = @"<?xml version='1.0' encoding='UTF-8' ?> <factura tipoComprobante='ingreso' serie='ZR' folio='19463' subtotal='" + Invoice.SubTotal + @"' 
+                            total='" + Invoice.Total + @"' formaDePago='Pago en una sola exhibicion' correoCliente='yehoshua.jsm@live.com.mx'
+                            noTicket='" + Invoice.TicketNumber + @"' lugarExpedicion='Mexico' metodoPago='No Identificado' numeroCuentaPago='1111' 
                             moneda='MXN' tipoCambio='1.0' comentario='Baila como Juana la cubana'>
                             <emisor><RegimenFiscal Regimen='Regimen General de Ley Personas Morales'/></emisor>
                            <receptor rfc='INE0804164Z7' nombre='INSTITUTO NACIONAL DE ESTADISTICA Y GEOGRAFIA' calle='AV. HEROE DE NACOZARI SUR'
@@ -230,8 +232,11 @@ namespace turtle
         private void generateButton_Click(object sender, EventArgs e)
         {
             var cfdi = new CFDIEmite();
-            cfdi.generarCFDI(GenerateInvoice(),
+                         
+            turtle.mx.com.emitefacturacion.emitecfdi.Respuesta respuesta=cfdi.generarCFDI(GenerateInvoice(),
                 "AAA010101AAA", "Casa_Tono13");
+           
+            MessageBox.Show(respuesta.mensaje.ToString(), "Respuesta");
         }
     }
 }
