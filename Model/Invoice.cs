@@ -24,7 +24,7 @@ namespace turtle.Model
         public string TaxRegime { get; set; }
         public string Notes { get; set; }
         // Receiver Information
-        public Client Client { get; set; }
+        public Receiver Receiver { get; set; }
         public List<string> Emails { get; set; }
         public int Sampling { get; set; }
         public int TotalSampling { get; set; }

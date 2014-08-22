@@ -6,8 +6,8 @@
     public class Address
     {
         public string Street { get; set; }
-        public int ExternalNumber { get; set; }
-        public int InternalNumber { get; set; }
+        public string ExternalNumber { get; set; }
+        public string InternalNumber { get; set; }
         public string Suburb { get; set; }
         public string Municipality { get; set; }
         public string State { get; set; }

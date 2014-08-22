@@ -83,7 +83,7 @@
       <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Address.cs" />
-    <Compile Include="Model\Client.cs" />
+    <Compile Include="Model\Receiver.cs" />
     <Compile Include="Model\Concept.cs" />
     <Compile Include="Model\Login.cs" />
     <Compile Include="Model\Invoice.cs" />

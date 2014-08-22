@@ -74,7 +74,7 @@
             this.conceptPanel.Controls.Add(this.label14);
             this.conceptPanel.Location = new System.Drawing.Point(0, 0);
             this.conceptPanel.Name = "conceptPanel";
-            this.conceptPanel.Size = new System.Drawing.Size(225, 220);
+            this.conceptPanel.Size = new System.Drawing.Size(225, 305);
             this.conceptPanel.Visible = false;
             // 
             // cancelButton

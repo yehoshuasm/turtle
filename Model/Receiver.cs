@@ -3,7 +3,7 @@
     /// <summary>
     /// Modelo para Cliente
     /// </summary>
-    public class Client
+    public class Receiver
     {
         public string Rfc { get; set; }
         public string Name { get; set; }

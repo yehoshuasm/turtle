@@ -65,11 +65,7 @@
             this.placeOfIssueComboBox = new System.Windows.Forms.ComboBox();
             this.receipTypeComboBox = new System.Windows.Forms.ComboBox();
             this.requiredInformationNextButton = new System.Windows.Forms.Button();
-            this.totalLabel = new System.Windows.Forms.Label();
-            this.subTotalLabel = new System.Windows.Forms.Label();
             this.paymentFormLabel = new System.Windows.Forms.Label();
-            this.totalTextBox = new System.Windows.Forms.TextBox();
-            this.subTotalTextBox = new System.Windows.Forms.TextBox();
             this.paymentMethodLabel = new System.Windows.Forms.Label();
             this.placeOfIssueLabel = new System.Windows.Forms.Label();
             this.ticketNumberTextBox = new System.Windows.Forms.TextBox();
@@ -96,6 +92,10 @@
             this.optionalInformationLabel = new System.Windows.Forms.Label();
             this.generatePanel = new System.Windows.Forms.Panel();
             this.generateButton = new System.Windows.Forms.Button();
+            this.totalTextBox = new System.Windows.Forms.TextBox();
+            this.totalLabel = new System.Windows.Forms.Label();
+            this.subTotalTextBox = new System.Windows.Forms.TextBox();
+            this.subTotalLabel = new System.Windows.Forms.Label();
             this.receiverInformationPanel.SuspendLayout();
             this.requiredInformationPanel.SuspendLayout();
             this.optionalInformationPanel.SuspendLayout();
@@ -433,22 +433,6 @@
             this.requiredInformationNextButton.Text = "Siguiente";
             this.requiredInformationNextButton.Click += new System.EventHandler(this.requiredInformationNextButton_Click);
             // 
-            // totalLabel
-            // 
-            this.totalLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.totalLabel.Location = new System.Drawing.Point(3, 188);
-            this.totalLabel.Name = "totalLabel";
-            this.totalLabel.Size = new System.Drawing.Size(115, 20);
-            this.totalLabel.Text = "Total";
-            // 
-            // subTotalLabel
-            // 
-            this.subTotalLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.subTotalLabel.Location = new System.Drawing.Point(3, 163);
-            this.subTotalLabel.Name = "subTotalLabel";
-            this.subTotalLabel.Size = new System.Drawing.Size(115, 20);
-            this.subTotalLabel.Text = "Sub Total";
-            // 
             // paymentFormLabel
             // 
             this.paymentFormLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
@@ -456,24 +440,6 @@
             this.paymentFormLabel.Name = "paymentFormLabel";
             this.paymentFormLabel.Size = new System.Drawing.Size(115, 20);
             this.paymentFormLabel.Text = "Forma de Pago";
-            // 
-            // totalTextBox
-            // 
-            this.totalTextBox.Location = new System.Drawing.Point(118, 185);
-            this.totalTextBox.MaxLength = 10;
-            this.totalTextBox.Name = "totalTextBox";
-            this.totalTextBox.Size = new System.Drawing.Size(100, 23);
-            this.totalTextBox.TabIndex = 16;
-            this.totalTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
-            // 
-            // subTotalTextBox
-            // 
-            this.subTotalTextBox.Location = new System.Drawing.Point(118, 160);
-            this.subTotalTextBox.MaxLength = 10;
-            this.subTotalTextBox.Name = "subTotalTextBox";
-            this.subTotalTextBox.Size = new System.Drawing.Size(100, 23);
-            this.subTotalTextBox.TabIndex = 15;
-            this.subTotalTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // paymentMethodLabel
             // 
@@ -711,6 +677,44 @@
             this.generateButton.Text = "Generar";
             this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
             // 
+            // totalTextBox
+            // 
+            this.totalTextBox.Location = new System.Drawing.Point(118, 185);
+            this.totalTextBox.MaxLength = 10;
+            this.totalTextBox.Name = "totalTextBox";
+            this.totalTextBox.Size = new System.Drawing.Size(100, 23);
+            this.totalTextBox.TabIndex = 16;
+            this.totalTextBox.Visible = false;
+            this.totalTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
+            // 
+            // totalLabel
+            // 
+            this.totalLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.totalLabel.Location = new System.Drawing.Point(3, 188);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(115, 20);
+            this.totalLabel.Text = "Total";
+            this.totalLabel.Visible = false;
+            // 
+            // subTotalTextBox
+            // 
+            this.subTotalTextBox.Location = new System.Drawing.Point(118, 160);
+            this.subTotalTextBox.MaxLength = 10;
+            this.subTotalTextBox.Name = "subTotalTextBox";
+            this.subTotalTextBox.Size = new System.Drawing.Size(100, 23);
+            this.subTotalTextBox.TabIndex = 15;
+            this.subTotalTextBox.Visible = false;
+            this.subTotalTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
+            // 
+            // subTotalLabel
+            // 
+            this.subTotalLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.subTotalLabel.Location = new System.Drawing.Point(3, 163);
+            this.subTotalLabel.Name = "subTotalLabel";
+            this.subTotalLabel.Size = new System.Drawing.Size(115, 20);
+            this.subTotalLabel.Text = "Sub Total";
+            this.subTotalLabel.Visible = false;
+            // 
             // InvoicingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -759,11 +763,7 @@
         private System.Windows.Forms.Button receiverInformationNextButton;
         private System.Windows.Forms.Panel requiredInformationPanel;
         private System.Windows.Forms.Button requiredInformationNextButton;
-        private System.Windows.Forms.Label totalLabel;
-        private System.Windows.Forms.Label subTotalLabel;
         private System.Windows.Forms.Label paymentFormLabel;
-        private System.Windows.Forms.TextBox totalTextBox;
-        private System.Windows.Forms.TextBox subTotalTextBox;
         private System.Windows.Forms.Label paymentMethodLabel;
         private System.Windows.Forms.Label placeOfIssueLabel;
         private System.Windows.Forms.TextBox ticketNumberTextBox;
@@ -800,5 +800,9 @@
         private System.Windows.Forms.Button addEmailButton;
         private System.Windows.Forms.Panel generatePanel;
         private System.Windows.Forms.Button generateButton;
+        private System.Windows.Forms.Label totalLabel;
+        private System.Windows.Forms.Label subTotalLabel;
+        private System.Windows.Forms.TextBox totalTextBox;
+        private System.Windows.Forms.TextBox subTotalTextBox;
     }
 }
