@@ -25,12 +25,8 @@ namespace turtle.Model
         public string Notes { get; set; }
         // Receiver Information
         public Receiver Receiver { get; set; }
-<<<<<<< HEAD
         //public List<string> Emails { get; set; }
         public string Emails { get; set; }
-=======
-        public List<string> Emails { get; set; }
->>>>>>> ba6c4e870f533cf3cae563291c02216d9915a5af
         public int Sampling { get; set; }
         public int TotalSampling { get; set; }
         // Concepts

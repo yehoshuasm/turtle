@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using turtle.Forms.Invoicing;
 using turtle.Model;
-using turtle.mx.com.emitefacturacion.emitecfdi;
 using turtle.Utils;
+using turtle.Forms.Invoicing;
+using turtle.mx.com.emitefacturacion.emitecfdi;
 
 namespace turtle
 {
@@ -52,9 +52,9 @@ namespace turtle
             if (ValidateOptionalInformation())
             {
                 SetOptionalInformation();
+                new ConceptsForm(Invoice.Concepts).Show();
                 optionalInformationPanel.Hide();
                 generatePanel.Show();
-                new ConceptsForm(Invoice.Concepts).Show();
             }
         }
 
@@ -87,7 +87,7 @@ namespace turtle
             var controlsValidations = new Dictionary<Control, bool>();
             controlsValidations.Add(rfcTextBox, Validator.IsRfc(rfcTextBox.Text, false));
             controlsValidations.Add(nameTextBox, Validator.IsAlphanumeric(nameTextBox.Text, true));
-            controlsValidations.Add(emailTextBox,Validator.IsEmail(emailTextBox.Text));
+            controlsValidations.Add(emailTextBox,emailEvaluated);
             controlsValidations.Add(streetTextBox, Validator.IsAlphabetic(streetTextBox.Text, false));
             controlsValidations.Add(externalNumberTextBox, Validator.IsInteger(externalNumberTextBox.Text, false));
             controlsValidations.Add(internalNumberTextBox, Validator.IsInteger(internalNumberTextBox.Text, true));
@@ -96,6 +96,22 @@ namespace turtle
             controlsValidations.Add(stateTextBox, Validator.IsAlphabetic(stateTextBox.Text, false));
             controlsValidations.Add(countryTextBox, Validator.IsAlphabetic(countryTextBox.Text, false));
             controlsValidations.Add(zipCodeTextBox, Validator.IsInteger(zipCodeTextBox.Text, false));
+
+            if (emailEvaluated)
+            {
+                if (emailAdded!=null&&!emailAdded.Equals(""))
+                {
+                    emailTextBox.Text = emailAdded + "," + emailTextBox.Text;
+                }
+                else
+                {
+                    emailTextBox.Text = emailAdded;
+                }
+            }
+            else
+            {
+                emailTextBox.Text = emailAdded;
+            }
             return Validator.Validate(controlsValidations);
         }
 
@@ -136,7 +152,6 @@ namespace turtle
         /// </summary>
         private void SetReceiverInformation()
         {
-<<<<<<< HEAD
             
             Invoice.Receiver = new Receiver
             {
@@ -144,29 +159,17 @@ namespace turtle
                 Name = (nameTextBox.Text!=""?nameTextBox.Text:"Nombre"),
                 Email = emailTextBox.Text,
                 //Email
-=======
-
-            Invoice.Receiver = new Receiver
-            {
-                Rfc = rfcTextBox.Text,
-                Name = nameTextBox.Text,
-                Email = emailTextBox.Text,
->>>>>>> ba6c4e870f533cf3cae563291c02216d9915a5af
                 Address = new Address
                 {
                     Street = streetTextBox.Text,
                     ExternalNumber = (externalNumberTextBox.Text),
 
-<<<<<<< HEAD
                     InternalNumber = (internalNumberTextBox.Text != "" ? internalNumberTextBox.Text : "0" ),
-=======
-                    InternalNumber = (internalNumberTextBox.Text),
->>>>>>> ba6c4e870f533cf3cae563291c02216d9915a5af
                     Suburb = suburbTextBox.Text,
                     Municipality = municipalityTextBox.Text,
                     State = stateTextBox.Text,
                     Country = countryTextBox.Text,
-                    ZipCode = (zipCodeTextBox.Text != "" ? Convert.ToInt32(zipCodeTextBox.Text) : 0)
+                    ZipCode = (zipCodeTextBox.Text!=""?Convert.ToInt32(zipCodeTextBox.Text):0)
                 }
             };
         }
@@ -176,7 +179,6 @@ namespace turtle
         /// </summary>
         private void SetRequiredInformation()
         {
-<<<<<<< HEAD
             Invoice.ReceipType = receipTypeComboBox.SelectedItem.ToString();
             Invoice.TicketNumber = (ticketNumberTextBox.Text!=""?Convert.ToInt32(ticketNumberTextBox.Text):0);
             Invoice.PlaceOfIssue = placeOfIssueComboBox.SelectedItem.ToString();
@@ -184,15 +186,6 @@ namespace turtle
             Invoice.PaymentForm = paymentFormComboBox.SelectedItem.ToString();
             Invoice.SubTotal = (subTotalTextBox.Text!=""?Convert.ToDecimal(subTotalTextBox.Text):0);
             Invoice.Total = (totalTextBox.Text!=""?Convert.ToDecimal(totalTextBox.Text):0);
-=======
-            Invoice.ReceipType = receipTypeComboBox.SelectedText;
-            Invoice.TicketNumber = (ticketNumberTextBox.Text != "" ? Convert.ToInt32(ticketNumberTextBox.Text) : 0);
-            Invoice.PlaceOfIssue = placeOfIssueComboBox.SelectedText;
-            Invoice.PaymentMethod = paymentMethodComboBox.SelectedText;
-            Invoice.PaymentForm = paymentFormComboBox.SelectedText;
-            Invoice.SubTotal = (subTotalTextBox.Text != "" ? Convert.ToDecimal(subTotalTextBox.Text) : 0);
-            Invoice.Total = (totalTextBox.Text != "" ? Convert.ToDecimal(totalTextBox.Text) : 0);
->>>>>>> ba6c4e870f533cf3cae563291c02216d9915a5af
         }
 
         /// <summary>
@@ -200,21 +193,12 @@ namespace turtle
         /// </summary>
         private void SetOptionalInformation()
         {
-<<<<<<< HEAD
             Invoice.SerialNumber = (serialNumberTextBox.Text!=""?serialNumberTextBox.Text:"0");
             Invoice.Folio = (folioTextBox.Text!=""?Convert.ToInt32(folioTextBox.Text):0);
             Invoice.AccountNumber = (accountNumberTextBox.Text!=""?accountNumberTextBox.Text:"0000");
             Invoice.Currency = currencyComboBox.SelectedItem.ToString();
             Invoice.ExchangeRate = (exchangeRateTextBox.Text!=""?Convert.ToDecimal(exchangeRateTextBox.Text):0);
             Invoice.Notes = (notesTextBox.Text!=""?notesTextBox.Text:"Sin Comentarios");
-=======
-            Invoice.SerialNumber = serialNumberTextBox.Text;
-            Invoice.Folio = (folioTextBox.Text != "" ? Convert.ToInt32(folioTextBox.Text) : 0);
-            Invoice.AccountNumber = accountNumberTextBox.Text;
-            Invoice.Currency = currencyTextBox.Text;
-            Invoice.ExchangeRate = (exchangeRateTextBox.Text != "" ? Convert.ToDecimal(exchangeRateTextBox.Text) : 0);
-            Invoice.Notes = notesTextBox.Text;
->>>>>>> ba6c4e870f533cf3cae563291c02216d9915a5af
         }
 
         private void addEmailButton_Click(object sender, EventArgs e)
@@ -230,7 +214,6 @@ namespace turtle
         }
 
         private string ReceiverToString(Receiver receiver)
-<<<<<<< HEAD
         {
             var tags = new Dictionary<string, string>();
             tags.Add("rfc", receiver.Rfc);
@@ -305,82 +288,6 @@ namespace turtle
             tags.Add("comentarios", Invoice.Notes.ToString());
             var tagsString = Concat(tags);
             invoiceString += tagsString + " >";
-=======
-        {
-            var tags = new Dictionary<string, string>();
-            tags.Add("rfc", receiver.Rfc);
-            tags.Add("nombre", receiver.Name);
-            var address = receiver.Address;
-            tags.Add("calle", address.Street);
-            tags.Add("noExterior", address.ExternalNumber);
-            tags.Add("noInterior", address.InternalNumber);
-            tags.Add("colonia", address.Suburb);
-            tags.Add("municipio", address.Municipality);
-            tags.Add("estado", address.State);
-            tags.Add("pais", address.Country);
-            tags.Add("cp", address.ZipCode.ToString());
-            var tagsString = Concat(tags);
-            return tagsString != null ? "<receptor" + tagsString + " />" : "";
-        }
-
-        private string ConceptsToString(List<Concept> concepts)
-        {
-            string result = null;
-            if (concepts != null && concepts.Count > 0)
-            {
-                foreach (var concept in concepts)
-                {
-                    result += ConceptToString(concept);
-                }
-            }
-            return result != null ? "<conceptos>" + result + "</conceptos>" : null;
-        }
-
-        private string ConceptToString(Concept concept)
-        {
-            var tags = new Dictionary<string, string>();
-            tags.Add("cantidad", concept.Quantity.ToString());
-            tags.Add("unidad", concept.Unit);
-            tags.Add("descripcion", concept.Description);
-            tags.Add("precioUnitario", concept.Price.ToString());
-            tags.Add("iva", concept.ToString());
-            tags.Add("tasaIva", concept.IvaRate.ToString());
-            var tagsString = Concat(tags);
-            return tagsString != null ? "<concepto" + tagsString + " />" : "";
-        }
-
-        private string Concat(Dictionary<string, string> tags)
-        {
-            string result = null;
-            foreach (var tag in tags.Where(t => t.Value != null).ToList())
-            {
-                result += " " + tag.Key + "='" + tag.Value + "'";
-            }
-            return result;
-        }
-
-        private string InvoiceToString()
-        {
-            var invoiceString = "<?xml version='1.0' encoding='UTF-8' ?><factura";
-            var tags = new Dictionary<string, string>();
-            tags.Add("correoCliente", "yehoshua.jsm@live.com.mx");
-            tags.Add("noTicket", Invoice.TicketNumber.ToString());
-            tags.Add("lugarExpedicion", Invoice.PlaceOfIssue);
-            tags.Add("subtotal", Invoice.SubTotal.ToString());
-            tags.Add("total", Invoice.Total.ToString());
-            tags.Add("tipoComprobante", Invoice.ReceipType);
-            tags.Add("formaDePago", Invoice.PaymentForm);
-            tags.Add("metodoDePago", Invoice.PaymentMethod);
-            tags.Add("serie", Invoice.SerialNumber);
-            tags.Add("folio", Invoice.Folio.ToString());
-            tags.Add("numeroCuentaPago", Invoice.AccountNumber);
-            tags.Add("moneda", "MXN");
-            tags.Add("tipoCambio", Invoice.ExchangeRate != 0 ? Invoice.ExchangeRate.ToString() : null);
-            tags.Add("regimenFiscal", Invoice.TaxRegime);
-            tags.Add("comentarios", Invoice.Notes);
-            var tagsString = Concat(tags);
-            invoiceString += tagsString + " />";
->>>>>>> ba6c4e870f533cf3cae563291c02216d9915a5af
             invoiceString += "<emisor><RegimenFiscal Regimen='Regimen General de Ley Personas Morales'/></emisor>";
             invoiceString += ReceiverToString(Invoice.Receiver);
             invoiceString += ConceptsToString(Invoice.Concepts);
@@ -393,41 +300,9 @@ namespace turtle
             var cfdi = new CFDIEmite();
             Invoice.SubTotal = Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Price) : 0;
             Invoice.Total = Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Iva) + Invoice.SubTotal : 0;
-<<<<<<< HEAD
             turtle.mx.com.emitefacturacion.emitecfdi.Respuesta respuesta=cfdi.generarCFDI(InvoiceToString(), "AAA010101AAA", "Casa_Tono13");
            
             MessageBox.Show(respuesta.mensaje.ToString(), "Respuesta");
-=======
-            var invoice = InvoiceToString();
-            try
-            {
-                turtle.mx.com.emitefacturacion.emitecfdi.Respuesta respuesta = cfdi.generarCFDI(InvoiceToString(), "AAA010101AAA", "Casa_Tono13");
-                MessageBox.Show(respuesta.mensaje.ToString(), "Respuesta");
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show("Error al enviar");
-            }
-            finally
-            {
-                DataWriter.SaveXmlInvoice(invoice);
-                this.Close();
-            }
-        }
-
-        private void saveButton_Click(object sender, EventArgs e)
-        {
-            Invoice.SubTotal = Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Price) : 0;
-            Invoice.Total = Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Iva) + Invoice.SubTotal : 0;
-            var invoice = InvoiceToString();
-            DataWriter.SaveXmlInvoice(invoice);
-            this.Close();
-        }
-
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
->>>>>>> ba6c4e870f533cf3cae563291c02216d9915a5af
         }
 
         private void setTypeChange(object sender, EventArgs e)
