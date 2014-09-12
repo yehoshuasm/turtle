@@ -98,6 +98,10 @@
             // 
             // unitComboBox
             // 
+            this.unitComboBox.Items.Add("Kilogramo");
+            this.unitComboBox.Items.Add("Litro");
+            this.unitComboBox.Items.Add("Metro");
+            this.unitComboBox.Items.Add("Pieza");
             this.unitComboBox.Location = new System.Drawing.Point(118, 60);
             this.unitComboBox.Name = "unitComboBox";
             this.unitComboBox.Size = new System.Drawing.Size(100, 23);

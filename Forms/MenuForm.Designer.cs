@@ -31,6 +31,7 @@
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.invoicingButton = new System.Windows.Forms.Button();
+            this.viewButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // invoicingButton
@@ -42,12 +43,21 @@
             this.invoicingButton.Text = "Generar Factura";
             this.invoicingButton.Click += new System.EventHandler(this.invoicingButton_Click);
             // 
+            // viewButton
+            // 
+            this.viewButton.Location = new System.Drawing.Point(3, 36);
+            this.viewButton.Name = "viewButton";
+            this.viewButton.Size = new System.Drawing.Size(247, 27);
+            this.viewButton.TabIndex = 1;
+            this.viewButton.Text = "Ver facturas guardadas";
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(253, 175);
+            this.Controls.Add(this.viewButton);
             this.Controls.Add(this.invoicingButton);
             this.Menu = this.mainMenu1;
             this.Name = "MenuForm";
@@ -59,5 +69,6 @@
         #endregion
 
         private System.Windows.Forms.Button invoicingButton;
+        private System.Windows.Forms.Button viewButton;
     }
 }

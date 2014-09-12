@@ -31,8 +31,6 @@
         {
             this.invoicingMenu = new System.Windows.Forms.MainMenu();
             this.receiverInformationPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.addEmailButton = new System.Windows.Forms.Button();
             this.receiverInformatioCancelButton = new System.Windows.Forms.Button();
             this.emailLabel = new System.Windows.Forms.Label();
             this.emailTextBox = new System.Windows.Forms.TextBox();
@@ -65,7 +63,11 @@
             this.placeOfIssueComboBox = new System.Windows.Forms.ComboBox();
             this.receipTypeComboBox = new System.Windows.Forms.ComboBox();
             this.requiredInformationNextButton = new System.Windows.Forms.Button();
+            this.totalLabel = new System.Windows.Forms.Label();
+            this.subTotalLabel = new System.Windows.Forms.Label();
             this.paymentFormLabel = new System.Windows.Forms.Label();
+            this.totalTextBox = new System.Windows.Forms.TextBox();
+            this.subTotalTextBox = new System.Windows.Forms.TextBox();
             this.paymentMethodLabel = new System.Windows.Forms.Label();
             this.placeOfIssueLabel = new System.Windows.Forms.Label();
             this.ticketNumberTextBox = new System.Windows.Forms.TextBox();
@@ -92,10 +94,8 @@
             this.optionalInformationLabel = new System.Windows.Forms.Label();
             this.generatePanel = new System.Windows.Forms.Panel();
             this.generateButton = new System.Windows.Forms.Button();
-            this.totalTextBox = new System.Windows.Forms.TextBox();
-            this.totalLabel = new System.Windows.Forms.Label();
-            this.subTotalTextBox = new System.Windows.Forms.TextBox();
-            this.subTotalLabel = new System.Windows.Forms.Label();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
             this.receiverInformationPanel.SuspendLayout();
             this.requiredInformationPanel.SuspendLayout();
             this.optionalInformationPanel.SuspendLayout();
@@ -104,8 +104,6 @@
             // 
             // receiverInformationPanel
             // 
-            this.receiverInformationPanel.Controls.Add(this.label1);
-            this.receiverInformationPanel.Controls.Add(this.addEmailButton);
             this.receiverInformationPanel.Controls.Add(this.receiverInformatioCancelButton);
             this.receiverInformationPanel.Controls.Add(this.emailLabel);
             this.receiverInformationPanel.Controls.Add(this.emailTextBox);
@@ -134,22 +132,6 @@
             this.receiverInformationPanel.Location = new System.Drawing.Point(0, 0);
             this.receiverInformationPanel.Name = "receiverInformationPanel";
             this.receiverInformationPanel.Size = new System.Drawing.Size(225, 345);
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
-            this.label1.Location = new System.Drawing.Point(230, 85);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 23);
-            // 
-            // addEmailButton
-            // 
-            this.addEmailButton.Location = new System.Drawing.Point(77, 85);
-            this.addEmailButton.Name = "addEmailButton";
-            this.addEmailButton.Size = new System.Drawing.Size(22, 23);
-            this.addEmailButton.TabIndex = 57;
-            this.addEmailButton.Text = "+";
-            this.addEmailButton.Click += new System.EventHandler(this.addEmailButton_Click);
             // 
             // receiverInformatioCancelButton
             // 
@@ -366,6 +348,7 @@
             // requiredInformationPanel
             // 
             this.requiredInformationPanel.Controls.Add(this.requiredInformationBackButton);
+            this.requiredInformationPanel.Controls.Add(this.generatePanel);
             this.requiredInformationPanel.Controls.Add(this.paymentFormComboBox);
             this.requiredInformationPanel.Controls.Add(this.paymentMethodComboBox);
             this.requiredInformationPanel.Controls.Add(this.placeOfIssueComboBox);
@@ -433,6 +416,24 @@
             this.requiredInformationNextButton.Text = "Siguiente";
             this.requiredInformationNextButton.Click += new System.EventHandler(this.requiredInformationNextButton_Click);
             // 
+            // totalLabel
+            // 
+            this.totalLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.totalLabel.Location = new System.Drawing.Point(3, 188);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(115, 20);
+            this.totalLabel.Text = "Total";
+            this.totalLabel.Visible = false;
+            // 
+            // subTotalLabel
+            // 
+            this.subTotalLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.subTotalLabel.Location = new System.Drawing.Point(3, 163);
+            this.subTotalLabel.Name = "subTotalLabel";
+            this.subTotalLabel.Size = new System.Drawing.Size(115, 20);
+            this.subTotalLabel.Text = "Sub Total";
+            this.subTotalLabel.Visible = false;
+            // 
             // paymentFormLabel
             // 
             this.paymentFormLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
@@ -440,6 +441,26 @@
             this.paymentFormLabel.Name = "paymentFormLabel";
             this.paymentFormLabel.Size = new System.Drawing.Size(115, 20);
             this.paymentFormLabel.Text = "Forma de Pago";
+            // 
+            // totalTextBox
+            // 
+            this.totalTextBox.Location = new System.Drawing.Point(118, 185);
+            this.totalTextBox.MaxLength = 10;
+            this.totalTextBox.Name = "totalTextBox";
+            this.totalTextBox.Size = new System.Drawing.Size(100, 23);
+            this.totalTextBox.TabIndex = 16;
+            this.totalTextBox.Visible = false;
+            this.totalTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
+            // 
+            // subTotalTextBox
+            // 
+            this.subTotalTextBox.Location = new System.Drawing.Point(118, 160);
+            this.subTotalTextBox.MaxLength = 10;
+            this.subTotalTextBox.Name = "subTotalTextBox";
+            this.subTotalTextBox.Size = new System.Drawing.Size(100, 23);
+            this.subTotalTextBox.TabIndex = 15;
+            this.subTotalTextBox.Visible = false;
+            this.subTotalTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // paymentMethodLabel
             // 
@@ -662,6 +683,8 @@
             // 
             // generatePanel
             // 
+            this.generatePanel.Controls.Add(this.exitButton);
+            this.generatePanel.Controls.Add(this.saveButton);
             this.generatePanel.Controls.Add(this.generateButton);
             this.generatePanel.Location = new System.Drawing.Point(0, 0);
             this.generatePanel.Name = "generatePanel";
@@ -670,59 +693,38 @@
             // 
             // generateButton
             // 
-            this.generateButton.Location = new System.Drawing.Point(82, 37);
+            this.generateButton.Location = new System.Drawing.Point(72, 28);
             this.generateButton.Name = "generateButton";
             this.generateButton.Size = new System.Drawing.Size(72, 20);
             this.generateButton.TabIndex = 0;
             this.generateButton.Text = "Generar";
             this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
             // 
-            // totalTextBox
+            // saveButton
             // 
-            this.totalTextBox.Location = new System.Drawing.Point(118, 185);
-            this.totalTextBox.MaxLength = 10;
-            this.totalTextBox.Name = "totalTextBox";
-            this.totalTextBox.Size = new System.Drawing.Size(100, 23);
-            this.totalTextBox.TabIndex = 16;
-            this.totalTextBox.Visible = false;
-            this.totalTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
+            this.saveButton.Location = new System.Drawing.Point(72, 54);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(72, 20);
+            this.saveButton.TabIndex = 1;
+            this.saveButton.Text = "Guardar";
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // totalLabel
+            // exitButton
             // 
-            this.totalLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.totalLabel.Location = new System.Drawing.Point(3, 188);
-            this.totalLabel.Name = "totalLabel";
-            this.totalLabel.Size = new System.Drawing.Size(115, 20);
-            this.totalLabel.Text = "Total";
-            this.totalLabel.Visible = false;
-            // 
-            // subTotalTextBox
-            // 
-            this.subTotalTextBox.Location = new System.Drawing.Point(118, 160);
-            this.subTotalTextBox.MaxLength = 10;
-            this.subTotalTextBox.Name = "subTotalTextBox";
-            this.subTotalTextBox.Size = new System.Drawing.Size(100, 23);
-            this.subTotalTextBox.TabIndex = 15;
-            this.subTotalTextBox.Visible = false;
-            this.subTotalTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
-            // 
-            // subTotalLabel
-            // 
-            this.subTotalLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.subTotalLabel.Location = new System.Drawing.Point(3, 163);
-            this.subTotalLabel.Name = "subTotalLabel";
-            this.subTotalLabel.Size = new System.Drawing.Size(115, 20);
-            this.subTotalLabel.Text = "Sub Total";
-            this.subTotalLabel.Visible = false;
+            this.exitButton.Location = new System.Drawing.Point(72, 80);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(72, 20);
+            this.exitButton.TabIndex = 2;
+            this.exitButton.Text = "Salir";
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // InvoicingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(231, 346);
+            this.ClientSize = new System.Drawing.Size(229, 346);
             this.Controls.Add(this.requiredInformationPanel);
-            this.Controls.Add(this.generatePanel);
             this.Controls.Add(this.receiverInformationPanel);
             this.Controls.Add(this.optionalInformationPanel);
             this.Menu = this.invoicingMenu;
@@ -796,13 +798,13 @@
         private System.Windows.Forms.Button optionalInformationBackButton;
         private System.Windows.Forms.Button receiverInformatioCancelButton;
         private System.Windows.Forms.Button requiredInformationBackButton;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button addEmailButton;
         private System.Windows.Forms.Panel generatePanel;
         private System.Windows.Forms.Button generateButton;
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.Label subTotalLabel;
         private System.Windows.Forms.TextBox totalTextBox;
         private System.Windows.Forms.TextBox subTotalTextBox;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button exitButton;
     }
 }

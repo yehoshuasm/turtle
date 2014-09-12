@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using turtle.Model;
-using turtle.Utils;
 using turtle.Forms.Invoicing;
+using turtle.Model;
 using turtle.mx.com.emitefacturacion.emitecfdi;
+using turtle.Utils;
 
 namespace turtle
 {
@@ -52,9 +52,9 @@ namespace turtle
             if (ValidateOptionalInformation())
             {
                 SetOptionalInformation();
-                new ConceptsForm(Invoice.Concepts).Show();
                 optionalInformationPanel.Hide();
                 generatePanel.Show();
+                new ConceptsForm(Invoice.Concepts).Show();
             }
         }
 
@@ -87,7 +87,7 @@ namespace turtle
             var controlsValidations = new Dictionary<Control, bool>();
             controlsValidations.Add(rfcTextBox, Validator.IsRfc(rfcTextBox.Text, false));
             controlsValidations.Add(nameTextBox, Validator.IsAlphanumeric(nameTextBox.Text, true));
-            controlsValidations.Add(emailTextBox,emailEvaluated);
+            controlsValidations.Add(emailTextBox,Validator.IsEmail(emailTextBox.Text));
             controlsValidations.Add(streetTextBox, Validator.IsAlphabetic(streetTextBox.Text, false));
             controlsValidations.Add(externalNumberTextBox, Validator.IsInteger(externalNumberTextBox.Text, false));
             controlsValidations.Add(internalNumberTextBox, Validator.IsInteger(internalNumberTextBox.Text, true));
@@ -96,22 +96,6 @@ namespace turtle
             controlsValidations.Add(stateTextBox, Validator.IsAlphabetic(stateTextBox.Text, false));
             controlsValidations.Add(countryTextBox, Validator.IsAlphabetic(countryTextBox.Text, false));
             controlsValidations.Add(zipCodeTextBox, Validator.IsInteger(zipCodeTextBox.Text, false));
-
-            if (emailEvaluated)
-            {
-                if (emailAdded!=null&&!emailAdded.Equals(""))
-                {
-                    emailTextBox.Text = emailAdded + "," + emailTextBox.Text;
-                }
-                else
-                {
-                    emailTextBox.Text = emailAdded;
-                }
-            }
-            else
-            {
-                emailTextBox.Text = emailAdded;
-            }
             return Validator.Validate(controlsValidations);
         }
 
@@ -152,12 +136,12 @@ namespace turtle
         /// </summary>
         private void SetReceiverInformation()
         {
-            
+
             Invoice.Receiver = new Receiver
             {
                 Rfc = rfcTextBox.Text,
                 Name = nameTextBox.Text,
-                //Email
+                Email = emailTextBox.Text,
                 Address = new Address
                 {
                     Street = streetTextBox.Text,
@@ -168,7 +152,7 @@ namespace turtle
                     Municipality = municipalityTextBox.Text,
                     State = stateTextBox.Text,
                     Country = countryTextBox.Text,
-                    ZipCode = (zipCodeTextBox.Text!=""?Convert.ToInt32(zipCodeTextBox.Text):0)
+                    ZipCode = (zipCodeTextBox.Text != "" ? Convert.ToInt32(zipCodeTextBox.Text) : 0)
                 }
             };
         }
@@ -179,12 +163,12 @@ namespace turtle
         private void SetRequiredInformation()
         {
             Invoice.ReceipType = receipTypeComboBox.SelectedText;
-            Invoice.TicketNumber = (ticketNumberTextBox.Text!=""?Convert.ToInt32(ticketNumberTextBox.Text):0);
+            Invoice.TicketNumber = (ticketNumberTextBox.Text != "" ? Convert.ToInt32(ticketNumberTextBox.Text) : 0);
             Invoice.PlaceOfIssue = placeOfIssueComboBox.SelectedText;
             Invoice.PaymentMethod = paymentMethodComboBox.SelectedText;
             Invoice.PaymentForm = paymentFormComboBox.SelectedText;
-            Invoice.SubTotal = (subTotalTextBox.Text!=""?Convert.ToDecimal(subTotalTextBox.Text):0);
-            Invoice.Total = (totalTextBox.Text!=""?Convert.ToDecimal(totalTextBox.Text):0);
+            Invoice.SubTotal = (subTotalTextBox.Text != "" ? Convert.ToDecimal(subTotalTextBox.Text) : 0);
+            Invoice.Total = (totalTextBox.Text != "" ? Convert.ToDecimal(totalTextBox.Text) : 0);
         }
 
         /// <summary>
@@ -193,10 +177,10 @@ namespace turtle
         private void SetOptionalInformation()
         {
             Invoice.SerialNumber = serialNumberTextBox.Text;
-            Invoice.Folio = (folioTextBox.Text!=""?Convert.ToInt32(folioTextBox.Text):0);
+            Invoice.Folio = (folioTextBox.Text != "" ? Convert.ToInt32(folioTextBox.Text) : 0);
             Invoice.AccountNumber = accountNumberTextBox.Text;
             Invoice.Currency = currencyTextBox.Text;
-            Invoice.ExchangeRate = (exchangeRateTextBox.Text!=""?Convert.ToDecimal(exchangeRateTextBox.Text):0);
+            Invoice.ExchangeRate = (exchangeRateTextBox.Text != "" ? Convert.ToDecimal(exchangeRateTextBox.Text) : 0);
             Invoice.Notes = notesTextBox.Text;
         }
 
@@ -275,7 +259,7 @@ namespace turtle
             tags.Add("lugarExpedicion", Invoice.PlaceOfIssue);
             tags.Add("subtotal", Invoice.SubTotal.ToString());
             tags.Add("total", Invoice.Total.ToString());
-            tags.Add("tipoComprobante", "ingreso");
+            tags.Add("tipoComprobante", Invoice.ReceipType);
             tags.Add("formaDePago", Invoice.PaymentForm);
             tags.Add("metodoDePago", Invoice.PaymentMethod);
             tags.Add("serie", Invoice.SerialNumber);
@@ -299,9 +283,35 @@ namespace turtle
             var cfdi = new CFDIEmite();
             Invoice.SubTotal = Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Price) : 0;
             Invoice.Total = Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Iva) + Invoice.SubTotal : 0;
-            turtle.mx.com.emitefacturacion.emitecfdi.Respuesta respuesta=cfdi.generarCFDI(InvoiceToString(), "AAA010101AAA", "Casa_Tono13");
-           
-            MessageBox.Show(respuesta.mensaje.ToString(), "Respuesta");
+            var invoice = InvoiceToString();
+            try
+            {
+                turtle.mx.com.emitefacturacion.emitecfdi.Respuesta respuesta = cfdi.generarCFDI(InvoiceToString(), "AAA010101AAA", "Casa_Tono13");
+                MessageBox.Show(respuesta.mensaje.ToString(), "Respuesta");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Error al enviar");
+            }
+            finally
+            {
+                DataWriter.SaveXmlInvoice(invoice);
+                this.Close();
+            }
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            Invoice.SubTotal = Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Price) : 0;
+            Invoice.Total = Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Iva) + Invoice.SubTotal : 0;
+            var invoice = InvoiceToString();
+            DataWriter.SaveXmlInvoice(invoice);
+            this.Close();
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

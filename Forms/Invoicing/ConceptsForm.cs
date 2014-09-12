@@ -55,8 +55,9 @@ namespace turtle.Forms.Invoicing
             var controlsValidations = new Dictionary<Control, bool>();
             controlsValidations.Add(quantityTextBox, Validator.IsInteger(quantityTextBox.Text, false));
             controlsValidations.Add(priceTextBox, Validator.IsDecimal(priceTextBox.Text, false));
-            controlsValidations.Add(ivaTextBox, Validator.IsDecimal(ivaTextBox.Text, true));
+            //controlsValidations.Add(ivaTextBox, Validator.IsDecimal(ivaTextBox.Text, true));
             controlsValidations.Add(ivaRateTextBox, Validator.IsDecimal(ivaRateTextBox.Text, true));
+            controlsValidations.Add(unitComboBox, unitComboBox.SelectedItem != "");
             return Validator.Validate(controlsValidations);
         }
 
