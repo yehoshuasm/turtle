@@ -122,7 +122,7 @@ namespace turtle
         private bool ValidateRequiredInformation()
         {
             var controlsValidations = new Dictionary<Control, bool>();
-            controlsValidations.Add(ticketNumberTextBox, Validator.IsInteger(ticketNumberTextBox.Text, false));
+            controlsValidations.Add(ticketNumberTextBox, Validator.IsInteger(ticketNumberTextBox.Text, true));
             controlsValidations.Add(subTotalTextBox, Validator.IsDecimal(subTotalTextBox.Text, false));
             controlsValidations.Add(totalTextBox, Validator.IsDecimal(totalTextBox.Text, false));
             return Validator.Validate(controlsValidations);
@@ -138,9 +138,9 @@ namespace turtle
             controlsValidations.Add(serialNumberTextBox, Validator.IsAlphanumeric(serialNumberTextBox.Text, true));
             controlsValidations.Add(folioTextBox, Validator.IsInteger(folioTextBox.Text, true));
             controlsValidations.Add(accountNumberTextBox, Validator.IsInteger(accountNumberTextBox.Text, true));
-            controlsValidations.Add(currencyTextBox, Validator.IsAlphabetic(currencyTextBox.Text, true));
+            //controlsValidations.Add(currencyTextBox, Validator.IsAlphabetic(currencyTextBox.Text, true));
             controlsValidations.Add(exchangeRateTextBox, Validator.IsDecimal(exchangeRateTextBox.Text, true));
-            controlsValidations.Add(taxRegimeTextBox, Validator.IsAlphanumeric(taxRegimeTextBox.Text, true));
+            //controlsValidations.Add(taxRegimeTextBox, Validator.IsAlphanumeric(taxRegimeTextBox.Text, true));
             controlsValidations.Add(notesTextBox, Validator.IsAlphanumeric(notesTextBox.Text, true));
             return Validator.Validate(controlsValidations);
         }
@@ -153,17 +153,18 @@ namespace turtle
         private void SetReceiverInformation()
         {
             
-            Invoice.Client = new Client
+            Invoice.Receiver = new Receiver
             {
                 Rfc = rfcTextBox.Text,
-                Name = nameTextBox.Text,
+                Name = (nameTextBox.Text!=""?nameTextBox.Text:"Nombre"),
+                Email = emailTextBox.Text,
                 //Email
                 Address = new Address
                 {
                     Street = streetTextBox.Text,
-                    ExternalNumber = (externalNumberTextBox.Text!=""?Convert.ToInt32(externalNumberTextBox.Text):0),
+                    ExternalNumber = (externalNumberTextBox.Text),
 
-                    InternalNumber = (internalNumberTextBox.Text != "" ? Convert.ToInt32(internalNumberTextBox.Text) : 0),
+                    InternalNumber = (internalNumberTextBox.Text != "" ? internalNumberTextBox.Text : "0" ),
                     Suburb = suburbTextBox.Text,
                     Municipality = municipalityTextBox.Text,
                     State = stateTextBox.Text,
@@ -178,11 +179,11 @@ namespace turtle
         /// </summary>
         private void SetRequiredInformation()
         {
-            Invoice.ReceipType = receipTypeComboBox.SelectedText;
+            Invoice.ReceipType = receipTypeComboBox.SelectedItem.ToString();
             Invoice.TicketNumber = (ticketNumberTextBox.Text!=""?Convert.ToInt32(ticketNumberTextBox.Text):0);
-            Invoice.PlaceOfIssue = placeOfIssueComboBox.SelectedText;
-            Invoice.PaymentMethod = paymentMethodComboBox.SelectedText;
-            Invoice.PaymentForm = paymentFormComboBox.SelectedText;
+            Invoice.PlaceOfIssue = placeOfIssueComboBox.SelectedItem.ToString();
+            Invoice.PaymentMethod = paymentMethodComboBox.SelectedItem.ToString();
+            Invoice.PaymentForm = paymentFormComboBox.SelectedItem.ToString();
             Invoice.SubTotal = (subTotalTextBox.Text!=""?Convert.ToDecimal(subTotalTextBox.Text):0);
             Invoice.Total = (totalTextBox.Text!=""?Convert.ToDecimal(totalTextBox.Text):0);
         }
@@ -192,18 +193,18 @@ namespace turtle
         /// </summary>
         private void SetOptionalInformation()
         {
-            Invoice.SerialNumber = serialNumberTextBox.Text;
+            Invoice.SerialNumber = (serialNumberTextBox.Text!=""?serialNumberTextBox.Text:"0");
             Invoice.Folio = (folioTextBox.Text!=""?Convert.ToInt32(folioTextBox.Text):0);
-            Invoice.AccountNumber = accountNumberTextBox.Text;
-            Invoice.Currency = currencyTextBox.Text;
+            Invoice.AccountNumber = (accountNumberTextBox.Text!=""?accountNumberTextBox.Text:"0000");
+            Invoice.Currency = currencyComboBox.SelectedItem.ToString();
             Invoice.ExchangeRate = (exchangeRateTextBox.Text!=""?Convert.ToDecimal(exchangeRateTextBox.Text):0);
-            Invoice.Notes = notesTextBox.Text;
+            Invoice.Notes = (notesTextBox.Text!=""?notesTextBox.Text:"Sin Comentarios");
         }
 
         private void addEmailButton_Click(object sender, EventArgs e)
         {
-            emailAdded = emailTextBox.Text;
-            emailTextBox.Text = "";
+            //emailAdded = emailTextBox.Text;
+            //emailTextBox.Text = "";
 
         }
 
@@ -212,31 +213,104 @@ namespace turtle
             ((TextBox)sender).BackColor = Color.White;
         }
 
-        private string GenerateInvoice()
+        private string ReceiverToString(Receiver receiver)
         {
-            string invoice = @"<?xml version='1.0' encoding='UTF-8' ?> <factura tipoComprobante='ingreso' serie='ZR' folio='19463' subtotal='" + Invoice.SubTotal + @"' 
-                            total='" + Invoice.Total + @"' formaDePago='Pago en una sola exhibicion' correoCliente='yehoshua.jsm@live.com.mx'
-                            noTicket='" + Invoice.TicketNumber + @"' lugarExpedicion='Mexico' metodoPago='No Identificado' numeroCuentaPago='1111' 
-                            moneda='MXN' tipoCambio='1.0' comentario='Baila como Juana la cubana'>
-                            <emisor><RegimenFiscal Regimen='Regimen General de Ley Personas Morales'/></emisor>
-                           <receptor rfc='INE0804164Z7' nombre='INSTITUTO NACIONAL DE ESTADISTICA Y GEOGRAFIA' calle='AV. HEROE DE NACOZARI SUR'
-                            noExterior='2301' noInterior='2' colonia='Col. JARDINES DEL PARQUE' municipio='AGUASCALIENTES' estado='AGUASCALIENTES' 
-                            cp='20276' pais='Mexico'/>
-                            <conceptos>
-                                <concepto cantidad='1' unidad='Pieza' descripcion='Articulo de muestrario' precioUnitario='220.6900' iva='35.3104' tasaIva='16'/>
-                            </conceptos>
-                            </factura>";
-            return invoice;
+            var tags = new Dictionary<string, string>();
+            tags.Add("rfc", receiver.Rfc);
+            tags.Add("nombre", receiver.Name);
+            var address = receiver.Address;
+            tags.Add("calle", address.Street);
+            tags.Add("noExterior", address.ExternalNumber);
+            tags.Add("noInterior", address.InternalNumber);
+            tags.Add("colonia", address.Suburb);
+            tags.Add("municipio", address.Municipality);
+            tags.Add("estado", address.State);
+            tags.Add("pais", address.Country);
+            tags.Add("cp", address.ZipCode.ToString());
+            var tagsString = Concat(tags);
+            return tagsString != null ? "<receptor" + tagsString + " />" : "";
+        }
+
+        private string ConceptsToString(List<Concept> concepts)
+        {
+            string result = null;
+            if (concepts != null && concepts.Count > 0)
+            {
+                foreach (var concept in concepts)
+                {
+                    result += ConceptToString(concept);
+                }
+            }
+            return result != null ? "<conceptos>" + result + "</conceptos>" : null;
+        }
+
+        private string ConceptToString(Concept concept)
+        {
+            var tags = new Dictionary<string, string>();
+            tags.Add("cantidad", concept.Quantity.ToString());
+            tags.Add("unidad", concept.Unit);
+            tags.Add("descripcion", concept.Description);
+            tags.Add("precioUnitario", concept.Price.ToString());
+            tags.Add("iva", concept.Iva.ToString());
+            tags.Add("tasaIva", concept.IvaRate.ToString());
+            var tagsString = Concat(tags);
+            return tagsString != null ? "<concepto" + tagsString + " />" : "";
+        }
+
+        private string Concat(Dictionary<string, string> tags)
+        {
+            string result = null;
+            foreach (var tag in tags.Where(t => t.Value != null).ToList())
+            {
+                result += " " + tag.Key + "='" + tag.Value + "'";
+            }
+            return result;
+        }
+
+        private string InvoiceToString()
+        {
+            var invoiceString = "<?xml version='1.0' encoding='UTF-8' ?><factura";
+            var tags = new Dictionary<string, string>();
+            tags.Add("tipoComprobante", "ingreso");
+            tags.Add("serie", Invoice.SerialNumber.ToString());
+            tags.Add("folio", Invoice.Folio.ToString());
+            tags.Add("subtotal", Invoice.SubTotal.ToString());
+            tags.Add("total", Invoice.Total.ToString());
+            tags.Add("formaDePago", Invoice.PaymentForm.ToString());
+            tags.Add("correoCliente", "valenciahn@gmail.com");
+            tags.Add("noTicket", Invoice.TicketNumber.ToString());
+            tags.Add("lugarExpedicion", Invoice.PlaceOfIssue.ToString());
+            tags.Add("metodoPago", Invoice.PaymentMethod.ToString());
+            tags.Add("numeroCuentaPago", Invoice.AccountNumber.ToString());
+            tags.Add("moneda", "Pesos");
+            tags.Add("tipoCambio", Invoice.ExchangeRate != 0 ? Invoice.ExchangeRate.ToString() :"1.00");
+            tags.Add("regimenFiscal", Invoice.TaxRegime);
+            tags.Add("comentarios", Invoice.Notes.ToString());
+            var tagsString = Concat(tags);
+            invoiceString += tagsString + " >";
+            invoiceString += "<emisor><RegimenFiscal Regimen='Regimen General de Ley Personas Morales'/></emisor>";
+            invoiceString += ReceiverToString(Invoice.Receiver);
+            invoiceString += ConceptsToString(Invoice.Concepts);
+            invoiceString += "</factura>";
+            return invoiceString;
         }
 
         private void generateButton_Click(object sender, EventArgs e)
         {
             var cfdi = new CFDIEmite();
-                         
-            turtle.mx.com.emitefacturacion.emitecfdi.Respuesta respuesta=cfdi.generarCFDI(GenerateInvoice(),
-                "AAA010101AAA", "Casa_Tono13");
+            Invoice.SubTotal = Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Price) : 0;
+            Invoice.Total = Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Iva) + Invoice.SubTotal : 0;
+            turtle.mx.com.emitefacturacion.emitecfdi.Respuesta respuesta=cfdi.generarCFDI(InvoiceToString(), "AAA010101AAA", "Casa_Tono13");
            
             MessageBox.Show(respuesta.mensaje.ToString(), "Respuesta");
+        }
+
+        private void setTypeChange(object sender, EventArgs e)
+        {
+            if (currencyComboBox.SelectedItem.ToString().Equals("Pesos"))
+            {
+                exchangeRateTextBox.Text = "1";
+            }
         }
     }
 }

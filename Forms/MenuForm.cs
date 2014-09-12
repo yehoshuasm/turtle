@@ -15,5 +15,10 @@ namespace turtle
         {
             new InvoicingForm().Show();
         }
+
+        private void configButton_Click(object sender, EventArgs e)
+        {
+            new turtle.Forms.ConfigForm().Show();
+        }
     }
 }

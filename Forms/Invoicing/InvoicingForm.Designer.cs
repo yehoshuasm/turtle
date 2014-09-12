@@ -65,11 +65,7 @@
             this.placeOfIssueComboBox = new System.Windows.Forms.ComboBox();
             this.receipTypeComboBox = new System.Windows.Forms.ComboBox();
             this.requiredInformationNextButton = new System.Windows.Forms.Button();
-            this.totalLabel = new System.Windows.Forms.Label();
-            this.subTotalLabel = new System.Windows.Forms.Label();
             this.paymentFormLabel = new System.Windows.Forms.Label();
-            this.totalTextBox = new System.Windows.Forms.TextBox();
-            this.subTotalTextBox = new System.Windows.Forms.TextBox();
             this.paymentMethodLabel = new System.Windows.Forms.Label();
             this.placeOfIssueLabel = new System.Windows.Forms.Label();
             this.ticketNumberTextBox = new System.Windows.Forms.TextBox();
@@ -77,17 +73,15 @@
             this.receiptTypeLabel = new System.Windows.Forms.Label();
             this.requiredInformationLabel = new System.Windows.Forms.Label();
             this.optionalInformationPanel = new System.Windows.Forms.Panel();
+            this.currencyComboBox = new System.Windows.Forms.ComboBox();
             this.optionalInformationBackButton = new System.Windows.Forms.Button();
             this.accountNumberLabel = new System.Windows.Forms.Label();
             this.accountNumberTextBox = new System.Windows.Forms.TextBox();
             this.optionalInformationNextButton = new System.Windows.Forms.Button();
             this.notesLabel = new System.Windows.Forms.Label();
-            this.taxRegimeLabel = new System.Windows.Forms.Label();
             this.notesTextBox = new System.Windows.Forms.TextBox();
-            this.taxRegimeTextBox = new System.Windows.Forms.TextBox();
             this.exchangeRateTextBox = new System.Windows.Forms.TextBox();
             this.exchangeRateLabel = new System.Windows.Forms.Label();
-            this.currencyTextBox = new System.Windows.Forms.TextBox();
             this.currencyLabel = new System.Windows.Forms.Label();
             this.folioTextBox = new System.Windows.Forms.TextBox();
             this.folioLabel = new System.Windows.Forms.Label();
@@ -95,6 +89,14 @@
             this.serialNumberLabel = new System.Windows.Forms.Label();
             this.optionalInformationLabel = new System.Windows.Forms.Label();
             this.generatePanel = new System.Windows.Forms.Panel();
+            this.tasaIvalabel = new System.Windows.Forms.Label();
+            this.totalTaxlabel = new System.Windows.Forms.Label();
+            this.totalTasaIvatextBox = new System.Windows.Forms.TextBox();
+            this.totalTaxtextBox = new System.Windows.Forms.TextBox();
+            this.totalLabel = new System.Windows.Forms.Label();
+            this.subTotalLabel = new System.Windows.Forms.Label();
+            this.totalTextBox = new System.Windows.Forms.TextBox();
+            this.subTotalTextBox = new System.Windows.Forms.TextBox();
             this.generateButton = new System.Windows.Forms.Button();
             this.receiverInformationPanel.SuspendLayout();
             this.requiredInformationPanel.SuspendLayout();
@@ -371,11 +373,7 @@
             this.requiredInformationPanel.Controls.Add(this.placeOfIssueComboBox);
             this.requiredInformationPanel.Controls.Add(this.receipTypeComboBox);
             this.requiredInformationPanel.Controls.Add(this.requiredInformationNextButton);
-            this.requiredInformationPanel.Controls.Add(this.totalLabel);
-            this.requiredInformationPanel.Controls.Add(this.subTotalLabel);
             this.requiredInformationPanel.Controls.Add(this.paymentFormLabel);
-            this.requiredInformationPanel.Controls.Add(this.totalTextBox);
-            this.requiredInformationPanel.Controls.Add(this.subTotalTextBox);
             this.requiredInformationPanel.Controls.Add(this.paymentMethodLabel);
             this.requiredInformationPanel.Controls.Add(this.placeOfIssueLabel);
             this.requiredInformationPanel.Controls.Add(this.ticketNumberTextBox);
@@ -398,6 +396,8 @@
             // 
             // paymentFormComboBox
             // 
+            this.paymentFormComboBox.Items.Add("1 Exibicion");
+            this.paymentFormComboBox.Items.Add("Por Exibiciones");
             this.paymentFormComboBox.Location = new System.Drawing.Point(118, 135);
             this.paymentFormComboBox.Name = "paymentFormComboBox";
             this.paymentFormComboBox.Size = new System.Drawing.Size(100, 23);
@@ -405,6 +405,9 @@
             // 
             // paymentMethodComboBox
             // 
+            this.paymentMethodComboBox.Items.Add("Efectivo");
+            this.paymentMethodComboBox.Items.Add("Deposito");
+            this.paymentMethodComboBox.Items.Add("Transferencia");
             this.paymentMethodComboBox.Location = new System.Drawing.Point(118, 110);
             this.paymentMethodComboBox.Name = "paymentMethodComboBox";
             this.paymentMethodComboBox.Size = new System.Drawing.Size(100, 23);
@@ -412,6 +415,8 @@
             // 
             // placeOfIssueComboBox
             // 
+            this.placeOfIssueComboBox.Items.Add("Mexico");
+            this.placeOfIssueComboBox.Items.Add("E.U.A");
             this.placeOfIssueComboBox.Location = new System.Drawing.Point(118, 85);
             this.placeOfIssueComboBox.Name = "placeOfIssueComboBox";
             this.placeOfIssueComboBox.Size = new System.Drawing.Size(100, 23);
@@ -419,6 +424,8 @@
             // 
             // receipTypeComboBox
             // 
+            this.receipTypeComboBox.Items.Add("Ingreso");
+            this.receipTypeComboBox.Items.Add("Egreso");
             this.receipTypeComboBox.Location = new System.Drawing.Point(118, 35);
             this.receipTypeComboBox.Name = "receipTypeComboBox";
             this.receipTypeComboBox.Size = new System.Drawing.Size(100, 23);
@@ -433,22 +440,6 @@
             this.requiredInformationNextButton.Text = "Siguiente";
             this.requiredInformationNextButton.Click += new System.EventHandler(this.requiredInformationNextButton_Click);
             // 
-            // totalLabel
-            // 
-            this.totalLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.totalLabel.Location = new System.Drawing.Point(3, 188);
-            this.totalLabel.Name = "totalLabel";
-            this.totalLabel.Size = new System.Drawing.Size(115, 20);
-            this.totalLabel.Text = "Total";
-            // 
-            // subTotalLabel
-            // 
-            this.subTotalLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.subTotalLabel.Location = new System.Drawing.Point(3, 163);
-            this.subTotalLabel.Name = "subTotalLabel";
-            this.subTotalLabel.Size = new System.Drawing.Size(115, 20);
-            this.subTotalLabel.Text = "Sub Total";
-            // 
             // paymentFormLabel
             // 
             this.paymentFormLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
@@ -456,24 +447,6 @@
             this.paymentFormLabel.Name = "paymentFormLabel";
             this.paymentFormLabel.Size = new System.Drawing.Size(115, 20);
             this.paymentFormLabel.Text = "Forma de Pago";
-            // 
-            // totalTextBox
-            // 
-            this.totalTextBox.Location = new System.Drawing.Point(118, 185);
-            this.totalTextBox.MaxLength = 10;
-            this.totalTextBox.Name = "totalTextBox";
-            this.totalTextBox.Size = new System.Drawing.Size(100, 23);
-            this.totalTextBox.TabIndex = 16;
-            this.totalTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
-            // 
-            // subTotalTextBox
-            // 
-            this.subTotalTextBox.Location = new System.Drawing.Point(118, 160);
-            this.subTotalTextBox.MaxLength = 10;
-            this.subTotalTextBox.Name = "subTotalTextBox";
-            this.subTotalTextBox.Size = new System.Drawing.Size(100, 23);
-            this.subTotalTextBox.TabIndex = 15;
-            this.subTotalTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // paymentMethodLabel
             // 
@@ -526,17 +499,15 @@
             // 
             // optionalInformationPanel
             // 
+            this.optionalInformationPanel.Controls.Add(this.currencyComboBox);
             this.optionalInformationPanel.Controls.Add(this.optionalInformationBackButton);
             this.optionalInformationPanel.Controls.Add(this.accountNumberLabel);
             this.optionalInformationPanel.Controls.Add(this.accountNumberTextBox);
             this.optionalInformationPanel.Controls.Add(this.optionalInformationNextButton);
             this.optionalInformationPanel.Controls.Add(this.notesLabel);
-            this.optionalInformationPanel.Controls.Add(this.taxRegimeLabel);
             this.optionalInformationPanel.Controls.Add(this.notesTextBox);
-            this.optionalInformationPanel.Controls.Add(this.taxRegimeTextBox);
             this.optionalInformationPanel.Controls.Add(this.exchangeRateTextBox);
             this.optionalInformationPanel.Controls.Add(this.exchangeRateLabel);
-            this.optionalInformationPanel.Controls.Add(this.currencyTextBox);
             this.optionalInformationPanel.Controls.Add(this.currencyLabel);
             this.optionalInformationPanel.Controls.Add(this.folioTextBox);
             this.optionalInformationPanel.Controls.Add(this.folioLabel);
@@ -545,8 +516,18 @@
             this.optionalInformationPanel.Controls.Add(this.optionalInformationLabel);
             this.optionalInformationPanel.Location = new System.Drawing.Point(0, 0);
             this.optionalInformationPanel.Name = "optionalInformationPanel";
-            this.optionalInformationPanel.Size = new System.Drawing.Size(225, 340);
+            this.optionalInformationPanel.Size = new System.Drawing.Size(225, 345);
             this.optionalInformationPanel.Visible = false;
+            // 
+            // currencyComboBox
+            // 
+            this.currencyComboBox.Items.Add("Pesos");
+            this.currencyComboBox.Items.Add("Euros");
+            this.currencyComboBox.Items.Add("Dolares");
+            this.currencyComboBox.Location = new System.Drawing.Point(118, 109);
+            this.currencyComboBox.Name = "currencyComboBox";
+            this.currencyComboBox.Size = new System.Drawing.Size(100, 23);
+            this.currencyComboBox.TabIndex = 49;
             // 
             // optionalInformationBackButton
             // 
@@ -591,14 +572,6 @@
             this.notesLabel.Size = new System.Drawing.Size(94, 20);
             this.notesLabel.Text = "Comentarios";
             // 
-            // taxRegimeLabel
-            // 
-            this.taxRegimeLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.taxRegimeLabel.Location = new System.Drawing.Point(5, 163);
-            this.taxRegimeLabel.Name = "taxRegimeLabel";
-            this.taxRegimeLabel.Size = new System.Drawing.Size(94, 20);
-            this.taxRegimeLabel.Text = "RégimenFiscal";
-            // 
             // notesTextBox
             // 
             this.notesTextBox.Location = new System.Drawing.Point(5, 210);
@@ -608,15 +581,6 @@
             this.notesTextBox.Size = new System.Drawing.Size(213, 93);
             this.notesTextBox.TabIndex = 15;
             this.notesTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
-            // 
-            // taxRegimeTextBox
-            // 
-            this.taxRegimeTextBox.Location = new System.Drawing.Point(118, 160);
-            this.taxRegimeTextBox.MaxLength = 30;
-            this.taxRegimeTextBox.Name = "taxRegimeTextBox";
-            this.taxRegimeTextBox.Size = new System.Drawing.Size(100, 23);
-            this.taxRegimeTextBox.TabIndex = 14;
-            this.taxRegimeTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // exchangeRateTextBox
             // 
@@ -634,15 +598,6 @@
             this.exchangeRateLabel.Name = "exchangeRateLabel";
             this.exchangeRateLabel.Size = new System.Drawing.Size(115, 20);
             this.exchangeRateLabel.Text = "Tipo de Cambio";
-            // 
-            // currencyTextBox
-            // 
-            this.currencyTextBox.Location = new System.Drawing.Point(118, 110);
-            this.currencyTextBox.MaxLength = 20;
-            this.currencyTextBox.Name = "currencyTextBox";
-            this.currencyTextBox.Size = new System.Drawing.Size(100, 23);
-            this.currencyTextBox.TabIndex = 10;
-            this.currencyTextBox.GotFocus += new System.EventHandler(this.GotFocus_SetValidColor);
             // 
             // currencyLabel
             // 
@@ -696,15 +651,87 @@
             // 
             // generatePanel
             // 
+            this.generatePanel.Controls.Add(this.tasaIvalabel);
+            this.generatePanel.Controls.Add(this.totalTaxlabel);
+            this.generatePanel.Controls.Add(this.totalTasaIvatextBox);
+            this.generatePanel.Controls.Add(this.totalTaxtextBox);
+            this.generatePanel.Controls.Add(this.totalLabel);
+            this.generatePanel.Controls.Add(this.subTotalLabel);
+            this.generatePanel.Controls.Add(this.totalTextBox);
+            this.generatePanel.Controls.Add(this.subTotalTextBox);
             this.generatePanel.Controls.Add(this.generateButton);
             this.generatePanel.Location = new System.Drawing.Point(0, 0);
             this.generatePanel.Name = "generatePanel";
-            this.generatePanel.Size = new System.Drawing.Size(225, 169);
+            this.generatePanel.Size = new System.Drawing.Size(225, 204);
             this.generatePanel.Visible = false;
+            // 
+            // tasaIvalabel
+            // 
+            this.tasaIvalabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.tasaIvalabel.Location = new System.Drawing.Point(2, 34);
+            this.tasaIvalabel.Name = "tasaIvalabel";
+            this.tasaIvalabel.Size = new System.Drawing.Size(115, 20);
+            this.tasaIvalabel.Text = "Total Tasa Iva";
+            // 
+            // totalTaxlabel
+            // 
+            this.totalTaxlabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.totalTaxlabel.Location = new System.Drawing.Point(2, 59);
+            this.totalTaxlabel.Name = "totalTaxlabel";
+            this.totalTaxlabel.Size = new System.Drawing.Size(115, 20);
+            this.totalTaxlabel.Text = "Iva Total";
+            // 
+            // totalTasaIvatextBox
+            // 
+            this.totalTasaIvatextBox.Location = new System.Drawing.Point(118, 31);
+            this.totalTasaIvatextBox.MaxLength = 10;
+            this.totalTasaIvatextBox.Name = "totalTasaIvatextBox";
+            this.totalTasaIvatextBox.Size = new System.Drawing.Size(100, 23);
+            this.totalTasaIvatextBox.TabIndex = 22;
+            // 
+            // totalTaxtextBox
+            // 
+            this.totalTaxtextBox.Location = new System.Drawing.Point(118, 56);
+            this.totalTaxtextBox.MaxLength = 10;
+            this.totalTaxtextBox.Name = "totalTaxtextBox";
+            this.totalTaxtextBox.Size = new System.Drawing.Size(100, 23);
+            this.totalTaxtextBox.TabIndex = 21;
+            // 
+            // totalLabel
+            // 
+            this.totalLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.totalLabel.Location = new System.Drawing.Point(3, 109);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(115, 20);
+            this.totalLabel.Text = "Total";
+            // 
+            // subTotalLabel
+            // 
+            this.subTotalLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
+            this.subTotalLabel.Location = new System.Drawing.Point(3, 84);
+            this.subTotalLabel.Name = "subTotalLabel";
+            this.subTotalLabel.Size = new System.Drawing.Size(115, 20);
+            this.subTotalLabel.Text = "Sub Total";
+            // 
+            // totalTextBox
+            // 
+            this.totalTextBox.Location = new System.Drawing.Point(118, 106);
+            this.totalTextBox.MaxLength = 10;
+            this.totalTextBox.Name = "totalTextBox";
+            this.totalTextBox.Size = new System.Drawing.Size(100, 23);
+            this.totalTextBox.TabIndex = 20;
+            // 
+            // subTotalTextBox
+            // 
+            this.subTotalTextBox.Location = new System.Drawing.Point(118, 81);
+            this.subTotalTextBox.MaxLength = 10;
+            this.subTotalTextBox.Name = "subTotalTextBox";
+            this.subTotalTextBox.Size = new System.Drawing.Size(100, 23);
+            this.subTotalTextBox.TabIndex = 19;
             // 
             // generateButton
             // 
-            this.generateButton.Location = new System.Drawing.Point(82, 37);
+            this.generateButton.Location = new System.Drawing.Point(66, 163);
             this.generateButton.Name = "generateButton";
             this.generateButton.Size = new System.Drawing.Size(72, 20);
             this.generateButton.TabIndex = 0;
@@ -724,6 +751,7 @@
             this.Menu = this.invoicingMenu;
             this.Name = "InvoicingForm";
             this.Text = "Facturación";
+            this.TextChanged += new System.EventHandler(this.setTypeChange);
             this.receiverInformationPanel.ResumeLayout(false);
             this.requiredInformationPanel.ResumeLayout(false);
             this.optionalInformationPanel.ResumeLayout(false);
@@ -759,11 +787,7 @@
         private System.Windows.Forms.Button receiverInformationNextButton;
         private System.Windows.Forms.Panel requiredInformationPanel;
         private System.Windows.Forms.Button requiredInformationNextButton;
-        private System.Windows.Forms.Label totalLabel;
-        private System.Windows.Forms.Label subTotalLabel;
         private System.Windows.Forms.Label paymentFormLabel;
-        private System.Windows.Forms.TextBox totalTextBox;
-        private System.Windows.Forms.TextBox subTotalTextBox;
         private System.Windows.Forms.Label paymentMethodLabel;
         private System.Windows.Forms.Label placeOfIssueLabel;
         private System.Windows.Forms.TextBox ticketNumberTextBox;
@@ -781,12 +805,9 @@
         private System.Windows.Forms.TextBox accountNumberTextBox;
         private System.Windows.Forms.Button optionalInformationNextButton;
         private System.Windows.Forms.Label notesLabel;
-        private System.Windows.Forms.Label taxRegimeLabel;
         private System.Windows.Forms.TextBox notesTextBox;
-        private System.Windows.Forms.TextBox taxRegimeTextBox;
         private System.Windows.Forms.TextBox exchangeRateTextBox;
         private System.Windows.Forms.Label exchangeRateLabel;
-        private System.Windows.Forms.TextBox currencyTextBox;
         private System.Windows.Forms.Label currencyLabel;
         private System.Windows.Forms.TextBox folioTextBox;
         private System.Windows.Forms.Label folioLabel;
@@ -800,5 +821,14 @@
         private System.Windows.Forms.Button addEmailButton;
         private System.Windows.Forms.Panel generatePanel;
         private System.Windows.Forms.Button generateButton;
+        private System.Windows.Forms.Label tasaIvalabel;
+        private System.Windows.Forms.Label totalTaxlabel;
+        private System.Windows.Forms.TextBox totalTasaIvatextBox;
+        private System.Windows.Forms.TextBox totalTaxtextBox;
+        private System.Windows.Forms.Label totalLabel;
+        private System.Windows.Forms.Label subTotalLabel;
+        private System.Windows.Forms.TextBox totalTextBox;
+        private System.Windows.Forms.TextBox subTotalTextBox;
+        private System.Windows.Forms.ComboBox currencyComboBox;
     }
 }
