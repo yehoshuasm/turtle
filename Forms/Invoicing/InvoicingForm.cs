@@ -13,7 +13,6 @@ namespace turtle
     public partial class InvoicingForm : Form
     {
         Invoice Invoice;
-        String emailAdded;
 
         /// <summary>
         /// Constructor
@@ -108,6 +107,10 @@ namespace turtle
             controlsValidations.Add(ticketNumberTextBox, Validator.IsInteger(ticketNumberTextBox.Text, true));
             controlsValidations.Add(subTotalTextBox, Validator.IsDecimal(subTotalTextBox.Text, false));
             controlsValidations.Add(totalTextBox, Validator.IsDecimal(totalTextBox.Text, false));
+            controlsValidations.Add(receipTypeComboBox, receipTypeComboBox.SelectedItem != null);
+            controlsValidations.Add(placeOfIssueComboBox, placeOfIssueComboBox.SelectedItem != null);
+            controlsValidations.Add(paymentMethodComboBox, paymentMethodComboBox.SelectedItem != null);
+            controlsValidations.Add(paymentFormComboBox, paymentFormComboBox.SelectedItem != null);
             return Validator.Validate(controlsValidations);
         }
 
@@ -135,11 +138,11 @@ namespace turtle
         /// </summary>
         private void SetReceiverInformation()
         {
-            
+
             Invoice.Receiver = new Receiver
             {
                 Rfc = rfcTextBox.Text,
-                Name = (nameTextBox.Text!=""?nameTextBox.Text:"Nombre"),
+                Name = (nameTextBox.Text != "" ? nameTextBox.Text : "Nombre"),
                 Email = emailTextBox.Text,
                 //Email
                 Address = new Address
@@ -147,12 +150,12 @@ namespace turtle
                     Street = streetTextBox.Text,
                     ExternalNumber = (externalNumberTextBox.Text),
 
-                    InternalNumber = (internalNumberTextBox.Text != "" ? internalNumberTextBox.Text : "0" ),
+                    InternalNumber = (internalNumberTextBox.Text != "" ? internalNumberTextBox.Text : "0"),
                     Suburb = suburbTextBox.Text,
                     Municipality = municipalityTextBox.Text,
                     State = stateTextBox.Text,
                     Country = countryTextBox.Text,
-                    ZipCode = (zipCodeTextBox.Text!=""?Convert.ToInt32(zipCodeTextBox.Text):0)
+                    ZipCode = (zipCodeTextBox.Text != "" ? Convert.ToInt32(zipCodeTextBox.Text) : 0)
                 }
             };
         }
@@ -162,11 +165,11 @@ namespace turtle
         /// </summary>
         private void SetRequiredInformation()
         {
-            Invoice.ReceipType = receipTypeComboBox.SelectedItem.ToString();
+            Invoice.ReceipType = receipTypeComboBox.SelectedItem != null ? receipTypeComboBox.SelectedItem.ToString() : "";
             Invoice.TicketNumber = (ticketNumberTextBox.Text != "" ? Convert.ToInt32(ticketNumberTextBox.Text) : 0);
-            Invoice.PlaceOfIssue = placeOfIssueComboBox.SelectedItem.ToString();
-            Invoice.PaymentMethod = paymentMethodComboBox.SelectedItem.ToString();
-            Invoice.PaymentForm = paymentFormComboBox.SelectedItem.ToString();
+            Invoice.PlaceOfIssue = placeOfIssueComboBox.SelectedItem != null ? placeOfIssueComboBox.SelectedItem.ToString() : "";
+            Invoice.PaymentMethod = paymentMethodComboBox.SelectedItem != null ? paymentMethodComboBox.SelectedItem.ToString() : "";
+            Invoice.PaymentForm = paymentFormComboBox.SelectedItem != null ? paymentFormComboBox.SelectedItem.ToString() : "";
             Invoice.SubTotal = (subTotalTextBox.Text != "" ? Convert.ToDecimal(subTotalTextBox.Text) : 0);
             Invoice.Total = (totalTextBox.Text != "" ? Convert.ToDecimal(totalTextBox.Text) : 0);
         }
@@ -253,7 +256,7 @@ namespace turtle
             tags.Add("subtotal", Invoice.SubTotal.ToString());
             tags.Add("total", Invoice.Total.ToString());
             tags.Add("formaDePago", Invoice.PaymentForm.ToString());
-            tags.Add("correoCliente", "valenciahn@gmail.com");
+            tags.Add("correoCliente",Invoice.Email );
             tags.Add("noTicket", Invoice.TicketNumber.ToString());
             tags.Add("lugarExpedicion", Invoice.PlaceOfIssue.ToString());
             tags.Add("metodoPago", Invoice.PaymentMethod.ToString());
@@ -284,6 +287,7 @@ namespace turtle
             catch (Exception exception)
             {
                 MessageBox.Show("Error en la conexión");
+                Console.WriteLine(exception);
             }
             finally
             {
