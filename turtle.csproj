@@ -173,7 +173,9 @@
     <None Include="Web References\mx.com.emitefacturacion.emitecfdi\ws.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Forms\Config.xml" />
+    <Content Include="Forms\Config.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
   <ProjectExtensions>

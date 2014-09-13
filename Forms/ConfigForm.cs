@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using turtle.Model;
 using turtle.Utils;
 using System.Xml;
+using System.IO;
 
 namespace turtle.Forms
 {
@@ -41,22 +42,25 @@ namespace turtle.Forms
 
         private bool writeChange()
         {
-           
-                XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.Load(@"C:\Users\Nestor\Documents\Visual Studio 2008\Projects\turtle\Forms\Config.xml");
-                XmlNode node;
-                node = xmlDoc.SelectSingleNode("Serie");
-                node.InnerText = serietextBox.Text;
-
-                node = xmlDoc.SelectSingleNode("FolioInicial");
+            String pathXmlFile = @"Config.xml";
+            XmlDocument xmlDoc = new XmlDocument();
+            try
+            {
+                xmlDoc.Load(pathXmlFile);
+                XmlNode nodo = xmlDoc.SelectSingleNode("Config/Folio/Serie");
+                /*node = xmlDoc.GetElementsByTagName("FolioInicial");
                 node.InnerText = initialFoliotextBox.Text;
 
-                node = xmlDoc.SelectSingleNode("Foliofinal");
-                node.InnerText = finalFoliotextBox.Text;
+                node = xmlDoc.GetElementsByTagName("Foliofinal");
+                node.InnerText = finalFoliotextBox.Text;*/
 
                 return true;
-              
-            
+            }catch(Exception xmlException){
+                Console.Write(xmlException.Message);
+                throw;
+            }
+
+            return false;
         }
        
     }
