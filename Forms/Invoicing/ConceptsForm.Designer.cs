@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.conceptPanel = new System.Windows.Forms.Panel();
+            this.ivaRatecomboBox = new System.Windows.Forms.ComboBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.unitComboBox = new System.Windows.Forms.ComboBox();
@@ -36,7 +37,6 @@
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.addButton = new System.Windows.Forms.Button();
             this.ivaRateLabel = new System.Windows.Forms.Label();
-            this.ivaRateTextBox = new System.Windows.Forms.TextBox();
             this.ivaTextBox = new System.Windows.Forms.TextBox();
             this.ivaLabel = new System.Windows.Forms.Label();
             this.priceTextBox = new System.Windows.Forms.TextBox();
@@ -56,6 +56,7 @@
             // 
             // conceptPanel
             // 
+            this.conceptPanel.Controls.Add(this.ivaRatecomboBox);
             this.conceptPanel.Controls.Add(this.cancelButton);
             this.conceptPanel.Controls.Add(this.deleteButton);
             this.conceptPanel.Controls.Add(this.unitComboBox);
@@ -63,7 +64,6 @@
             this.conceptPanel.Controls.Add(this.descriptionTextBox);
             this.conceptPanel.Controls.Add(this.addButton);
             this.conceptPanel.Controls.Add(this.ivaRateLabel);
-            this.conceptPanel.Controls.Add(this.ivaRateTextBox);
             this.conceptPanel.Controls.Add(this.ivaTextBox);
             this.conceptPanel.Controls.Add(this.ivaLabel);
             this.conceptPanel.Controls.Add(this.priceTextBox);
@@ -76,6 +76,15 @@
             this.conceptPanel.Name = "conceptPanel";
             this.conceptPanel.Size = new System.Drawing.Size(225, 305);
             this.conceptPanel.Visible = false;
+            // 
+            // ivaRatecomboBox
+            // 
+            this.ivaRatecomboBox.Items.Add("16");
+            this.ivaRatecomboBox.Items.Add("0");
+            this.ivaRatecomboBox.Location = new System.Drawing.Point(118, 135);
+            this.ivaRatecomboBox.Name = "ivaRatecomboBox";
+            this.ivaRatecomboBox.Size = new System.Drawing.Size(100, 23);
+            this.ivaRatecomboBox.TabIndex = 56;
             // 
             // cancelButton
             // 
@@ -98,10 +107,18 @@
             // 
             // unitComboBox
             // 
-            this.unitComboBox.Items.Add("Kilogramo");
-            this.unitComboBox.Items.Add("Litro");
-            this.unitComboBox.Items.Add("Metro");
             this.unitComboBox.Items.Add("Pieza");
+            this.unitComboBox.Items.Add("Caja");
+            this.unitComboBox.Items.Add("Litro");
+            this.unitComboBox.Items.Add("Kilo");
+            this.unitComboBox.Items.Add("Metro");
+            this.unitComboBox.Items.Add("Tonelada");
+            this.unitComboBox.Items.Add("Palet");
+            this.unitComboBox.Items.Add("Decimetro");
+            this.unitComboBox.Items.Add("Centimetro");
+            this.unitComboBox.Items.Add("Gramo");
+            this.unitComboBox.Items.Add("Onza");
+            this.unitComboBox.Items.Add("Libra");
             this.unitComboBox.Location = new System.Drawing.Point(118, 60);
             this.unitComboBox.Name = "unitComboBox";
             this.unitComboBox.Size = new System.Drawing.Size(100, 23);
@@ -134,22 +151,14 @@
             // ivaRateLabel
             // 
             this.ivaRateLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.ivaRateLabel.Location = new System.Drawing.Point(1, 163);
+            this.ivaRateLabel.Location = new System.Drawing.Point(3, 138);
             this.ivaRateLabel.Name = "ivaRateLabel";
             this.ivaRateLabel.Size = new System.Drawing.Size(115, 20);
             this.ivaRateLabel.Text = "Tasa de IVA";
             // 
-            // ivaRateTextBox
-            // 
-            this.ivaRateTextBox.Location = new System.Drawing.Point(118, 160);
-            this.ivaRateTextBox.MaxLength = 10;
-            this.ivaRateTextBox.Name = "ivaRateTextBox";
-            this.ivaRateTextBox.Size = new System.Drawing.Size(100, 23);
-            this.ivaRateTextBox.TabIndex = 14;
-            // 
             // ivaTextBox
             // 
-            this.ivaTextBox.Location = new System.Drawing.Point(118, 135);
+            this.ivaTextBox.Location = new System.Drawing.Point(118, 161);
             this.ivaTextBox.MaxLength = 10;
             this.ivaTextBox.Name = "ivaTextBox";
             this.ivaTextBox.Size = new System.Drawing.Size(100, 23);
@@ -158,7 +167,7 @@
             // ivaLabel
             // 
             this.ivaLabel.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
-            this.ivaLabel.Location = new System.Drawing.Point(1, 138);
+            this.ivaLabel.Location = new System.Drawing.Point(3, 164);
             this.ivaLabel.Name = "ivaLabel";
             this.ivaLabel.Size = new System.Drawing.Size(115, 20);
             this.ivaLabel.Text = "IVA";
@@ -278,7 +287,6 @@
         private System.Windows.Forms.TextBox descriptionTextBox;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Label ivaRateLabel;
-        private System.Windows.Forms.TextBox ivaRateTextBox;
         private System.Windows.Forms.TextBox ivaTextBox;
         private System.Windows.Forms.Label ivaLabel;
         private System.Windows.Forms.TextBox priceTextBox;
@@ -295,5 +303,6 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.ComboBox ivaRatecomboBox;
     }
 }

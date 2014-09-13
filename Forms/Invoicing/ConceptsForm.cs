@@ -39,12 +39,13 @@ namespace turtle.Forms.Invoicing
                     Quantity = Convert.ToInt32(quantityTextBox.Text),
                     Description = descriptionTextBox.Text,
                     Price = Convert.ToDecimal(priceTextBox.Text),
+                    Unit= unitComboBox.SelectedItem.ToString(),
                     //Iva = Convert.ToDecimal(ivaTextBox.Text),
                     //IvaRate = Convert.ToDecimal(ivaRateTextBox.Text)
                 });
                 conceptPanel.Hide();
                 conceptsPanel.Show();
-                conceptsDataGrid.DataSource = Concepts.Select(c => new { c.Quantity, c.Description, c.Price }).ToList();
+                conceptsDataGrid.DataSource = Concepts.Select(c => new { c.Quantity, c.Description, c.Price}).ToList();
             }
         }
 
@@ -55,9 +56,9 @@ namespace turtle.Forms.Invoicing
             var controlsValidations = new Dictionary<Control, bool>();
             controlsValidations.Add(quantityTextBox, Validator.IsInteger(quantityTextBox.Text, false));
             controlsValidations.Add(priceTextBox, Validator.IsDecimal(priceTextBox.Text, false));
-            //controlsValidations.Add(ivaTextBox, Validator.IsDecimal(ivaTextBox.Text, true));
-            controlsValidations.Add(ivaRateTextBox, Validator.IsDecimal(ivaRateTextBox.Text, true));
-            controlsValidations.Add(unitComboBox, unitComboBox.SelectedItem != "");
+            controlsValidations.Add(ivaTextBox, Validator.IsDecimal(ivaTextBox.Text, false));
+            controlsValidations.Add(descriptionTextBox,Validator.IsAlphanumeric(descriptionTextBox.Text,false));
+            //controlsValidations.Add(ivaRatecomboBox1, Validator.IsDecimal(ivaRatecomboBox1.Text, false));
             return Validator.Validate(controlsValidations);
         }
 
