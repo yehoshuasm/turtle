@@ -32,6 +32,7 @@
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.invoicingButton = new System.Windows.Forms.Button();
             this.Configuration_button = new System.Windows.Forms.Button();
+            this.outstandingInvoidesButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // invoicingButton
@@ -52,12 +53,22 @@
             this.Configuration_button.Text = "Configuración";
             this.Configuration_button.Click += new System.EventHandler(this.configButton_Click);
             // 
+            // outstandingInvoidesButton
+            // 
+            this.outstandingInvoidesButton.Location = new System.Drawing.Point(2, 74);
+            this.outstandingInvoidesButton.Name = "outstandingInvoidesButton";
+            this.outstandingInvoidesButton.Size = new System.Drawing.Size(233, 27);
+            this.outstandingInvoidesButton.TabIndex = 2;
+            this.outstandingInvoidesButton.Text = "Facturas Pendientes";
+            this.outstandingInvoidesButton.Click += new System.EventHandler(this.outstandingInvoidesButton_Click);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(237, 175);
+            this.Controls.Add(this.outstandingInvoidesButton);
             this.Controls.Add(this.Configuration_button);
             this.Controls.Add(this.invoicingButton);
             this.Menu = this.mainMenu1;
@@ -71,5 +82,6 @@
 
         private System.Windows.Forms.Button invoicingButton;
         private System.Windows.Forms.Button Configuration_button;
+        private System.Windows.Forms.Button outstandingInvoidesButton;
     }
 }

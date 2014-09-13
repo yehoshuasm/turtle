@@ -83,11 +83,10 @@ namespace turtle
         /// <returns></returns>
         private bool ValidateReceiverInformation()
         {   
-            bool emailEvaluated=Validator.IsEmail(emailTextBox.Text);
             var controlsValidations = new Dictionary<Control, bool>();
             controlsValidations.Add(rfcTextBox, Validator.IsRfc(rfcTextBox.Text, false));
             controlsValidations.Add(nameTextBox, Validator.IsAlphanumeric(nameTextBox.Text, true));
-            controlsValidations.Add(emailTextBox,emailEvaluated);
+            controlsValidations.Add(emailTextBox,Validator.IsEmail(emailTextBox.Text));
             controlsValidations.Add(streetTextBox, Validator.IsAlphabetic(streetTextBox.Text, false));
             controlsValidations.Add(externalNumberTextBox, Validator.IsInteger(externalNumberTextBox.Text, false));
             controlsValidations.Add(internalNumberTextBox, Validator.IsInteger(internalNumberTextBox.Text, true));
@@ -96,22 +95,6 @@ namespace turtle
             controlsValidations.Add(stateTextBox, Validator.IsAlphabetic(stateTextBox.Text, false));
             controlsValidations.Add(countryTextBox, Validator.IsAlphabetic(countryTextBox.Text, false));
             controlsValidations.Add(zipCodeTextBox, Validator.IsInteger(zipCodeTextBox.Text, false));
-
-            if (emailEvaluated)
-            {
-                if (emailAdded!=null&&!emailAdded.Equals(""))
-                {
-                    emailTextBox.Text = emailAdded + "," + emailTextBox.Text;
-                }
-                else
-                {
-                    emailTextBox.Text = emailAdded;
-                }
-            }
-            else
-            {
-                emailTextBox.Text = emailAdded;
-            }
             return Validator.Validate(controlsValidations);
         }
 
@@ -180,12 +163,12 @@ namespace turtle
         private void SetRequiredInformation()
         {
             Invoice.ReceipType = receipTypeComboBox.SelectedItem.ToString();
-            Invoice.TicketNumber = (ticketNumberTextBox.Text!=""?Convert.ToInt32(ticketNumberTextBox.Text):0);
+            Invoice.TicketNumber = (ticketNumberTextBox.Text != "" ? Convert.ToInt32(ticketNumberTextBox.Text) : 0);
             Invoice.PlaceOfIssue = placeOfIssueComboBox.SelectedItem.ToString();
             Invoice.PaymentMethod = paymentMethodComboBox.SelectedItem.ToString();
             Invoice.PaymentForm = paymentFormComboBox.SelectedItem.ToString();
-            Invoice.SubTotal = (subTotalTextBox.Text!=""?Convert.ToDecimal(subTotalTextBox.Text):0);
-            Invoice.Total = (totalTextBox.Text!=""?Convert.ToDecimal(totalTextBox.Text):0);
+            Invoice.SubTotal = (subTotalTextBox.Text != "" ? Convert.ToDecimal(subTotalTextBox.Text) : 0);
+            Invoice.Total = (totalTextBox.Text != "" ? Convert.ToDecimal(totalTextBox.Text) : 0);
         }
 
         /// <summary>
@@ -193,19 +176,12 @@ namespace turtle
         /// </summary>
         private void SetOptionalInformation()
         {
-            Invoice.SerialNumber = (serialNumberTextBox.Text!=""?serialNumberTextBox.Text:"0");
-            Invoice.Folio = (folioTextBox.Text!=""?Convert.ToInt32(folioTextBox.Text):0);
-            Invoice.AccountNumber = (accountNumberTextBox.Text!=""?accountNumberTextBox.Text:"0000");
+            Invoice.SerialNumber = (serialNumberTextBox.Text != "" ? serialNumberTextBox.Text : "0");
+            Invoice.Folio = (folioTextBox.Text != "" ? Convert.ToInt32(folioTextBox.Text) : 0);
+            Invoice.AccountNumber = (accountNumberTextBox.Text != "" ? accountNumberTextBox.Text : "0000");
             Invoice.Currency = currencyComboBox.SelectedItem.ToString();
-            Invoice.ExchangeRate = (exchangeRateTextBox.Text!=""?Convert.ToDecimal(exchangeRateTextBox.Text):0);
-            Invoice.Notes = (notesTextBox.Text!=""?notesTextBox.Text:"Sin Comentarios");
-        }
-
-        private void addEmailButton_Click(object sender, EventArgs e)
-        {
-            //emailAdded = emailTextBox.Text;
-            //emailTextBox.Text = "";
-
+            Invoice.ExchangeRate = (exchangeRateTextBox.Text != "" ? Convert.ToDecimal(exchangeRateTextBox.Text) : 0);
+            Invoice.Notes = (notesTextBox.Text != "" ? notesTextBox.Text : "Sin Comentarios");
         }
 
         private void GotFocus_SetValidColor(object sender, EventArgs e)
@@ -283,7 +259,7 @@ namespace turtle
             tags.Add("metodoPago", Invoice.PaymentMethod.ToString());
             tags.Add("numeroCuentaPago", Invoice.AccountNumber.ToString());
             tags.Add("moneda", "Pesos");
-            tags.Add("tipoCambio", Invoice.ExchangeRate != 0 ? Invoice.ExchangeRate.ToString() :"1.00");
+            tags.Add("tipoCambio", Invoice.ExchangeRate != 0 ? Invoice.ExchangeRate.ToString() : "1.00");
             tags.Add("regimenFiscal", Invoice.TaxRegime);
             tags.Add("comentarios", Invoice.Notes.ToString());
             var tagsString = Concat(tags);
@@ -300,12 +276,22 @@ namespace turtle
             var cfdi = new CFDIEmite();
             Invoice.SubTotal = Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Price) : 0;
             Invoice.Total = Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Iva) + Invoice.SubTotal : 0;
-            turtle.mx.com.emitefacturacion.emitecfdi.Respuesta respuesta=cfdi.generarCFDI(InvoiceToString(), "AAA010101AAA", "Casa_Tono13");
-           
-            MessageBox.Show(respuesta.mensaje.ToString(), "Respuesta");
+            var invoice = InvoiceToString();
+            try
+            {
+                turtle.mx.com.emitefacturacion.emitecfdi.Respuesta respuesta = cfdi.generarCFDI(InvoiceToString(), "AAA010101AAA", "Casa_Tono13");
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Error en la conexión");
+            }
+            finally
+            {
+                DataWriter.SaveXmlInvoice(invoice);
+            }
         }
 
-        private void setTypeChange(object sender, EventArgs e)
+        private void SetTypeChange(object sender, EventArgs e)
         {
             if (currencyComboBox.SelectedItem.ToString().Equals("Pesos"))
             {
