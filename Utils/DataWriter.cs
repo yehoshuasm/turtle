@@ -20,6 +20,7 @@ namespace turtle.Utils
             catch (Exception e)
             {
                 MessageBox.Show("Error al guardar factura");
+                Console.WriteLine(e);
             }
         }
     }
