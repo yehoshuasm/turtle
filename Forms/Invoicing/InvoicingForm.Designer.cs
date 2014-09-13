@@ -151,7 +151,6 @@
             this.addEmailButton.Size = new System.Drawing.Size(22, 23);
             this.addEmailButton.TabIndex = 57;
             this.addEmailButton.Text = "+";
-            this.addEmailButton.Click += new System.EventHandler(this.addEmailButton_Click);
             // 
             // receiverInformatioCancelButton
             // 
@@ -751,7 +750,7 @@
             this.Menu = this.invoicingMenu;
             this.Name = "InvoicingForm";
             this.Text = "Facturación";
-            this.TextChanged += new System.EventHandler(this.setTypeChange);
+            this.TextChanged += new System.EventHandler(this.SetTypeChange);
             this.receiverInformationPanel.ResumeLayout(false);
             this.requiredInformationPanel.ResumeLayout(false);
             this.optionalInformationPanel.ResumeLayout(false);
