@@ -42,7 +42,7 @@ namespace turtle.Forms
 
         private bool writeChange()
         {
-            String pathXmlFile = @"Config.xml";
+           String pathXmlFile = @"Config.xml";
             XmlDocument xmlDoc = new XmlDocument();
             try
             {
@@ -61,6 +61,11 @@ namespace turtle.Forms
             }
 
             return false;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
        
     }
