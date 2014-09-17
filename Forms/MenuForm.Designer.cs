@@ -46,7 +46,7 @@
             // 
             // Configuration_button
             // 
-            this.Configuration_button.Location = new System.Drawing.Point(4, 37);
+            this.Configuration_button.Location = new System.Drawing.Point(3, 69);
             this.Configuration_button.Name = "Configuration_button";
             this.Configuration_button.Size = new System.Drawing.Size(233, 27);
             this.Configuration_button.TabIndex = 1;
@@ -55,7 +55,7 @@
             // 
             // outstandingInvoidesButton
             // 
-            this.outstandingInvoidesButton.Location = new System.Drawing.Point(2, 74);
+            this.outstandingInvoidesButton.Location = new System.Drawing.Point(1, 36);
             this.outstandingInvoidesButton.Name = "outstandingInvoidesButton";
             this.outstandingInvoidesButton.Size = new System.Drawing.Size(233, 27);
             this.outstandingInvoidesButton.TabIndex = 2;

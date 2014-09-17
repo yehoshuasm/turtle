@@ -302,6 +302,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(130, 23);
             this.textBox2.TabIndex = 1;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // addendalabel
             // 
@@ -315,7 +316,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(238, 275);
+            this.ClientSize = new System.Drawing.Size(238, 273);
             this.Controls.Add(this.configTabControl);
             this.Menu = this.mainMenu1;
             this.Name = "ConfigForm";

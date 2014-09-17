@@ -8,5 +8,6 @@
         public decimal Price { get; set; }
         public decimal Iva { get; set; }
         public decimal IvaRate { get; set; }
+        public decimal Import { get; set; }
     }
 }
