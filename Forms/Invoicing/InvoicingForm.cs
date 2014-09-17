@@ -55,7 +55,7 @@ namespace turtle
                 new ConceptsForm(Invoice.Concepts,subTotalTextBox,totalTextBox).Show();
                 optionalInformationPanel.Hide();
                 generatePanel.Show();
-               
+
             }
         }
 
@@ -140,13 +140,10 @@ namespace turtle
         /// </summary>
         private void SetReceiverInformation()
         {
-
             Invoice.Receiver = new Receiver
             {
                 Rfc = rfcTextBox.Text,
                 Name = (nameTextBox.Text != "" ? nameTextBox.Text : "Nombre"),
-                Email = emailTextBox.Text,
-                //Email
                 Address = new Address
                 {
                     Street = streetTextBox.Text,
@@ -160,6 +157,7 @@ namespace turtle
                     ZipCode = (zipCodeTextBox.Text != "" ? Convert.ToInt32(zipCodeTextBox.Text) : 0)
                 }
             };
+            Invoice.Email = emailTextBox.Text;
         }
 
         /// <summary>
@@ -258,14 +256,13 @@ namespace turtle
             tags.Add("subtotal", Invoice.SubTotal.ToString());
             tags.Add("total", Invoice.Total.ToString());
             tags.Add("formaDePago", Invoice.PaymentForm.ToString());
-            tags.Add("correoCliente",Invoice.Email );
+            tags.Add("correoCliente", Invoice.Email);
             tags.Add("noTicket", Invoice.TicketNumber.ToString());
             tags.Add("lugarExpedicion", Invoice.PlaceOfIssue.ToString());
             tags.Add("metodoPago", Invoice.PaymentMethod.ToString());
             tags.Add("numeroCuentaPago", Invoice.AccountNumber.ToString());
             tags.Add("moneda", "Pesos");
             tags.Add("tipoCambio", Invoice.ExchangeRate != 0 ? Invoice.ExchangeRate.ToString() : "1.00");
-            tags.Add("regimenFiscal", Invoice.TaxRegime);
             tags.Add("comentarios", Invoice.Notes.ToString());
             var tagsString = Concat(tags);
             invoiceString += tagsString + " >";

@@ -21,7 +21,6 @@ namespace turtle.Model
         public string AccountNumber { get; set; }
         public string Currency { get; set; }
         public decimal ExchangeRate { get; set; }
-        public string TaxRegime { get; set; }
         public string Notes { get; set; }
         // Receiver Information
         public Receiver Receiver { get; set; }

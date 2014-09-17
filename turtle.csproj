@@ -162,6 +162,9 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App.Config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web References\mx.com.emitefacturacion.emitecfdi\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -182,9 +185,6 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\mx.com.emitefacturacion.emitecfdi\ws.wsdl" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Config.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
   <ProjectExtensions>
