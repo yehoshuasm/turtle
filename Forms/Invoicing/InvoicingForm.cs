@@ -278,13 +278,18 @@ namespace turtle
 
         private void generateButton_Click(object sender, EventArgs e)
         {
-            var cfdi = new CFDIEmite();
+            var cfdi = new CFDIEmite()
+            {
+                Timeout = 15000
+            };
             Invoice.SubTotal = Convert.ToDecimal(subTotalTextBox.Text);//Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Price) : 0;
             Invoice.Total = Convert.ToDecimal(totalTextBox.Text);//Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Iva) + Invoice.SubTotal : 0;
             var invoice = InvoiceToString();
             try
             {
                 turtle.mx.com.emitefacturacion.emitecfdi.Respuesta respuesta = cfdi.generarCFDI(InvoiceToString(), "AAA010101AAA", "Casa_Tono13");
+                MessageBox.Show("Factura enviada");
+                this.Close();
             }
             catch (Exception exception)
             {
