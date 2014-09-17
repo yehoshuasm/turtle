@@ -85,6 +85,7 @@
             this.ivaRatecomboBox.Name = "ivaRatecomboBox";
             this.ivaRatecomboBox.Size = new System.Drawing.Size(100, 23);
             this.ivaRatecomboBox.TabIndex = 56;
+            this.ivaRatecomboBox.SelectedIndexChanged += new System.EventHandler(this.ivaRateSelectItem);
             // 
             // cancelButton
             // 
@@ -108,17 +109,17 @@
             // unitComboBox
             // 
             this.unitComboBox.Items.Add("Pieza");
-            this.unitComboBox.Items.Add("Caja");
             this.unitComboBox.Items.Add("Litro");
             this.unitComboBox.Items.Add("Kilo");
             this.unitComboBox.Items.Add("Metro");
             this.unitComboBox.Items.Add("Tonelada");
-            this.unitComboBox.Items.Add("Palet");
             this.unitComboBox.Items.Add("Decimetro");
             this.unitComboBox.Items.Add("Centimetro");
             this.unitComboBox.Items.Add("Gramo");
             this.unitComboBox.Items.Add("Onza");
             this.unitComboBox.Items.Add("Libra");
+            this.unitComboBox.Items.Add("Servicio");
+            this.unitComboBox.Items.Add("N/A");
             this.unitComboBox.Location = new System.Drawing.Point(118, 60);
             this.unitComboBox.Name = "unitComboBox";
             this.unitComboBox.Size = new System.Drawing.Size(100, 23);
@@ -270,8 +271,8 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(229, 311);
             this.Controls.Add(this.closeButton);
-            this.Controls.Add(this.conceptsPanel);
             this.Controls.Add(this.conceptPanel);
+            this.Controls.Add(this.conceptsPanel);
             this.Name = "ConceptsForm";
             this.Text = "Concepts";
             this.conceptPanel.ResumeLayout(false);

@@ -316,7 +316,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(238, 275);
+            this.ClientSize = new System.Drawing.Size(238, 273);
             this.Controls.Add(this.configTabControl);
             this.Menu = this.mainMenu1;
             this.Name = "ConfigForm";

@@ -89,6 +89,8 @@
             this.serialNumberLabel = new System.Windows.Forms.Label();
             this.optionalInformationLabel = new System.Windows.Forms.Label();
             this.generatePanel = new System.Windows.Forms.Panel();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.tasaIvalabel = new System.Windows.Forms.Label();
             this.totalTaxlabel = new System.Windows.Forms.Label();
             this.totalTasaIvatextBox = new System.Windows.Forms.TextBox();
@@ -395,8 +397,8 @@
             // 
             // paymentFormComboBox
             // 
-            this.paymentFormComboBox.Items.Add("1 Exibicion");
-            this.paymentFormComboBox.Items.Add("Por Exibiciones");
+            this.paymentFormComboBox.Items.Add("Una Sola Exibicion");
+            this.paymentFormComboBox.Items.Add("Por Parcialidades");
             this.paymentFormComboBox.Location = new System.Drawing.Point(118, 135);
             this.paymentFormComboBox.Name = "paymentFormComboBox";
             this.paymentFormComboBox.Size = new System.Drawing.Size(100, 23);
@@ -405,8 +407,9 @@
             // paymentMethodComboBox
             // 
             this.paymentMethodComboBox.Items.Add("Efectivo");
-            this.paymentMethodComboBox.Items.Add("Deposito");
             this.paymentMethodComboBox.Items.Add("Transferencia");
+            this.paymentMethodComboBox.Items.Add("No Identificado");
+            this.paymentMethodComboBox.Items.Add("Cheque");
             this.paymentMethodComboBox.Location = new System.Drawing.Point(118, 110);
             this.paymentMethodComboBox.Name = "paymentMethodComboBox";
             this.paymentMethodComboBox.Size = new System.Drawing.Size(100, 23);
@@ -527,6 +530,7 @@
             this.currencyComboBox.Name = "currencyComboBox";
             this.currencyComboBox.Size = new System.Drawing.Size(100, 23);
             this.currencyComboBox.TabIndex = 49;
+            this.currencyComboBox.SelectedIndexChanged += new System.EventHandler(this.SetTypeChange);
             // 
             // optionalInformationBackButton
             // 
@@ -650,6 +654,8 @@
             // 
             // generatePanel
             // 
+            this.generatePanel.Controls.Add(this.cancelButton);
+            this.generatePanel.Controls.Add(this.backButton);
             this.generatePanel.Controls.Add(this.tasaIvalabel);
             this.generatePanel.Controls.Add(this.totalTaxlabel);
             this.generatePanel.Controls.Add(this.totalTasaIvatextBox);
@@ -663,6 +669,24 @@
             this.generatePanel.Name = "generatePanel";
             this.generatePanel.Size = new System.Drawing.Size(225, 204);
             this.generatePanel.Visible = false;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(106, 181);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(72, 20);
+            this.cancelButton.TabIndex = 26;
+            this.cancelButton.Text = "Cancelar";
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(21, 181);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(72, 20);
+            this.backButton.TabIndex = 25;
+            this.backButton.Text = "Atras";
+            this.backButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // tasaIvalabel
             // 
@@ -730,7 +754,7 @@
             // 
             // generateButton
             // 
-            this.generateButton.Location = new System.Drawing.Point(66, 163);
+            this.generateButton.Location = new System.Drawing.Point(66, 140);
             this.generateButton.Name = "generateButton";
             this.generateButton.Size = new System.Drawing.Size(72, 20);
             this.generateButton.TabIndex = 0;
@@ -743,10 +767,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(231, 346);
+            this.Controls.Add(this.requiredInformationPanel);
             this.Controls.Add(this.generatePanel);
             this.Controls.Add(this.receiverInformationPanel);
             this.Controls.Add(this.optionalInformationPanel);
-            this.Controls.Add(this.requiredInformationPanel);
             this.Menu = this.invoicingMenu;
             this.Name = "InvoicingForm";
             this.Text = "Facturación";
@@ -829,5 +853,7 @@
         private System.Windows.Forms.TextBox totalTextBox;
         private System.Windows.Forms.TextBox subTotalTextBox;
         private System.Windows.Forms.ComboBox currencyComboBox;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button backButton;
     }
 }

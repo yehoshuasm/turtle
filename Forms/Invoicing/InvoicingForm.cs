@@ -8,6 +8,7 @@ using turtle.Utils;
 using turtle.Forms.Invoicing;
 using turtle.mx.com.emitefacturacion.emitecfdi;
 
+
 namespace turtle
 {
     public partial class InvoicingForm : Form
@@ -51,9 +52,10 @@ namespace turtle
             if (ValidateOptionalInformation())
             {
                 SetOptionalInformation();
-                new ConceptsForm(Invoice.Concepts).Show();
+                new ConceptsForm(Invoice.Concepts,this).Show();
                 optionalInformationPanel.Hide();
                 generatePanel.Show();
+               
             }
         }
 
@@ -87,8 +89,8 @@ namespace turtle
             controlsValidations.Add(nameTextBox, Validator.IsAlphanumeric(nameTextBox.Text, true));
             controlsValidations.Add(emailTextBox,Validator.IsEmail(emailTextBox.Text));
             controlsValidations.Add(streetTextBox, Validator.IsAlphabetic(streetTextBox.Text, false));
-            controlsValidations.Add(externalNumberTextBox, Validator.IsInteger(externalNumberTextBox.Text, false));
-            controlsValidations.Add(internalNumberTextBox, Validator.IsInteger(internalNumberTextBox.Text, true));
+            controlsValidations.Add(externalNumberTextBox, Validator.IsAlphanumeric(externalNumberTextBox.Text, false));
+            controlsValidations.Add(internalNumberTextBox, Validator.IsAlphanumeric(internalNumberTextBox.Text, true));
             controlsValidations.Add(suburbTextBox, Validator.IsAlphanumeric(suburbTextBox.Text, false));
             controlsValidations.Add(municipalityTextBox, Validator.IsAlphabetic(municipalityTextBox.Text, false));
             controlsValidations.Add(stateTextBox, Validator.IsAlphabetic(stateTextBox.Text, false));
@@ -105,8 +107,8 @@ namespace turtle
         {
             var controlsValidations = new Dictionary<Control, bool>();
             controlsValidations.Add(ticketNumberTextBox, Validator.IsInteger(ticketNumberTextBox.Text, true));
-            controlsValidations.Add(subTotalTextBox, Validator.IsDecimal(subTotalTextBox.Text, false));
-            controlsValidations.Add(totalTextBox, Validator.IsDecimal(totalTextBox.Text, false));
+            //controlsValidations.Add(subTotalTextBox, Validator.IsDecimal(subTotalTextBox.Text, false));
+            //controlsValidations.Add(totalTextBox, Validator.IsDecimal(totalTextBox.Text, false));
             controlsValidations.Add(receipTypeComboBox, receipTypeComboBox.SelectedItem != null);
             controlsValidations.Add(placeOfIssueComboBox, placeOfIssueComboBox.SelectedItem != null);
             controlsValidations.Add(paymentMethodComboBox, paymentMethodComboBox.SelectedItem != null);
@@ -170,8 +172,8 @@ namespace turtle
             Invoice.PlaceOfIssue = placeOfIssueComboBox.SelectedItem != null ? placeOfIssueComboBox.SelectedItem.ToString() : "";
             Invoice.PaymentMethod = paymentMethodComboBox.SelectedItem != null ? paymentMethodComboBox.SelectedItem.ToString() : "";
             Invoice.PaymentForm = paymentFormComboBox.SelectedItem != null ? paymentFormComboBox.SelectedItem.ToString() : "";
-            Invoice.SubTotal = (subTotalTextBox.Text != "" ? Convert.ToDecimal(subTotalTextBox.Text) : 0);
-            Invoice.Total = (totalTextBox.Text != "" ? Convert.ToDecimal(totalTextBox.Text) : 0);
+            //Invoice.SubTotal = (subTotalTextBox.Text != "" ? Convert.ToDecimal(subTotalTextBox.Text) : 0);
+            //Invoice.Total = (totalTextBox.Text != "" ? Convert.ToDecimal(totalTextBox.Text) : 0);
         }
 
         /// <summary>
@@ -182,7 +184,7 @@ namespace turtle
             Invoice.SerialNumber = (serialNumberTextBox.Text != "" ? serialNumberTextBox.Text : "0");
             Invoice.Folio = (folioTextBox.Text != "" ? Convert.ToInt32(folioTextBox.Text) : 0);
             Invoice.AccountNumber = (accountNumberTextBox.Text != "" ? accountNumberTextBox.Text : "0000");
-            Invoice.Currency = currencyComboBox.SelectedItem.ToString();
+            Invoice.Currency = currencyComboBox.SelectedItem != null ? currencyComboBox.SelectedItem.ToString() : "";
             Invoice.ExchangeRate = (exchangeRateTextBox.Text != "" ? Convert.ToDecimal(exchangeRateTextBox.Text) : 0);
             Invoice.Notes = (notesTextBox.Text != "" ? notesTextBox.Text : "Sin Comentarios");
         }
@@ -250,7 +252,7 @@ namespace turtle
         {
             var invoiceString = "<?xml version='1.0' encoding='UTF-8' ?><factura";
             var tags = new Dictionary<string, string>();
-            tags.Add("tipoComprobante", "ingreso");
+            tags.Add("tipoComprobante", Invoice.ReceipType.ToString().ToLower());
             tags.Add("serie", Invoice.SerialNumber.ToString());
             tags.Add("folio", Invoice.Folio.ToString());
             tags.Add("subtotal", Invoice.SubTotal.ToString());
@@ -267,7 +269,7 @@ namespace turtle
             tags.Add("comentarios", Invoice.Notes.ToString());
             var tagsString = Concat(tags);
             invoiceString += tagsString + " >";
-            invoiceString += "<emisor><RegimenFiscal Regimen='Regimen General de Ley Personas Morales'/></emisor>";
+           // invoiceString += "<emisor><RegimenFiscal Regimen='Regimen General de Ley Personas Morales'/></emisor>";
             invoiceString += ReceiverToString(Invoice.Receiver);
             invoiceString += ConceptsToString(Invoice.Concepts);
             invoiceString += "</factura>";
@@ -277,8 +279,8 @@ namespace turtle
         private void generateButton_Click(object sender, EventArgs e)
         {
             var cfdi = new CFDIEmite();
-            Invoice.SubTotal = Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Price) : 0;
-            Invoice.Total = Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Iva) + Invoice.SubTotal : 0;
+            Invoice.SubTotal = Convert.ToDecimal(subTotalTextBox.Text);//Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Price) : 0;
+            Invoice.Total = Convert.ToDecimal(totalTextBox.Text);//Invoice.Concepts != null ? Invoice.Concepts.Sum(c => c.Iva) + Invoice.SubTotal : 0;
             var invoice = InvoiceToString();
             try
             {
@@ -302,5 +304,20 @@ namespace turtle
                 exchangeRateTextBox.Text = "1";
             }
         }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            generatePanel.Hide();
+           
+            
+        }
+
+       
     }
 }
