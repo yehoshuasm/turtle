@@ -11,13 +11,16 @@ namespace turtle.Forms.Invoicing
     public partial class ConceptsForm : Form
     {
         public static List<Concept> Concepts;
-        InvoicingForm invoicing;
-        public ConceptsForm(List<Concept> concepts,InvoicingForm invoicing)
+        private TextBox Subtotal;
+        private TextBox Total;
+        public ConceptsForm(List<Concept> concepts, TextBox subtotal, TextBox total)
         {
             InitializeComponent();
             Concepts = concepts;
+            Subtotal = subtotal;
+            Total = total;
             conceptsDataGrid.DataSource = Concepts.Select(c => new { c.Quantity, c.Description, c.Price, c.Import }).ToList();
-            this.invoicing = invoicing;
+            
         }
 
         private void addConceptButton_Click(object sender, EventArgs e)
@@ -97,8 +100,8 @@ namespace turtle.Forms.Invoicing
                 total = total + (subTotal + concep.Iva);
             }
 
-            //invoicing.subTotalTextBox.Text = subTotal.ToString();
-            //invoicing.Text = total.ToString();
+            Subtotal.Text = subTotal.ToString();
+            Total.Text = total.ToString();
         }
     }
 }
