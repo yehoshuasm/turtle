@@ -52,7 +52,7 @@ namespace turtle
             if (ValidateOptionalInformation())
             {
                 SetOptionalInformation();
-                new ConceptsForm(Invoice.Concepts,this).Show();
+                new ConceptsForm(Invoice.Concepts,subTotalTextBox,totalTextBox).Show();
                 optionalInformationPanel.Hide();
                 generatePanel.Show();
                
